@@ -1,0 +1,3 @@
+com\skillgateway\version\SemVerConstraintTest.class
+com\skillgateway\service\ManifestValidatorTest.class
+com\skillgateway\version\SemVerParserTest.class

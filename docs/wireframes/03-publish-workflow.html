@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publish Workflow - Wireframe</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #F0F9FF 0%, #F9FAFB 100%);
+            color: #1F2937;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .workflow-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .workflow-header h1 {
+            font-family: 'Inter', sans-serif;
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #1F2937;
+        }
+
+        .workflow-header p {
+            font-size: 14px;
+            color: #6B7280;
+        }
+
+        /* Stepper */
+        .stepper {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .stepper::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #E5E7EB;
+            z-index: 0;
+        }
+
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+            flex: 1;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border: 2px solid #E5E7EB;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            color: #6B7280;
+            margin-bottom: 12px;
+            transition: all 0.3s;
+        }
+
+        .step.active .step-number {
+            background: #3B82F6;
+            border-color: #3B82F6;
+            color: white;
+        }
+
+        .step.completed .step-number {
+            background: #10B981;
+            border-color: #10B981;
+            color: white;
+        }
+
+        .step.completed .step-number::after {
+            content: '✓';
+            position: absolute;
+            font-size: 16px;
+        }
+
+        .step-label {
+            font-size: 12px;
+            font-weight: 500;
+            color: #6B7280;
+            text-align: center;
+            max-width: 80px;
+        }
+
+        .step.active .step-label {
+            color: #3B82F6;
+            font-weight: 600;
+        }
+
+        .step.completed .step-label {
+            color: #10B981;
+            font-weight: 600;
+        }
+
+        /* Form Container */
+        .form-container {
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .form-section {
+            display: none;
+        }
+
+        .form-section.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .section-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1F2937;
+        }
+
+        .section-desc {
+            font-size: 13px;
+            color: #6B7280;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #1F2937;
+        }
+
+        .form-group label .required {
+            color: #EF4444;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #E5E7EB;
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: 'IBM Plex Sans', sans-serif;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #3B82F6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .helper-text {
+            font-size: 12px;
+            color: #6B7280;
+            margin-top: 6px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        /* File Upload */
+        .file-upload {
+            border: 2px dashed #E5E7EB;
+            border-radius: 8px;
+            padding: 32px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .file-upload:hover {
+            border-color: #3B82F6;
+            background: #F0F9FF;
+        }
+
+        .file-upload-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .file-upload-text {
+            font-size: 14px;
+            color: #6B7280;
+        }
+
+        .file-upload-hint {
+            font-size: 12px;
+            color: #9CA3AF;
+            margin-top: 4px;
+        }
+
+        /* Checkboxes */
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-top: 2px;
+            cursor: pointer;
+        }
+
+        .checkbox-item label {
+            margin: 0;
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .checkbox-item-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: #1F2937;
+        }
+
+        .checkbox-item-desc {
+            font-size: 12px;
+            color: #6B7280;
+            margin-top: 2px;
+        }
+
+        /* Step Content Examples */
+        .step-content-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: #1F2937;
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .category-card {
+            padding: 12px;
+            border: 2px solid #E5E7EB;
+            border-radius: 6px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: white;
+        }
+
+        .category-card:hover {
+            border-color: #3B82F6;
+            background: #F0F9FF;
+        }
+
+        .category-card.selected {
+            border-color: #3B82F6;
+            background: #DBEAFE;
+        }
+
+        .category-icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .category-name {
+            font-size: 12px;
+            font-weight: 500;
+            color: #1F2937;
+        }
+
+        /* Buttons */
+        .form-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: space-between;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid #E5E7EB;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 6px;
+            border: none;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            font-family: 'IBM Plex Sans', sans-serif;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: #3B82F6;
+            color: white;
+            flex: 1;
+        }
+
+        .btn-primary:hover {
+            background: #2563EB;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #1F2937;
+            border: 1px solid #E5E7EB;
+            min-width: 120px;
+        }
+
+        .btn-secondary:hover {
+            background: #F9FAFB;
+        }
+
+        .btn:disabled {
+            background: #D1D5DB;
+            color: #9CA3AF;
+            cursor: not-allowed;
+        }
+
+        /* Success State */
+        .success-state {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .success-icon {
+            font-size: 64px;
+            margin-bottom: 16px;
+        }
+
+        .success-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #10B981;
+        }
+
+        .success-desc {
+            font-size: 14px;
+            color: #6B7280;
+            margin-bottom: 24px;
+        }
+
+        /* Responsive */
+        @media (max-width: 767px) {
+            .form-container {
+                padding: 24px;
+            }
+
+            .stepper {
+                margin-bottom: 24px;
+            }
+
+            .step-label {
+                font-size: 10px;
+                max-width: 60px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .form-actions {
+                flex-direction: column;
+            }
+
+            .btn-secondary {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="workflow-header">
+            <h1>Publish a New Skill</h1>
+            <p>Share your skill with the community in 5 simple steps</p>
+        </div>
+
+        <!-- Stepper -->
+        <div class="stepper">
+            <div class="step completed">
+                <div class="step-number">1</div>
+                <div class="step-label">Basic Info</div>
+            </div>
+            <div class="step completed">
+                <div class="step-number">2</div>
+                <div class="step-label">Details</div>
+            </div>
+            <div class="step active">
+                <div class="step-number">3</div>
+                <div class="step-label">Setup</div>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-label">Files</div>
+            </div>
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-label">Review</div>
+            </div>
+        </div>
+
+        <!-- Form -->
+        <div class="form-container">
+            <!-- Step 3: Setup -->
+            <form id="publishForm">
+                <div class="form-section active">
+                    <div class="section-title">Step 3: Setup & Configuration</div>
+                    <div class="section-desc">Configure how your skill will run and what dependencies it requires</div>
+
+                    <!-- Runtime Configuration -->
+                    <div class="step-content-title">Runtime Environment</div>
+
+                    <div class="form-group">
+                        <label for="runtime">Primary Runtime <span class="required">*</span></label>
+                        <select id="runtime" required>
+                            <option value="">Select a runtime...</option>
+                            <option value="nodejs" selected>Node.js</option>
+                            <option value="python">Python</option>
+                            <option value="docker">Docker</option>
+                            <option value="go">Go</option>
+                            <option value="rust">Rust</option>
+                        </select>
+                        <div class="helper-text">The primary language/runtime your skill runs on</div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="minVersion">Minimum Version <span class="required">*</span></label>
+                            <input type="text" id="minVersion" placeholder="e.g., 14.0.0" value="14.0.0" required>
+                            <div class="helper-text">Minimum runtime version required</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="maxVersion">Maximum Version</label>
+                            <input type="text" id="maxVersion" placeholder="e.g., 20.x (optional)">
+                            <div class="helper-text">Leave blank for no upper limit</div>
+                        </div>
+                    </div>
+
+                    <!-- Dependencies -->
+                    <div class="step-content-title">Dependencies</div>
+
+                    <div class="form-group">
+                        <label for="dependencies">Required Packages <span class="required">*</span></label>
+                        <textarea id="dependencies" placeholder="npm install:&#10;axios@^1.0.0&#10;dotenv@^16.0.0&#10;&#10;or pip install:&#10;requests==2.28.0&#10;python-dotenv==0.19.0" required>axios@^1.0.0
+dotenv@^16.0.0</textarea>
+                        <div class="helper-text">List all external dependencies required. Format depends on your runtime.</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="peerDeps">Peer Dependencies (Optional)</label>
+                        <input type="text" id="peerDeps" placeholder="e.g., skillhub-core@^1.0.0">
+                        <div class="helper-text">Other SkillHub skills or services that must be installed first</div>
+                    </div>
+
+                    <!-- System Requirements -->
+                    <div class="step-content-title">System Requirements</div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="minMemory">Minimum Memory</label>
+                            <select id="minMemory">
+                                <option value="512mb">512 MB</option>
+                                <option value="1gb" selected>1 GB</option>
+                                <option value="2gb">2 GB</option>
+                                <option value="4gb">4 GB+</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="cpu">CPU Cores</label>
+                            <select id="cpu">
+                                <option value="1">1 core</option>
+                                <option value="2" selected>2 cores</option>
+                                <option value="4">4 cores</option>
+                                <option value="8">8+ cores</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="storage">Storage Space Required</label>
+                        <input type="text" id="storage" placeholder="e.g., 500MB, 2GB" value="250MB">
+                        <div class="helper-text">Estimated disk space needed for installation</div>
+                    </div>
+
+                    <!-- Network & Permissions -->
+                    <div class="step-content-title">Network & Permissions</div>
+
+                    <div class="form-group">
+                        <label>Required Permissions</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="perm1" checked>
+                                <label for="perm1">
+                                    <div class="checkbox-item-title">Network Access</div>
+                                    <div class="checkbox-item-desc">Can make HTTP/HTTPS requests</div>
+                                </label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="perm2">
+                                <label for="perm2">
+                                    <div class="checkbox-item-title">File System Access</div>
+                                    <div class="checkbox-item-desc">Can read/write files on the system</div>
+                                </label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="perm3">
+                                <label for="perm3">
+                                    <div class="checkbox-item-title">Database Access</div>
+                                    <div class="checkbox-item-desc">Requires database connection</div>
+                                </label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="perm4">
+                                <label for="perm4">
+                                    <div class="checkbox-item-title">GPU Support</div>
+                                    <div class="checkbox-item-desc">Can utilize GPU for acceleration</div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="envVars">Environment Variables</label>
+                        <textarea id="envVars" placeholder="LIST_ENV_VAR_1&#10;LIST_ENV_VAR_2&#10;API_KEY&#10;DEBUG_MODE"></textarea>
+                        <div class="helper-text">List environment variables required by your skill (one per line). Users will be prompted to configure these.</div>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary">← Previous</button>
+                        <button type="submit" class="btn btn-primary">Next Step →</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Design Notes -->
+    <div style="position: fixed; bottom: 20px; right: 20px; background: #FEF3C7; border: 1px solid #F59E0B; border-radius: 6px; padding: 12px; max-width: 280px; font-size: 12px; color: #92400E; z-index: 1000;">
+        <strong>Design Notes:</strong><br>
+        • 5-step wizard with visual progress<br>
+        • Form validation and error states<br>
+        • Conditional fields based on runtime<br>
+        • Helper text for guidance<br>
+        • Save progress to draft<br>
+        • Responsive on mobile (stacked layout)
+    </div>
+</body>
+</html>

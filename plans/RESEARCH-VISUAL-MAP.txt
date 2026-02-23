@@ -1,0 +1,201 @@
+================================================================================
+SKILL REPOSITORY RESEARCH - VISUAL CONCEPT MAP
+================================================================================
+
+                    SKILL REPOSITORY SYSTEM
+                              |
+                 +-----+-------+-------+-----+
+                 |     |       |       |     |
+             DISCOVERY | VERSIONING | METADATA
+             - Keyword | - SemVer   | - skill.yaml
+             - Semantic| - ^1.2.3   | - Categories
+             - Tags    | - ~1.2.3   | - Tags
+             - Rerank  | - Ranges   | - Dependencies
+
+
+DATABASE LAYER
+┌─────────────────────────────────────────────────────┐
+│                    PostgreSQL                       │
+├──────────────┬──────────────┬──────────┬────────────┤
+│  skills      │skill_versions│skill_tags│ Vector DB  │
+├──────────────┼──────────────┼──────────┼────────────┤
+│ id           │ id           │ skill_id │ embeddings │
+│ name         │ skill_id     │ tag_name │ similarity │
+│ category     │ version_sem  │ (PK)     │ storage    │
+│ description  │ is_prerelase │          │ (ChromaDB) │
+│ search_vecto │ requires(J)  │          │            │
+│ (tsvector)   │ published_at │          │            │
+└──────────────┴──────────────┴──────────┴────────────┘
+
+
+SEARCH FLOW
+════════════════════════════════════════════════════════
+
+Client Query
+   |
+   +---> Keyword Search (tsvector)
+   |     Returns: skill_ids + ts_rank score
+   |
+   +---> Semantic Search (Vector DB)
+   |     Returns: skill_ids + similarity score
+   |
+   +---> Tag Filter
+   |     WHERE tag IN (...) AND category = X
+   |
+   +---> Rerank
+   |     score = 0.3*kw + 0.5*sem + 0.2*popularity
+   |
+   +--> Return Top-K
+
+
+VERSION RESOLUTION FLOW
+════════════════════════════════════════════════════════
+
+User Request: skill@^1.0.0
+   |
+   +---> Parse: ^ = "compatible major"
+   |
+   +---> Query: SELECT versions WHERE skill_id = ?
+   |     Result: [1.0.0, 1.2.3, 2.0.0]
+   |
+   +---> Filter: ^1.0.0 → >=1.0.0 <2.0.0
+   |     Result: [1.0.0, 1.2.3]
+   |
+   +---> Exclude Prerelease
+   |
+   +--> Return Max: 1.2.3
+
+
+IMPLEMENTATION ROADMAP
+════════════════════════════════════════════════════════
+
+Phase 1 (Week 1-2):          Phase 2 (Week 3-4):
++ PostgreSQL schema          + Vector DB integration
++ SemVer parser              + Semantic search
++ skill.yaml validator       + Hybrid ranking
++ POST /publish              + Prerelease lifecycle
++ GET /search                + Dependency resolution
++ GET /resolve-version
+
+                     Phase 3 (Week 5-6):
+                     + Advanced constraints
+                     + Conflict detection
+                     + Analytics + metrics
+                     + Multi-language search
+                     + Migration scripts
+
+
+SEMVER QUICK REFERENCE
+════════════════════════════════════════════════════════
+
+Format: MAJOR.MINOR.PATCH[-prerelease][+build]
+
+MAJOR.MINOR.PATCH:
+  1.0.0  = Production release
+  1.1.0  = Added backward-compatible features
+  1.0.1  = Bug fix only
+  0.1.0  = Development (breaking changes OK)
+
+Prerelease Lifecycle:
+  1.0.0-alpha.1  = Early development (breaking OK)
+  1.0.0-beta.1   = Community testing (stable)
+  1.0.0-rc.1     = Release candidate (final checks)
+  1.0.0          = Production (backward compatible)
+
+Constraints:
+  ^1.2.3  = >=1.2.3 <2.0.0 (compatible major)
+  ~1.2.3  = >=1.2.3 <1.3.0 (conservative patch)
+  latest  = Highest non-prerelease version
+
+
+SKILL MANIFEST TEMPLATE
+════════════════════════════════════════════════════════
+
+name: skill-name
+version: 1.0.0
+description: What this skill does
+category: Data Processing
+tags:
+  - analysis
+  - beginner
+
+requires:
+  - python: ">=3.11"
+  - skill: dependency@^1.0.0
+
+repository:
+  url: https://github.com/org/repo
+  ref: main
+
+documentation:
+  readme: ./README.md
+  examples: ./examples
+
+
+8 PRIMARY CATEGORIES
+════════════════════════════════════════════════════════
+
+Data Processing      Analytics           AI/ML
++ ETL               + Reporting         + Models
++ Transform         + Stats             + Training
++ Parsing           + Insights          + Inference
+
+Code Generation     DevOps              Security
++ Templates         + Deploy            + Encrypt
++ Scaffold          + Monitor           + Auth
++ Boilerplate       + CI/CD             + Audit
+
+Testing             Documentation
++ Unit              + Generation
++ Integration       + Publishing
++ E2E               + Hosting
+
+
+DOCUMENT NAVIGATION
+════════════════════════════════════════════════════════
+
+Start Here:
+  README.md (overview + roadmap)
+
+Executive Level:
+  RESEARCH-SUMMARY.md (findings + decisions)
+
+Technical Reference:
+  skill-repository-design-research.md (deep dive)
+
+Code Reference:
+  skill-registry-implementation-guide.md (patterns)
+
+Quick Lookup:
+  QUICK-REFERENCE.md (tables + checklists)
+
+Architecture:
+  ARCHITECTURE-PATTERNS.md (8 flow diagrams)
+
+By Role:
+  INDEX.md (navigate by title/topic)
+
+
+KEY FINDINGS
+════════════════════════════════════════════════════════
+
+1. DISCOVERY: Hybrid keyword + semantic search
+   Score = 0.3*keyword + 0.5*semantic + 0.2*popularity
+
+2. VERSIONING: SemVer with explicit constraints
+   ^1.2.3, ~1.2.3, ranges, prerelease stages
+
+3. METADATA: YAML manifest with categories + tags
+   name, version, category, tags, requires, repository
+
+4. DATABASE: PostgreSQL with full-text search
+   skills, skill_versions, skill_tags tables + GIN index
+
+5. CATEGORIES: 8 primary + unlimited flat tags
+   Data, Analytics, AI/ML, CodeGen, DevOps, Security, Testing, Docs
+
+
+================================================================================
+Complete documentation with code examples available in companion files.
+Research completed: 2026-02-21 | Status: Ready for implementation planning
+================================================================================

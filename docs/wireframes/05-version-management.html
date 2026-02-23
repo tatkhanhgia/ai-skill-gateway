@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Version Management - Wireframe</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #F9FAFB;
+            color: #1F2937;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            padding: 16px 32px;
+            background: white;
+            border-bottom: 1px solid #E5E7EB;
+            font-size: 12px;
+            color: #6B7280;
+        }
+
+        .breadcrumb a {
+            color: #3B82F6;
+            text-decoration: none;
+        }
+
+        /* Header */
+        .page-header {
+            background: white;
+            border-bottom: 1px solid #E5E7EB;
+            padding: 32px;
+            margin-bottom: 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .header-info h1 {
+            font-family: 'Inter', sans-serif;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .header-info p {
+            font-size: 13px;
+            color: #6B7280;
+        }
+
+        .btn {
+            padding: 10px 16px;
+            border-radius: 6px;
+            border: none;
+            font-size: 14px;
+            cursor: pointer;
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: #3B82F6;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #2563EB;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #1F2937;
+            border: 1px solid #E5E7EB;
+        }
+
+        .btn-secondary:hover {
+            background: #F9FAFB;
+        }
+
+        .btn-sm {
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+
+        /* Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        /* Sidebar - Version List */
+        .version-sidebar {
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            overflow: hidden;
+            max-height: 600px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-header {
+            padding: 16px;
+            border-bottom: 1px solid #E5E7EB;
+            background: #F9FAFB;
+        }
+
+        .sidebar-header h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: #1F2937;
+        }
+
+        .version-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 8px;
+        }
+
+        .version-item {
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+        }
+
+        .version-item:hover {
+            background: #F9FAFB;
+        }
+
+        .version-item.active {
+            background: #F0F9FF;
+            border-color: #3B82F6;
+        }
+
+        .version-number {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: #1F2937;
+            margin-bottom: 4px;
+        }
+
+        .version-date {
+            font-size: 11px;
+            color: #9CA3AF;
+            margin-bottom: 6px;
+        }
+
+        .version-badge {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-weight: 500;
+        }
+
+        .badge-current {
+            background: #DBEAFE;
+            color: #1E40AF;
+        }
+
+        .badge-beta {
+            background: #FEF3C7;
+            color: #92400E;
+        }
+
+        /* Main Content - Version Comparison */
+        .main-content {
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            padding: 32px;
+        }
+
+        .comparison-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        .version-titles {
+            display: flex;
+            gap: 20px;
+            flex: 1;
+        }
+
+        .version-col-title {
+            flex: 1;
+        }
+
+        .version-col-title h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .version-col-subtitle {
+            font-size: 12px;
+            color: #6B7280;
+        }
+
+        .compare-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 24px;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid #F3F4F6;
+        }
+
+        .comparison-table th {
+            background: #F9FAFB;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            color: #6B7280;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .comparison-table td {
+            font-size: 13px;
+        }
+
+        .attr-name {
+            font-weight: 500;
+            color: #1F2937;
+            min-width: 150px;
+        }
+
+        .attr-value {
+            color: #6B7280;
+        }
+
+        .attr-changed {
+            background: #FEF3C7;
+            padding: 8px;
+            border-radius: 4px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            color: #92400E;
+        }
+
+        .attr-removed {
+            background: #FEE2E2;
+            color: #991B1B;
+        }
+
+        .attr-added {
+            background: #DCFCE7;
+            color: #166534;
+        }
+
+        /* Changelog Section */
+        .changelog-section {
+            margin-top: 32px;
+            padding-top: 32px;
+            border-top: 1px solid #E5E7EB;
+        }
+
+        .section-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #1F2937;
+        }
+
+        .changelog-entry {
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #F3F4F6;
+        }
+
+        .changelog-entry:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .entry-header {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .entry-badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            flex-shrink: 0;
+        }
+
+        .badge-feature {
+            background: #DBEAFE;
+            color: #1E40AF;
+        }
+
+        .badge-bugfix {
+            background: #DCFCE7;
+            color: #166534;
+        }
+
+        .badge-breaking {
+            background: #FEE2E2;
+            color: #991B1B;
+        }
+
+        .badge-security {
+            background: #FECACA;
+            color: #7F1D1D;
+        }
+
+        .entry-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: #1F2937;
+        }
+
+        .entry-description {
+            font-size: 12px;
+            color: #6B7280;
+            margin-top: 4px;
+            line-height: 1.5;
+        }
+
+        .entry-date {
+            font-size: 11px;
+            color: #9CA3AF;
+            margin-top: 8px;
+        }
+
+        .changelog-list {
+            list-style: none;
+            margin-top: 8px;
+            padding-left: 0;
+        }
+
+        .changelog-list li {
+            padding: 4px 0;
+            padding-left: 20px;
+            position: relative;
+            font-size: 12px;
+            color: #6B7280;
+        }
+
+        .changelog-list li:before {
+            content: '•';
+            position: absolute;
+            left: 8px;
+            color: #3B82F6;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .stat-item {
+            background: #F9FAFB;
+            border: 1px solid #E5E7EB;
+            border-radius: 6px;
+            padding: 12px 16px;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: #6B7280;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .stat-value {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: #1F2937;
+        }
+
+        /* Responsive */
+        @media (max-width: 1023px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .version-sidebar {
+                max-height: 300px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 767px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .page-header {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .content-grid {
+                gap: 16px;
+            }
+
+            .main-content {
+                padding: 16px;
+            }
+
+            .comparison-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .version-titles {
+                flex-direction: column;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="#">Dashboard</a> / <a href="#">Text Analysis</a> / Versions
+    </div>
+
+    <!-- Header -->
+    <div class="page-header">
+        <div class="header-info">
+            <h1>Version Management</h1>
+            <p>Compare versions and view detailed changelog</p>
+        </div>
+        <button class="btn btn-primary">📥 Download All</button>
+    </div>
+
+    <div class="container">
+        <div class="content-grid">
+            <!-- Sidebar - Version List -->
+            <div class="version-sidebar">
+                <div class="sidebar-header">
+                    <h3>Versions</h3>
+                </div>
+                <div class="version-list">
+                    <div class="version-item active">
+                        <div class="version-number">v2.1.0</div>
+                        <div class="version-date">Feb 10, 2025</div>
+                        <span class="version-badge badge-current">Current</span>
+                    </div>
+                    <div class="version-item">
+                        <div class="version-number">v2.0.5</div>
+                        <div class="version-date">Jan 28, 2025</div>
+                    </div>
+                    <div class="version-item">
+                        <div class="version-number">v2.0.0</div>
+                        <div class="version-date">Dec 15, 2024</div>
+                    </div>
+                    <div class="version-item">
+                        <div class="version-number">v1.9.2</div>
+                        <div class="version-date">Nov 30, 2024</div>
+                    </div>
+                    <div class="version-item">
+                        <div class="version-number">v1.9.1</div>
+                        <div class="version-date">Nov 15, 2024</div>
+                    </div>
+                    <div class="version-item">
+                        <div class="version-number">v1.9.0</div>
+                        <div class="version-date">Oct 20, 2024</div>
+                    </div>
+                    <div class="version-item">
+                        <div class="version-number">v1.8.5</div>
+                        <div class="version-date">Sep 10, 2024</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content - Comparison -->
+            <div class="main-content">
+                <!-- Comparison Header -->
+                <div class="comparison-header">
+                    <div class="version-titles">
+                        <div class="version-col-title">
+                            <h3>v2.1.0</h3>
+                            <div class="version-col-subtitle">Current (Feb 10, 2025)</div>
+                        </div>
+                        <div style="text-align: center; padding-top: 24px; color: #9CA3AF;">vs</div>
+                        <div class="version-col-title" style="text-align: right;">
+                            <h3>v2.0.5</h3>
+                            <div class="version-col-subtitle">Previous (Jan 28, 2025)</div>
+                        </div>
+                    </div>
+                    <div class="compare-controls">
+                        <select style="padding: 8px 12px; border: 1px solid #E5E7EB; border-radius: 6px; font-size: 12px;">
+                            <option>Compare with...</option>
+                            <option>v2.0.0</option>
+                            <option>v1.9.2</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Comparison Stats -->
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-label">Lines Changed</div>
+                        <div class="stat-value">+234</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Files Modified</div>
+                        <div class="stat-value">12</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Changes</div>
+                        <div class="stat-value">18</div>
+                    </div>
+                </div>
+
+                <!-- Comparison Table -->
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Attribute</th>
+                            <th>Current (v2.1.0)</th>
+                            <th>Previous (v2.0.5)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="attr-name">Version</td>
+                            <td class="attr-value attr-changed">2.1.0</td>
+                            <td class="attr-value">2.0.5</td>
+                        </tr>
+                        <tr>
+                            <td class="attr-name">Release Date</td>
+                            <td class="attr-value attr-changed">Feb 10, 2025</td>
+                            <td class="attr-value">Jan 28, 2025</td>
+                        </tr>
+                        <tr>
+                            <td class="attr-name">Node.js Minimum</td>
+                            <td class="attr-value">14.0.0</td>
+                            <td class="attr-value">14.0.0</td>
+                        </tr>
+                        <tr>
+                            <td class="attr-name">Dependencies</td>
+                            <td class="attr-value">
+                                <div class="attr-changed attr-added">
+                                    + axios@^1.4.0<br>
+                                    + lodash@^4.17.21
+                                </div>
+                            </td>
+                            <td class="attr-value">axios@^1.0.0</td>
+                        </tr>
+                        <tr>
+                            <td class="attr-name">Size</td>
+                            <td class="attr-value attr-changed">2.8MB (+0.2MB)</td>
+                            <td class="attr-value">2.6MB</td>
+                        </tr>
+                        <tr>
+                            <td class="attr-name">Download Count</td>
+                            <td class="attr-value attr-changed">45.2K</td>
+                            <td class="attr-value">38.1K</td>
+                        </tr>
+                        <tr>
+                            <td class="attr-name">Rating</td>
+                            <td class="attr-value">⭐ 4.8</td>
+                            <td class="attr-value">⭐ 4.7</td>
+                        </tr>
+                        <tr>
+                            <td class="attr-name">Supported Languages</td>
+                            <td class="attr-value">50+ (Vietnamese added)</td>
+                            <td class="attr-value">45+</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Changelog -->
+                <div class="changelog-section">
+                    <h2 class="section-title">Changelog - v2.1.0</h2>
+
+                    <div class="changelog-entry">
+                        <div class="entry-header">
+                            <span class="entry-badge badge-feature">Feature</span>
+                            <div>
+                                <div class="entry-title">Vietnamese Language Support</div>
+                                <div class="entry-description">Added full support for Vietnamese language processing including proper diacritical mark handling and tone analysis.</div>
+                            </div>
+                        </div>
+                        <div class="entry-date">Added by AI Team on Feb 10, 2025</div>
+                    </div>
+
+                    <div class="changelog-entry">
+                        <div class="entry-header">
+                            <span class="entry-badge badge-feature">Feature</span>
+                            <div>
+                                <div class="entry-title">Enhanced Entity Recognition</div>
+                                <div class="entry-description">Improved NER accuracy with new transformer-based models and support for custom entity types.</div>
+                            </div>
+                        </div>
+                        <div class="entry-date">Added by AI Team on Feb 10, 2025</div>
+                    </div>
+
+                    <div class="changelog-entry">
+                        <div class="entry-header">
+                            <span class="entry-badge badge-bugfix">Bug Fix</span>
+                            <div>
+                                <div class="entry-title">Fixed Memory Leak in Batch Processing</div>
+                                <div class="entry-description">Resolved memory accumulation issue when processing large batches of text documents.</div>
+                            </div>
+                        </div>
+                        <div class="entry-date">Added by AI Team on Feb 8, 2025</div>
+                    </div>
+
+                    <div class="changelog-entry">
+                        <div class="entry-header">
+                            <span class="entry-badge badge-feature">Feature</span>
+                            <div>
+                                <div class="entry-title">Performance Improvements</div>
+                                <div class="entry-description">Optimized inference pipeline for 30% faster processing on CPU, 45% faster on GPU.</div>
+                            </div>
+                        </div>
+                        <ul class="changelog-list">
+                            <li>Vectorized operations for batch processing</li>
+                            <li>Improved caching strategy for embeddings</li>
+                            <li>Reduced model loading time by 50%</li>
+                        </ul>
+                        <div class="entry-date">Added by AI Team on Feb 5, 2025</div>
+                    </div>
+
+                    <div class="changelog-entry">
+                        <div class="entry-header">
+                            <span class="entry-badge badge-bugfix">Bug Fix</span>
+                            <div>
+                                <div class="entry-title">Corrected Sentiment Scores for Neutral Text</div>
+                                <div class="entry-description">Fixed edge cases where neutral sentiment was incorrectly classified as positive with low confidence.</div>
+                            </div>
+                        </div>
+                        <div class="entry-date">Added by AI Team on Jan 30, 2025</div>
+                    </div>
+
+                    <div class="changelog-entry">
+                        <div class="entry-header">
+                            <span class="entry-badge badge-feature">Feature</span>
+                            <div>
+                                <div class="entry-title">New API Endpoints</div>
+                                <div class="entry-description">Added REST API endpoints for batch operations and webhook callbacks.</div>
+                            </div>
+                        </div>
+                        <ul class="changelog-list">
+                            <li>POST /api/v2/batch/analyze</li>
+                            <li>POST /api/v2/webhooks/subscribe</li>
+                            <li>GET /api/v2/status</li>
+                        </ul>
+                        <div class="entry-date">Added by AI Team on Jan 28, 2025</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Design Notes -->
+    <div style="position: fixed; bottom: 20px; right: 20px; background: #FEF3C7; border: 1px solid #F59E0B; border-radius: 6px; padding: 12px; max-width: 280px; font-size: 12px; color: #92400E; z-index: 1000;">
+        <strong>Design Notes:</strong><br>
+        • Sidebar for version selection<br>
+        • Comparison table shows changes<br>
+        • Visual diff highlighting<br>
+        • Detailed changelog with badges<br>
+        • Download/rollback options<br>
+        • Change statistics<br>
+        • Responsive layout
+    </div>
+</body>
+</html>

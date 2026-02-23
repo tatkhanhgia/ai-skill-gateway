@@ -1,0 +1,117 @@
+# AI Skill Gateway - Main Configuration
+
+app:
+  name: "AI Skill Gateway"
+  version: "1.0.0"
+  description: "AI-powered skill discovery gateway"
+  
+server:
+  host: "127.0.0.1"
+  port: 8080
+  workers: 1
+  reload: false
+
+ai:
+  llm:
+    provider: "ollama"
+    host: "http://localhost:11434"
+    model: "llama3.1:8b"
+    temperature: 0.7
+    max_tokens: 2048
+    timeout: 60
+  
+  embedding:
+    model: "nomic-embed-text"
+    dimension: 768
+    batch_size: 32
+  
+  intent:
+    enabled: true
+    system_prompt: |
+      You are an intent analyzer. Analyze the user query and extract:
+      1. Intent type: search | chat | info
+      2. Keywords: list of relevant keywords
+      3. Context needs: what additional context is needed
+      
+      Respond in JSON format.
+  
+  reranker:
+    enabled: true
+    model: "cross-encoder/ms-marco-MiniLM-L-6-v2"
+    top_k: 5
+    threshold: 0.5
+
+vector_db:
+  provider: "chromadb"
+  path: "./data/vector_db"
+  collection_skills: "skills"
+  collection_memory: "memory"
+  distance_function: "cosine"
+
+storage:
+  default_timeout: 30
+  adapters:
+    - name: "local"
+      type: "local"
+      enabled: true
+      priority: 1
+      config:
+        base_path: "C:/Skills"
+        file_pattern: "*.json"
+        recursive: true
+        watch_changes: true
+    
+    - name: "postgres"
+      type: "postgresql"
+      enabled: false
+      priority: 2
+      config:
+        host: "localhost"
+        port: 5432
+        database: "skills"
+        user: "admin"
+        password: "${POSTGRES_PASSWORD}"
+        table_name: "skills"
+        ssl_mode: "prefer"
+    
+    - name: "gdrive"
+      type: "googledrive"
+      enabled: false
+      priority: 3
+      config:
+        credentials_path: "./config/gdrive-credentials.json"
+        token_path: "./data/gdrive-token.json"
+        folder_id: ""
+        sync_interval: 3600  # seconds
+
+memory:
+  enabled: true
+  max_history: 10
+  max_age_hours: 168  # 1 week
+  similarity_threshold: 0.85
+  context_window: 3
+
+search:
+  default_limit: 5
+  max_limit: 50
+  enable_semantic: true
+  enable_keyword: true
+  min_score: 0.3
+
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file:
+    enabled: true
+    path: "./data/logs/gateway.log"
+    rotation: "1 day"
+    retention: "30 days"
+  console:
+    enabled: true
+    color: true
+
+features:
+  skill_versioning: false
+  dependency_resolution: false
+  caching: true
+  analytics: false

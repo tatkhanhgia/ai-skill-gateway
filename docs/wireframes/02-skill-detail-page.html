@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Detail Page - Wireframe</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #F9FAFB;
+            color: #1F2937;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            padding: 16px 32px;
+            background: white;
+            border-bottom: 1px solid #E5E7EB;
+            font-size: 12px;
+            color: #6B7280;
+        }
+
+        .breadcrumb a {
+            color: #3B82F6;
+            text-decoration: none;
+        }
+
+        /* Header Section */
+        .detail-header {
+            background: white;
+            border-bottom: 1px solid #E5E7EB;
+            padding: 32px;
+            margin-bottom: 32px;
+        }
+
+        .header-top {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 24px;
+            align-items: flex-start;
+            margin-bottom: 24px;
+        }
+
+        .skill-icon-lg {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #3B82F6, #1D4ED8);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: white;
+        }
+
+        .header-info h1 {
+            font-family: 'Inter', sans-serif;
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .header-meta {
+            display: flex;
+            gap: 16px;
+            font-size: 13px;
+            color: #6B7280;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 10px 16px;
+            border-radius: 6px;
+            border: none;
+            font-size: 14px;
+            cursor: pointer;
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: #3B82F6;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #2563EB;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #1F2937;
+            border: 1px solid #E5E7EB;
+        }
+
+        .btn-secondary:hover {
+            background: #F9FAFB;
+        }
+
+        .status-badges {
+            display: flex;
+            gap: 8px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .badge-success {
+            background: #DCFCE7;
+            color: #166534;
+        }
+
+        .badge-info {
+            background: #DBEAFE;
+            color: #1E40AF;
+        }
+
+        .badge-warning {
+            background: #FEF3C7;
+            color: #92400E;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 0;
+            border-bottom: 1px solid #E5E7EB;
+            margin-bottom: 32px;
+        }
+
+        .tab {
+            padding: 16px 24px;
+            background: none;
+            border: none;
+            font-size: 14px;
+            font-weight: 500;
+            color: #6B7280;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .tab.active {
+            color: #3B82F6;
+            border-bottom-color: #3B82F6;
+        }
+
+        .tab:hover:not(.active) {
+            color: #1F2937;
+        }
+
+        /* Main Content Grid */
+        .detail-content {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 32px;
+        }
+
+        .main-content {
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            padding: 32px;
+        }
+
+        .section {
+            margin-bottom: 32px;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section h2 {
+            font-family: 'Inter', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #1F2937;
+        }
+
+        .section h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 16px;
+            margin-bottom: 8px;
+            color: #1F2937;
+        }
+
+        .section p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #6B7280;
+            margin-bottom: 8px;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 12px 0;
+        }
+
+        .feature-list li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            font-size: 14px;
+            color: #6B7280;
+        }
+
+        .feature-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #10B981;
+            font-weight: bold;
+        }
+
+        .code-block {
+            background: #1F2937;
+            color: #E5E7EB;
+            padding: 16px;
+            border-radius: 6px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 13px;
+            overflow-x: auto;
+            margin: 12px 0;
+            line-height: 1.6;
+        }
+
+        .copy-btn {
+            padding: 4px 8px;
+            font-size: 11px;
+            background: #3B82F6;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+            margin-bottom: 8px;
+        }
+
+        .separator {
+            border-top: 1px solid #E5E7EB;
+            margin: 32px 0;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar-card {
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .sidebar-card h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #1F2937;
+        }
+
+        .sidebar-card .stat {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 13px;
+            border-bottom: 1px solid #F3F4F6;
+        }
+
+        .sidebar-card .stat:last-child {
+            border-bottom: none;
+        }
+
+        .stat-value {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: #1F2937;
+        }
+
+        .tags-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tag {
+            background: #F3F4F6;
+            color: #6B7280;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+        }
+
+        .version-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .version-item {
+            padding: 8px;
+            background: #F9FAFB;
+            border: 1px solid #E5E7EB;
+            border-radius: 4px;
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .version-item-label {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: #1F2937;
+        }
+
+        .version-item-date {
+            color: #9CA3AF;
+            font-size: 11px;
+        }
+
+        .install-section {
+            background: #F0F9FF;
+            border: 1px solid #DBEAFE;
+            border-radius: 6px;
+            padding: 16px;
+            margin: 16px 0;
+        }
+
+        .install-section h4 {
+            font-size: 12px;
+            font-weight: 600;
+            color: #0369A1;
+            margin-bottom: 8px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1023px) {
+            .detail-content {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 24px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .header-top {
+                grid-template-columns: 1fr;
+            }
+
+            .detail-header {
+                padding: 20px;
+            }
+
+            .main-content {
+                padding: 16px;
+            }
+
+            .skill-icon-lg {
+                width: 60px;
+                height: 60px;
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="#">Skills</a> / <a href="#">AI & ML</a> / Text Analysis
+    </div>
+
+    <!-- Detail Header -->
+    <div class="detail-header">
+        <div class="header-top">
+            <div class="skill-icon-lg">🤖</div>
+            <div class="header-info">
+                <h1>Text Analysis Skill</h1>
+                <div class="header-meta">
+                    <span>by AI Team</span>
+                    <span>⭐ 4.8 (234 reviews)</span>
+                    <span>📦 v2.1.0</span>
+                </div>
+                <p style="margin-top: 8px; color: #6B7280;">Advanced NLP processing for text analysis, sentiment detection, and entity extraction with support for 50+ languages including Vietnamese.</p>
+            </div>
+            <div>
+                <div class="status-badges" style="margin-bottom: 12px;">
+                    <span class="badge badge-success">Active</span>
+                    <span class="badge badge-info">Verified</span>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-primary">Install</button>
+                    <button class="btn btn-secondary">❤️ 234</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab active">Overview</button>
+            <button class="tab">Documentation</button>
+            <button class="tab">Versions</button>
+            <button class="tab">Reviews</button>
+        </div>
+
+        <!-- Content -->
+        <div class="detail-content">
+            <div class="main-content">
+                <!-- Description Section -->
+                <div class="section">
+                    <h2>Description</h2>
+                    <p>Text Analysis Skill provides powerful natural language processing capabilities for analyzing, extracting, and understanding text data. Perfect for sentiment analysis, entity recognition, topic modeling, and more.</p>
+                </div>
+
+                <!-- Features Section -->
+                <div class="section">
+                    <h2>Key Features</h2>
+                    <ul class="feature-list">
+                        <li>Sentiment analysis with confidence scores</li>
+                        <li>Named entity recognition (NER) for 30+ entity types</li>
+                        <li>Multi-language support including Vietnamese</li>
+                        <li>Custom model training and fine-tuning</li>
+                        <li>Real-time processing with low latency</li>
+                        <li>Batch processing for large datasets</li>
+                        <li>REST API and Python SDK</li>
+                        <li>Detailed audit logs and analytics</li>
+                    </ul>
+                </div>
+
+                <!-- Installation Section -->
+                <div class="section">
+                    <h2>Installation</h2>
+                    <div class="install-section">
+                        <h4>NPM</h4>
+                        <div class="code-block">npm install @skillhub/text-analysis@2.1.0</div>
+                    </div>
+                    <div class="install-section">
+                        <h4>Python</h4>
+                        <div class="code-block">pip install skillhub-text-analysis==2.1.0</div>
+                    </div>
+                    <div class="install-section">
+                        <h4>Docker</h4>
+                        <div class="code-block">docker pull skillhub/text-analysis:2.1.0</div>
+                    </div>
+                </div>
+
+                <!-- Quick Start -->
+                <div class="section">
+                    <h2>Quick Start</h2>
+                    <h3>Python Example</h3>
+                    <div class="code-block">
+from skillhub import TextAnalyzer
+
+analyzer = TextAnalyzer(model='multilingual')
+
+result = analyzer.analyze(
+    text="This product is amazing!",
+    language='en'
+)
+
+print(result.sentiment)  # 'positive'
+print(result.score)      # 0.95
+                    </div>
+
+                    <h3>REST API Example</h3>
+                    <div class="code-block">
+curl -X POST https://api.skillhub.io/v1/analyze \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "text": "This product is amazing!",
+    "language": "en"
+  }'
+                    </div>
+                </div>
+
+                <!-- Use Cases -->
+                <div class="section">
+                    <h2>Use Cases</h2>
+                    <h3>Customer Feedback Analysis</h3>
+                    <p>Automatically analyze customer reviews and feedback to understand sentiment, identify issues, and track customer satisfaction trends.</p>
+
+                    <h3>Content Moderation</h3>
+                    <p>Detect and filter inappropriate content in user-generated content with customizable rules and confidence thresholds.</p>
+
+                    <h3>Topic Modeling</h3>
+                    <p>Automatically identify and extract topics from large text corpora for content organization and discovery.</p>
+                </div>
+
+                <!-- Requirements -->
+                <div class="section">
+                    <h2>Requirements</h2>
+                    <ul class="feature-list">
+                        <li>Python 3.8+ or Node.js 14+</li>
+                        <li>2GB RAM minimum (4GB recommended)</li>
+                        <li>Internet connection for model downloads</li>
+                        <li>Valid API key for production use</li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div class="section">
+                    <h2>Support & Community</h2>
+                    <p>Need help? Check out our documentation, GitHub discussions, or contact our support team at support@skillhub.io</p>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Info Card -->
+                <div class="sidebar-card">
+                    <h3>Information</h3>
+                    <div class="stat">
+                        <span>Version</span>
+                        <span class="stat-value">2.1.0</span>
+                    </div>
+                    <div class="stat">
+                        <span>Published</span>
+                        <span class="stat-value">2024-08-15</span>
+                    </div>
+                    <div class="stat">
+                        <span>Updated</span>
+                        <span class="stat-value">2025-02-10</span>
+                    </div>
+                    <div class="stat">
+                        <span>Downloads</span>
+                        <span class="stat-value">128K</span>
+                    </div>
+                    <div class="stat">
+                        <span>License</span>
+                        <span class="stat-value">MIT</span>
+                    </div>
+                </div>
+
+                <!-- Tags Card -->
+                <div class="sidebar-card">
+                    <h3>Tags</h3>
+                    <div class="tags-list">
+                        <span class="tag">NLP</span>
+                        <span class="tag">AI</span>
+                        <span class="tag">Analysis</span>
+                        <span class="tag">Sentiment</span>
+                        <span class="tag">Entity</span>
+                        <span class="tag">Multi-language</span>
+                    </div>
+                </div>
+
+                <!-- Author Card -->
+                <div class="sidebar-card">
+                    <h3>Author</h3>
+                    <div style="padding: 12px 0;">
+                        <div style="font-weight: 600; margin-bottom: 4px;">AI Team</div>
+                        <div style="font-size: 12px; color: #6B7280; margin-bottom: 8px;">Official publisher of AI-powered skills</div>
+                        <button class="btn btn-secondary" style="width: 100%; padding: 8px;">View Profile</button>
+                    </div>
+                </div>
+
+                <!-- Versions Card -->
+                <div class="sidebar-card">
+                    <h3>Recent Versions</h3>
+                    <div class="version-list">
+                        <div class="version-item">
+                            <div>
+                                <div class="version-item-label">2.1.0</div>
+                                <div class="version-item-date">Feb 10, 2025</div>
+                            </div>
+                            <span>Current</span>
+                        </div>
+                        <div class="version-item">
+                            <div>
+                                <div class="version-item-label">2.0.5</div>
+                                <div class="version-item-date">Jan 28, 2025</div>
+                            </div>
+                        </div>
+                        <div class="version-item">
+                            <div>
+                                <div class="version-item-label">2.0.0</div>
+                                <div class="version-item-date">Dec 15, 2024</div>
+                            </div>
+                        </div>
+                        <a href="#" style="color: #3B82F6; text-decoration: none; font-size: 12px; margin-top: 8px; display: block;">View all versions →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Design Notes -->
+    <div style="position: fixed; bottom: 20px; right: 20px; background: #FEF3C7; border: 1px solid #F59E0B; border-radius: 6px; padding: 12px; max-width: 280px; font-size: 12px; color: #92400E; z-index: 1000;">
+        <strong>Design Notes:</strong><br>
+        • Breadcrumb navigation for context<br>
+        • Tab interface for different sections<br>
+        • 2-column layout: main + sidebar<br>
+        • Code blocks with copy functionality<br>
+        • Responsive sidebar on mobile<br>
+        • Status badges for clarity
+    </div>
+</body>
+</html>
