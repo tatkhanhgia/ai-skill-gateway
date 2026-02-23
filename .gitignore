@@ -70,3 +70,7 @@ dist/
 tmp/
 temp/
 .cache/
+
+# Claude
+.claude/hooks/.logs/
+.claude/settings.local.json
