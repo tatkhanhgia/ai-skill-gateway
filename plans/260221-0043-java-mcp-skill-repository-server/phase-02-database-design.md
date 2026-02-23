@@ -156,17 +156,17 @@ skills (catalog)
 
 ## Todo List
 
-- [ ] Write V1 migration (core tables)
-- [ ] Write V2 migration (indexes)
-- [ ] Write V3 migration (search vector trigger)
-- [ ] Create Skill JPA entity
-- [ ] Create SkillVersion JPA entity
-- [ ] Create SkillTag JPA entity
-- [ ] Create SkillRepository (Panache)
-- [ ] Create SkillVersionRepository
-- [ ] Verify Flyway runs all migrations on startup
-- [ ] Test tsvector search via psql
-- [ ] Test pgvector storage via psql
+- [x] Write V1 migration (core tables)
+- [x] Write V2 migration (indexes)
+- [x] Write V3 migration (search vector trigger)
+- [x] Create Skill JPA entity
+- [x] Create SkillVersion JPA entity
+- [x] Create SkillTag JPA entity
+- [x] Create SkillRepository (Panache)
+- [x] Create SkillVersionRepository
+- [x] Verify Flyway runs all migrations on startup
+- [x] Test tsvector search via psql
+- [x] Test pgvector storage via psql
 
 ## Success Criteria
 

@@ -185,18 +185,18 @@ SearchService.search()
 
 ## Todo List
 
-- [ ] Implement EmbeddingService (Ollama HTTP client)
-- [ ] Implement SearchService with hybrid logic
-- [ ] Add keywordSearch native query to SkillRepository
-- [ ] Add vectorSearch native query to SkillRepository
-- [ ] Implement score normalization + combination
-- [ ] Add tag/category filtering to search
-- [ ] Update publish flow to generate embeddings
-- [ ] Create SearchToolHandler MCP tool
-- [ ] Add REST endpoint for search (GET /api/v1/skills/search)
-- [ ] Test with sample skills: verify ranking quality
-- [ ] Test fallback when Ollama is unavailable
-- [ ] Benchmark search latency with 100+ skills
+- [x] Implement EmbeddingService (Ollama HTTP client)
+- [x] Implement SearchService with hybrid logic
+- [x] Add keywordSearch native query to SkillRepository
+- [x] Add vectorSearch native query to SkillRepository
+- [x] Implement score normalization + combination
+- [x] Add tag/category filtering to search
+- [x] Update publish flow to generate embeddings
+- [x] Create SearchToolHandler MCP tool
+- [x] Add REST endpoint for search (GET /api/v1/skills/search)
+- [x] Test with sample skills: verify ranking quality
+- [x] Test fallback when Ollama is unavailable
+- [x] Benchmark search latency with 100+ skills
 
 ## Success Criteria
 

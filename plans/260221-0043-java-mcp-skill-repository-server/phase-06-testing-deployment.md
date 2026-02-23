@@ -220,15 +220,15 @@ Deployment
 
 ## Todo List
 
-- [ ] Write SemVerParser unit tests (valid, invalid, edge cases)
-- [ ] Write SemVerConstraint unit tests (all operators)
-- [ ] Write ManifestValidator unit tests
-- [ ] Write SkillService integration tests (publish, get, list)
-- [ ] Write SearchService integration tests (keyword, semantic, hybrid)
-- [ ] Write VersionService integration tests (resolve, list versions)
-- [ ] Write DependencyResolver tests (happy path, circular)
-- [ ] Write MCP protocol tests (tools/list, tools/call)
-- [ ] Write REST API tests (SkillResource)
+- [x] Write SemVerParser unit tests (valid, invalid, edge cases)
+- [x] Write SemVerConstraint unit tests (all operators)
+- [x] Write ManifestValidator unit tests
+- [x] Write SkillService integration tests (publish, get, list)
+- [x] Write SearchService integration tests (keyword, semantic, hybrid)
+- [x] Write VersionService integration tests (resolve, list versions)
+- [x] Write DependencyResolver tests (happy path, circular)
+- [x] Write MCP protocol tests (tools/list, tools/call)
+- [x] Write REST API tests (SkillResource)
 - [ ] Implement ApiKeyFilter for write protection
 - [ ] Create Dockerfile.jvm
 - [ ] Create Dockerfile.native

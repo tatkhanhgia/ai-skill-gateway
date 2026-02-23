@@ -209,18 +209,18 @@ DependencyResolver (for full tree)
 
 ## Todo List
 
-- [ ] Implement SemVer record with Comparable
-- [ ] Implement SemVerParser with regex validation
-- [ ] Implement SemVerConstraint with match logic
-- [ ] Implement ConstraintOperator enum (LATEST, CARET, TILDE, EXACT, RANGE)
-- [ ] Implement VersionService.resolve()
-- [ ] Implement DependencyResolver with cycle detection
-- [ ] Create VersionToolHandler MCP tools
-- [ ] Add REST endpoints (GET /skills/{name}/versions, GET /skills/{name}/resolve)
-- [ ] Unit test SemVer parsing (valid + invalid strings)
-- [ ] Unit test constraint matching (all operators)
-- [ ] Unit test dependency resolution (happy path + circular)
-- [ ] Integration test with DB
+- [x] Implement SemVer record with Comparable
+- [x] Implement SemVerParser with regex validation
+- [x] Implement SemVerConstraint with match logic
+- [x] Implement ConstraintOperator enum (LATEST, CARET, TILDE, EXACT, RANGE)
+- [x] Implement VersionService.resolve()
+- [x] Implement DependencyResolver with cycle detection
+- [x] Create VersionToolHandler MCP tools
+- [x] Add REST endpoints (GET /skills/{name}/versions, GET /skills/{name}/resolve)
+- [x] Unit test SemVer parsing (valid + invalid strings)
+- [x] Unit test constraint matching (all operators)
+- [x] Unit test dependency resolution (happy path + circular)
+- [x] Integration test with DB
 
 ## Success Criteria
 

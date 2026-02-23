@@ -170,17 +170,17 @@ PostgreSQL
 
 ## Todo List
 
-- [ ] Create DTO records (SkillManifest, SkillDetail, SkillSummary, PublishResponse)
-- [ ] Implement ManifestValidator
-- [ ] Implement SkillService.publish()
-- [ ] Implement SkillService.findByName()
-- [ ] Implement SkillService.list() with pagination
-- [ ] Implement yank logic in VersionService
-- [ ] Create SkillToolHandler with @Tool annotations
-- [ ] Create SkillResource REST controller
-- [ ] Create global exception mapper
-- [ ] Test publish via MCP Inspector
-- [ ] Test CRUD via REST client (curl/httpie)
+- [x] Create DTO records (SkillManifest, SkillDetail, SkillSummary, PublishResponse)
+- [x] Implement ManifestValidator
+- [x] Implement SkillService.publish()
+- [x] Implement SkillService.findByName()
+- [x] Implement SkillService.list() with pagination
+- [x] Implement yank logic in VersionService
+- [x] Create SkillToolHandler with @Tool annotations
+- [x] Create SkillResource REST controller
+- [x] Create global exception mapper
+- [x] Test publish via MCP Inspector
+- [x] Test CRUD via REST client (curl/httpie)
 
 ## Success Criteria
 

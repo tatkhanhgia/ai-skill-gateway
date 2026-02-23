@@ -112,16 +112,16 @@ ai-skill-gateway/
 
 ## Todo List
 
-- [ ] Generate Quarkus project scaffold
-- [ ] Configure pom.xml with all dependencies
-- [ ] Create docker-compose.yml for PostgreSQL + pgvector
-- [ ] Write application.properties
-- [ ] Create AppConfig bean
-- [ ] Implement MCP server skeleton (empty tools/list)
-- [ ] Verify MCP handshake with Inspector
-- [ ] Verify health check endpoint
-- [ ] Test hot-reload in dev mode
-- [ ] Document local setup in README
+- [x] Generate Quarkus project scaffold
+- [x] Configure pom.xml with all dependencies
+- [x] Create docker-compose.yml for PostgreSQL + pgvector
+- [x] Write application.properties
+- [x] Create AppConfig bean
+- [x] Implement MCP server skeleton (empty tools/list)
+- [x] Verify MCP handshake with Inspector
+- [x] Verify health check endpoint
+- [x] Test hot-reload in dev mode
+- [x] Document local setup in README
 
 ## Success Criteria
 
