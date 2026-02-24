@@ -82,7 +82,7 @@ Client → POST /api/v1/skills/publish
     → ManifestValidator.validate()
     → SkillRepository.persist() / merge()
     → SkillVersionRepository.persist()
-    → EmbeddingService.embed() (async)
+    → EmbeddingService.embed() (network call; degrades gracefully on failure)
     → SkillRepository.updateEmbedding()
   ← PublishResponse
 ```

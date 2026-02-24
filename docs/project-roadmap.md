@@ -161,7 +161,7 @@ search.max-limit=50
 | Code Coverage | ~40% | >=80% |
 | Search Latency (p95) | ~300ms | <500ms |
 | API Uptime | N/A | >=99% |
-| MCP Tool Coverage | 7 tools | 10 tools |
+| MCP Tool Coverage | 7 tools | 7 tools |
 
 ---
 

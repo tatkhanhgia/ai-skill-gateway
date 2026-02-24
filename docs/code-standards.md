@@ -28,7 +28,7 @@
 - Embedding payloads rely on `ai.embedding.url/model`; resiliency is achieved by catching runtime failures and continuing without semantic scores.
 
 ## Security, Observability & Deployment
-- Every request passes through `ApiKeyFilter`, which checks `X-Api-Key` before entering resources; unauthorized calls abort with HTTP 401.
+- Every request passes through `ApiKeyFilter`, which checks `X-API-Key` before entering resources; unauthorized calls abort with HTTP 401.
 - Domain errors are normalized via `GlobalExceptionMapper` so monitoring systems can rely on `status`, `error`, and `message` fields (.e.g., `NotFoundException` → 404, `ConflictException` → 409).
 - Quarkus health endpoints (`/q/health`) expose liveness/readiness for load balancers; use `quarkus.flyway.migrate-at-start=true` to keep schema current during startup.
 - Standard runtime commands: `mvn quarkus:dev` for local JVM, `mvn package` for production, optional `mvn -Pnative package` for native images defined in `pom.xml` profile.

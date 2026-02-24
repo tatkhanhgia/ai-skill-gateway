@@ -55,6 +55,7 @@ Deliver a self-hosted Java-based MCP skill gateway that exposes RESTful skill ca
 ## Configuration Reference
 
 ### Required Environment Variables
+
 | Variable | Description | Default |
 |----------|-------------|---------|
 | `AUTH_API_KEY` | API key for protected endpoints | - |
@@ -63,6 +64,7 @@ Deliver a self-hosted Java-based MCP skill gateway that exposes RESTful skill ca
 | `DB_JDBC_URL` | JDBC connection URL | jdbc:postgresql://localhost:5432/skillgateway |
 
 ### Optional Configuration
+
 | Property | Description | Default |
 |----------|-------------|---------|
 | `AI_EMBEDDING_URL` | Embedding service endpoint | http://localhost:11434/api/embeddings |
