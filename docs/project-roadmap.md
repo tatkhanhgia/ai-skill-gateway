@@ -13,7 +13,7 @@
 | Phase 1: Core Infrastructure | Complete | 100% | 2026-02-20 |
 | Phase 2: Skill Management | Complete | 100% | 2026-02-22 |
 | Phase 3: Search & Discovery | Complete | 100% | 2026-02-24 |
-| Phase 4: Version & Dependency | In Progress | 80% | 2026-02-28 |
+| Phase 4: Version & Dependency | Complete | 100% | 2026-02-28 |
 | Phase 5: MCP Integration | Complete | 100% | 2026-02-24 |
 | Phase 6: Production Hardening | Pending | 0% | 2026-03-15 |
 
@@ -110,7 +110,7 @@ search.max-limit=50
 - `DependencyResolver.java` - Dependency resolution
 - `VersionToolHandler.java` - MCP tools
 
-**Progress:** 80% - Core logic complete, needs integration tests
+**Progress:** 100% - Core logic and endpoints complete
 
 ---
 
@@ -140,7 +140,7 @@ search.max-limit=50
 ## Phase 6: Production Hardening (Pending)
 
 **Planned Deliverables:**
-- Rate limiting
+- Rate-limiting
 - Caching layer (Redis)
 - Metrics and monitoring (Micrometer)
 - Structured logging

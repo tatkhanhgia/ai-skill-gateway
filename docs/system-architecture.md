@@ -14,7 +14,7 @@
 ## API Layer
 - **SkillResource** exposes REST endpoints (`publish`, `list`, `get`, `search`, `versions`, `resolve`, `yank`, `dependencies`).
 - **DTOs:** `SkillManifest`, `SkillSummary`, `SkillDetail`, `PublishResponse`, `SearchRequest`, `SearchResult`, `VersionInfo`, `VersionResolution` ensure typed payloads.
-- **Filters & Exception Mapping:** `ApiKeyFilter` enforces `X-Api-Key` before controllers execute; `GlobalExceptionMapper` maps domain errors (`ConflictException`, `NotFoundException`, `ValidationException`) to consistent JSON responses with proper status codes.
+- **Filters & Exception Mapping:** `ApiKeyFilter` enforces `X-API-Key` before controllers execute; `GlobalExceptionMapper` maps domain errors (`ConflictException`, `NotFoundException`, `ValidationException`) to consistent JSON responses with proper status codes.
 
 ## Service Layer
 - **SkillService** handles validation (`ManifestValidator`), persistence of `Skill` + `SkillVersion`, embedding refresh, and yank operations within transactional boundaries.
@@ -48,7 +48,7 @@
 
 ## MCP Integration Flow
 
-```
+```text
 ┌─────────────┐     ┌─────────────────┐     ┌─────────────────┐
 │ MCP Client  │────▶│  MCP Server     │────▶│  Tool Handlers  │
 │  (Claude)   │◄────│  (HTTP/SSE)     │◄────│  (Quarkus)      │
@@ -116,7 +116,7 @@ Client → GET /api/v1/skills/{name}/resolve?constraint=^1.0.0
 ## Deployment Architecture
 
 ### Local Development
-```
+```text
 ┌─────────────────────────────────────────┐
 │           Docker Compose                │
 │  ┌─────────┐    ┌─────────────────┐    │
