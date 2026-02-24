@@ -52,6 +52,27 @@ Deliver a self-hosted Java-based MCP skill gateway that exposes RESTful skill ca
 | Functional test coverage | >=80% for service layer | Unit tests for SkillService, SearchService, VersionService |
 | Documentation synchronization | Docs updated for architecture, standards, PDR | Repo review and doc validation script |
 
+## Configuration Reference
+
+### Required Environment Variables
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `AUTH_API_KEY` | API key for protected endpoints | - |
+| `DB_USERNAME` | PostgreSQL username | admin |
+| `DB_PASSWORD` | PostgreSQL password | changeme |
+| `DB_JDBC_URL` | JDBC connection URL | jdbc:postgresql://localhost:5432/skillgateway |
+
+### Optional Configuration
+| Property | Description | Default |
+|----------|-------------|---------|
+| `AI_EMBEDDING_URL` | Embedding service endpoint | http://localhost:11434/api/embeddings |
+| `AI_EMBEDDING_MODEL` | Embedding model name | nomic-embed-text |
+| `search.weight.keyword` | Keyword search weight | 0.3 |
+| `search.weight.semantic` | Semantic search weight | 0.5 |
+| `search.weight.popularity` | Popularity weight | 0.2 |
+| `search.default-limit` | Default result limit | 20 |
+| `search.max-limit` | Maximum result limit | 50 |
+
 ## Testing Status (Java 21)
 - `mvn test` (Quarkus + Maven Surefire 3.5.2) executes JUnit 5 suites in `src/test/java` and proves compatibility with Java 21.
 - Core unit tests include `SemVerParserTest`, `SemVerConstraintTest`, and `ManifestValidatorTest`, verifying semantic version parsing rules, constraint matching, and manifest validation without hitting persistence layers.
@@ -62,5 +83,33 @@ Deliver a self-hosted Java-based MCP skill gateway that exposes RESTful skill ca
 - **Semantic search drift** – Weight adjustments tracked via `search.weight.*`; default limit ensures controlled result sets.
 - **Circular dependencies** – `DependencyResolver` throws `CircularDependencyException`; include integration test covering loops.
 
+## API Reference
+
+### Endpoints
+
+| Method | Path | Auth | Description |
+|--------|------|------|-------------|
+| POST | `/api/v1/skills/publish` | API Key | Publish new skill/version |
+| GET | `/api/v1/skills/{name}` | - | Get skill detail |
+| GET | `/api/v1/skills` | - | List skills (filter by category/tags) |
+| POST | `/api/v1/skills/{name}/versions/{version}/yank` | API Key | Yank a version |
+| GET | `/api/v1/skills/search` | - | Hybrid search |
+| GET | `/api/v1/skills/{name}/versions` | - | List versions |
+| GET | `/api/v1/skills/{name}/resolve` | - | Resolve version constraint |
+| GET | `/api/v1/skills/{name}/dependencies/{version}` | - | Get dependency tree |
+
+### MCP Tools
+
+| Tool | Description |
+|------|-------------|
+| `publishSkill` | Publish via MCP |
+| `getSkill` | Get skill details |
+| `listSkills` | List with filters |
+| `searchSkills` | Hybrid search |
+| `resolveVersion` | Resolve constraint |
+| `listVersions` | List versions |
+| `yankVersion` | Yank version |
+
 ## Version History
 - **1.0 (2026-02-22):** Initial Java MCP server PDR published alongside docs.
+- **1.1 (2026-02-24):** Added API reference, MCP tools documentation

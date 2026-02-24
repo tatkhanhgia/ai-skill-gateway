@@ -46,6 +46,93 @@
 - **Java 21 compliance:** Project compiles and runs under Java 21 (`<maven.compiler.release>21</maven.compiler.release>`). Maven Surefire 3.5.2 executes JUnit 5 suites that include `SemVerParserTest`, `SemVerConstraintTest`, and `ManifestValidatorTest`.
 - **Validation path:** Manifest validation, semantic version parsing, and constraint matching remain covered by deterministic unit tests until service-level tests are added (mock repositories or embedded Postgres).
 
+## MCP Integration Flow
+
+```
+┌─────────────┐     ┌─────────────────┐     ┌─────────────────┐
+│ MCP Client  │────▶│  MCP Server     │────▶│  Tool Handlers  │
+│  (Claude)   │◄────│  (HTTP/SSE)     │◄────│  (Quarkus)      │
+└─────────────┘     └─────────────────┘     └────────┬────────┘
+                                                     │
+                         ┌───────────────────────────┼──────────┐
+                         ▼                           ▼          ▼
+                  ┌─────────────┐            ┌────────────┐ ┌──────────┐
+                  │SkillToolHandler│         │SearchToolHandler│VersionToolHandler│
+                  └─────────────┘            └────────────┘ └──────────┘
+```
+
+### Tool Registration
+- Tools auto-discovered via `@Tool` annotation
+- Quarkus MCP server exposes via `/mcp` endpoint
+- JSON-RPC 2.0 message format
+
+### Tool Categories
+1. **Skill Management** - publishSkill, getSkill, listSkills, yankVersion
+2. **Search** - searchSkills
+3. **Versioning** - resolveVersion, listVersions
+
+## Data Flow Examples
+
+### Publish Flow
+```
+Client → POST /api/v1/skills/publish
+  → ApiKeyFilter (auth check)
+  → SkillResource.publish()
+  → SkillService.publish()
+    → ManifestValidator.validate()
+    → SkillRepository.persist() / merge()
+    → SkillVersionRepository.persist()
+    → EmbeddingService.embed() (async)
+    → SkillRepository.updateEmbedding()
+  ← PublishResponse
+```
+
+### Search Flow
+```
+Client → GET /api/v1/skills/search?query=...
+  → SkillResource.search()
+  → SearchService.search()
+    → SkillRepository.keywordSearch() → List<ScoredSkill>
+    → EmbeddingService.embed() → float[]
+    → SkillRepository.vectorSearch() → List<ScoredSkill>
+    → Merge & normalize scores
+    → Apply weights (keyword/semantic/popularity)
+    → Sort & limit
+  ← List<SearchResult>
+```
+
+### Version Resolution Flow
+```
+Client → GET /api/v1/skills/{name}/resolve?constraint=^1.0.0
+  → SkillResource.resolve()
+  → VersionService.resolve()
+    → SemVerParser.parseConstraint()
+    → SkillVersionRepository.listBySkill()
+    → Filter non-yanked, sort by SemVer
+    → Find best match
+  ← VersionResolution
+```
+
+## Deployment Architecture
+
+### Local Development
+```
+┌─────────────────────────────────────────┐
+│           Docker Compose                │
+│  ┌─────────┐    ┌─────────────────┐    │
+│  │   DB    │◄───│  Quarkus (dev)  │    │
+│  │PostgreSQL│    │   Port 8080     │    │
+│  │+pgvector│    └─────────────────┘    │
+│  └─────────┘                             │
+└─────────────────────────────────────────┘
+```
+
+### Production Considerations
+- External PostgreSQL with pgvector extension
+- Embedding service (Ollama or external API)
+- Load balancer in front of Quarkus instances
+- Health checks at `/q/health`
+
 ## Maintenance Notes
 - **Documentation sync:** `repomix` compaction regenerates `repomix-output.xml`; `docs/codebase-summary.md` reflects module changes after each run.
 - **Doc validation:** Run `node .claude/scripts/validate-docs.cjs docs/` after edits to ensure formatting and link hygiene.

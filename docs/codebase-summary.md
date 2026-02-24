@@ -43,4 +43,48 @@
 - Key unit tests currently cover version parsing/constraints (`SemVerParserTest`, `SemVerConstraintTest`) and manifest validation (`ManifestValidatorTest`), verifying deterministic ordering, constraint logic, and rejection of malformed manifests.
 - Additional service-level tests can be added under Quarkus test profiles when mockable repositories or embedded Postgres capabilities are introduced.
 
-*Last updated: 2026-02-22.*
+## Database Schema
+
+### Tables
+- **skills** - Core skill metadata with vector embedding
+- **skill_versions** - Version-specific data (semver, yank status, dependencies)
+- **skill_tags** - Many-to-many tag relationships
+
+### Indexes
+- GIN index on `search_vector` for full-text search
+- HNSW index on `embedding` for vector similarity
+- B-tree indexes on category, tags, and version lookups
+
+## Build & Run
+
+```bash
+# Compile
+mvn compile
+
+# Run tests
+mvn test
+
+# Development mode
+mvn quarkus:dev
+
+# Build package
+mvn package
+
+# Native build
+mvn -Pnative package
+```
+
+## Dependencies
+
+| Group | Artifact | Purpose |
+|-------|----------|---------|
+| io.quarkus | quarkus-rest | REST endpoints |
+| io.quarkus | quarkus-rest-jackson | JSON serialization |
+| io.quarkus | quarkus-hibernate-orm-panache | JPA/Panache |
+| io.quarkus | quarkus-jdbc-postgresql | PostgreSQL driver |
+| io.quarkus | quarkus-flyway | Database migrations |
+| io.quarkus | quarkus-smallrye-health | Health checks |
+| io.quarkiverse.mcp | quarkus-mcp-server-http | MCP server |
+| io.modelcontextprotocol.sdk | mcp | MCP SDK |
+
+*Last updated: 2026-02-24.*

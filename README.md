@@ -1,72 +1,86 @@
 # AI Skill Gateway
 
-> 🚀 Gateway thông minh chạy local trên Windows - Tìm kiếm và đề xuất skill dựa trên AI
+> Java MCP Skill Gateway Server - Self-hosted skill registry with hybrid search and semantic versioning
 
-## ✨ Tính năng
+## ✨ Features
 
-- 🔍 **Tìm kiếm thông minh** - Kết hợp keyword search và semantic search
-- 🤖 **AI Local** - Chạy hoàn toàn local với Ollama, đảm bảo privacy
-- 📦 **Đa nguồn lưu trữ** - Local Directory, PostgreSQL, Google Drive
-- 🧠 **Memory lâu dài** - Vector DB lưu trữ ngữ cảnh và lịch sử
-- ⚡ **API RESTful** - Dễ dàng tích hợp với mọi client
+- 🔍 **Hybrid Search** - Combines keyword, semantic, and popularity signals
+- 🤖 **MCP Integration** - Exposes tools via Model Context Protocol
+- 📦 **Skill Registry** - Publish, version, and manage AI skills
+- 🧠 **Vector Search** - PostgreSQL pgvector for semantic similarity
+- ⚡ **RESTful API** - Jakarta REST with Quarkus
+- 🔐 **API Key Auth** - Secure endpoints with X-API-Key
 
-## 🏗️ Kiến trúc
+## 🏗️ Architecture
 
 ```
-Client → AI Gateway → [Local AI + Vector DB + Multi Storage]
+┌─────────────┐     ┌─────────────────┐     ┌─────────────────┐
+│   Client    │────▶│  SkillResource  │────▶│  SkillService   │
+└─────────────┘     └─────────────────┘     └────────┬────────┘
+                                                     │
+                         ┌──────────────────────────┼──────────┐
+                         ▼                          ▼          ▼
+                  ┌─────────────┐            ┌────────────┐ ┌──────────┐
+                  │SkillRepository│          │EmbeddingService│SearchService│
+                  └──────┬──────┘            └────────────┘ └──────────┘
+                         │
+                         ▼
+                  ┌─────────────┐
+                  │  PostgreSQL │ (vector + tsvector)
+                  └─────────────┘
 ```
 
 ## 🚀 Quick Start
 
-### Yêu cầu
+### Requirements
 
-- Windows 10/11
 - Java 21+
 - Maven 3.9+
 - Docker Desktop
-- [Ollama](https://ollama.ai/) đã cài đặt
+- PostgreSQL 15+ with pgvector
 
-### Cài đặt
+### Setup
 
-```powershell
-# Clone
-cd ai-skill-gateway
+```bash
+# Start infrastructure
+docker compose up -d db
 
-# Start infra
-docker compose up -d db ollama
-
-# Chạy server (JVM)
-set AUTH_API_KEY=dev-api-key
+# Run server
+export AUTH_API_KEY=dev-api-key
 mvn quarkus:dev
 ```
 
 Health check: `http://localhost:8080/q/health`
 
-### Sử dụng
+### Usage
 
-```powershell
+```bash
 # List skills
-curl "http://localhost:8080/api/v1/skills?page=0&size=20"
+curl "http://localhost:8080/api/v1/skills"
 
 # Search skills
 curl "http://localhost:8080/api/v1/skills/search?query=log%20analysis&limit=10"
 
 # Publish skill (requires API key)
-curl -X POST "http://localhost:8080/api/v1/skills/publish" ^
-  -H "X-API-Key: dev-api-key" ^
-  -H "Content-Type: application/json" ^
-  -d "{\"name\":\"skill-analytics\",\"version\":\"1.0.0\",\"description\":\"Analytics helper\",\"category\":\"data\",\"tags\":[\"analytics\"]}"
+curl -X POST "http://localhost:8080/api/v1/skills/publish" \
+  -H "X-API-Key: dev-api-key" \
+  -H "Content-Type: application/json" \
+  -d '{"name":"skill-analytics","version":"1.0.0","description":"Analytics helper","category":"data","tags":["analytics"]}'
 ```
 
-## 📋 Documentation
+## 📚 Documentation
 
-- [Implementation Plan](./PLAN.md) - Kế hoạch triển khai chi tiết
-- [Architecture](./docs/architecture.md) - Kiến trúc hệ thống
-- [API Reference](./docs/api-reference.md) - Tài liệu API
+| Document | Description |
+|----------|-------------|
+| [Project Overview & PDR](./docs/project-overview-pdr.md) | Requirements & specifications |
+| [System Architecture](./docs/system-architecture.md) | Technical architecture |
+| [Code Standards](./docs/code-standards.md) | Engineering guidelines |
+| [Codebase Summary](./docs/codebase-summary.md) | Module overview |
+| [Project Roadmap](./docs/project-roadmap.md) | Development phases |
 
 ## 🛠️ Development
 
-Xem [PLAN.md](./PLAN.md) để biết roadmap chi tiết.
+See [Project Roadmap](./docs/project-roadmap.md) for detailed timeline.
 
 ## 📄 License
 

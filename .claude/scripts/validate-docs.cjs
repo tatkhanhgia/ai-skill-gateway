@@ -35,14 +35,16 @@ const IGNORE_CODE_REFS = new Set([
   'README', 'LICENSE', 'CHANGELOG', 'TODO', 'FIXME', 'NOTE', 'HACK',
   'dev', 'prod', 'test', 'staging', 'production', 'development',
   'src', 'lib', 'dist', 'build', 'docs', 'tests', 'config',
-  'index', 'main', 'app', 'server', 'client', 'utils', 'helpers'
+  'index', 'main', 'app', 'server', 'client', 'utils', 'helpers',
+  // Java/Quarkus common types
+  'ObjectMapper', 'Optional', 'ConfigProperty'
 ]);
 
 // Common env var prefixes to ignore (not project-specific)
 const IGNORE_ENV_PREFIXES = ['NODE_', 'PATH', 'HOME', 'USER', 'SHELL', 'TERM', 'PWD', 'CI'];
 
-// Markdown template variables (not actual env vars)
-const IGNORE_ENV_VARS = new Set(['ARGUMENTS']);
+// Markdown template variables, HTTP methods, and common types to ignore (not actual env vars)
+const IGNORE_ENV_VARS = new Set(['ARGUMENTS', 'GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'OPTIONS', 'JSON']);
 
 /**
  * Find all markdown files in directory.
@@ -68,8 +70,9 @@ function extractCodeRefs(content, filepath) {
 
     while ((match = CODE_REF_PATTERN.exec(line)) !== null) {
       const ref = match[1];
-      // Filter out common terms
-      if (IGNORE_CODE_REFS.has(ref.replace('()', '').toLowerCase())) continue;
+      const refWithoutParens = ref.replace('()', '');
+      // Filter out common terms (check both original and lowercase)
+      if (IGNORE_CODE_REFS.has(refWithoutParens) || IGNORE_CODE_REFS.has(refWithoutParens.toLowerCase())) continue;
       // Only check function calls and PascalCase classes
       if (ref.endsWith('()') || /^[A-Z][a-z]/.test(ref)) {
         refs.push({ ref, file: filepath, line: idx + 1 });
@@ -133,9 +136,13 @@ function checkCodeRefExists(ref, srcDirs) {
     `function ${name}`,
     `const ${name}`,
     `class ${name}`,
+    `record ${name}`,
+    `interface ${name}`,
     `def ${name}`,
     `export.*${name}`,
-    `${name}:`  // object methods
+    `${name}:[[:space:]]*`,  // object methods (Python/JS style)
+    ` ${name}(`,     // method calls/definitions
+    ` ${name} (`    // method calls/definitions with space
   ];
 
   for (const srcDir of srcDirs) {

@@ -53,9 +53,63 @@
 - Run `node .claude/scripts/validate-docs.cjs docs/` after each documentation change to confirm linting rules and link integrity.
 - Update `docs/codebase-summary.md` after running `repomix` to reflect any new modules or dependencies.
 
+## API Security Standards
+
+### Authentication
+- `ApiKeyFilter` enforces `X-API-Key` header on protected endpoints
+- Protected endpoints: `POST /mcp`, `POST /api/v1/skills/publish`, `POST /*/yank`
+- Returns 401 for missing/invalid keys, 500 if API key not configured
+
+### Authorization Patterns
+- Currently role-agnostic (single API key)
+- Future: JWT claims or role-based access control
+
+## REST API Standards
+
+### Endpoint Naming
+- Use nouns (resources), not verbs: `/skills`, not `/getSkills`
+- Use kebab-case for multi-word names
+- Version in path: `/api/v1/...`
+
+### HTTP Methods
+- `GET` - Retrieve (idempotent, cacheable)
+- `POST` - Create or action (publish, yank)
+- No `PUT`/`DELETE` currently (soft delete via yank)
+
+### Response Patterns
+- Success: 200 OK with JSON body
+- Created: 201 (not currently used)
+- Client errors: 400 Bad Request, 401 Unauthorized, 404 Not Found, 409 Conflict
+- Server errors: 500 Internal Server Error
+
+### Error Response Format
+```json
+{
+  "error": "error_code",
+  "message": "Human readable description"
+}
+```
+
+## MCP Tool Standards
+
+### Tool Naming
+- camelCase: `publishSkill`, `searchSkills`
+- Verb + Noun pattern
+
+### Tool Arguments
+- Use `@ToolArg` with descriptions
+- Accept String for complex objects (JSON serialized)
+- Parse with `ObjectMapper` in handler
+
+### Tool Responses
+- Return DTOs for structured data
+- Return String for simple acknowledgments
+
 ---
 
 **Practice Notes:**
 - Favor composition over deep inheritance when splitting services.
 - Keep code files under 200 lines when practical; split complex helpers into dedicated packages (e.g., `version`, `service`).
 - Avoid mutable shared state; rely on Quarkus CDI for stateless beans.
+- Always validate input at API layer before service calls.
+- Use `Optional` for nullable returns from repositories.
