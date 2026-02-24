@@ -1,137 +1,100 @@
-# Documentation Hub - AI Skill Repository Dashboard
+# Documentation Hub - AI Skill Gateway
 
 **Quick Links to Start:**
 
-1. **[📑 INDEX.md](./INDEX.md)** - Navigation guide to all documents ⭐ START HERE
-2. **[📋 DESIGN-SUMMARY.md](./DESIGN-SUMMARY.md)** - Executive overview
-3. **[🎨 design-guidelines.md](./design-guidelines.md)** - Design system specification
-4. **[🖼️ wireframes/](./wireframes/)** - Open HTML files in browser
+1. **[project-overview-pdr.md](./project-overview-pdr.md)** - Project requirements and API reference ⭐ START HERE
+2. **[system-architecture.md](./system-architecture.md)** - System architecture and data flows
+3. **[code-standards.md](./code-standards.md)** - Code standards and engineering guidelines
+4. **[codebase-summary.md](./codebase-summary.md)** - Codebase structure summary
 
 ---
 
 ## What's Included
 
-### Design Documentation (1,800+ lines)
-- **design-guidelines.md** - Complete design system with colors, typography, spacing, components, accessibility
-- **WIREFRAME-GUIDE.md** - Implementation guide with 5-phase roadmap
-- **DESIGN-SUMMARY.md** - Executive summary and checklist
-- **INDEX.md** - Navigation hub for all documents
-
-### Wireframes (5 Pages, 3,200+ lines HTML/CSS)
-- **01-skill-discovery-page.html** - Search and browse interface
-- **02-skill-detail-page.html** - Full skill information
-- **03-publish-workflow.html** - 5-step publication wizard
-- **04-admin-dashboard.html** - Admin overview with KPIs
-- **05-version-management.html** - Version comparison and changelog
+### Project Documentation
+- **project-overview-pdr.md** - Product Development Requirements, API reference, MCP tools
+- **system-architecture.md** - Layered architecture, data flows, deployment
+- **code-standards.md** - Java/Quarkus coding standards, API design, testing
+- **codebase-summary.md** - Module structure and key files
+- **project-roadmap.md** - Development phases and milestones
 
 ---
 
 ## Get Started in 5 Minutes
 
-### Step 1: Understand Overview (1 min)
-Open `DESIGN-SUMMARY.md` for executive overview
+### Step 1: Understand the Project (2 min)
+Read `project-overview-pdr.md` for functional requirements and API endpoints
 
-### Step 2: View Wireframes (2 min)
-Open any wireframe HTML file in your browser:
-- Right-click → Open with browser
-- Or double-click the file
+### Step 2: Review Architecture (2 min)
+Read `system-architecture.md` for system design and data flows
 
-### Step 3: Review Design System (1 min)
-Skim `design-guidelines.md` for design tokens and specifications
-
-### Step 4: Plan Development (1 min)
-Read `WIREFRAME-GUIDE.md` section "Implementation Roadmap"
+### Step 3: Check Code Standards (1 min)
+Skim `code-standards.md` for development guidelines
 
 ---
 
 ## File Guide
 
-| File | Purpose | Length | When to Use |
-|------|---------|--------|------------|
-| **INDEX.md** | Navigation hub | 300 lines | Finding specific docs |
-| **DESIGN-SUMMARY.md** | Executive overview | 500 lines | Project reviews, status |
-| **design-guidelines.md** | Design system | 500 lines | Component building |
-| **WIREFRAME-GUIDE.md** | Implementation guide | 800 lines | Development planning |
-| **wireframes/README.md** | Wireframe specs | 400 lines | Component details |
-| **wireframes/*.html** | Interactive layouts | 3,200 lines | UI/UX reference |
+| File | Purpose | When to Use |
+|------|---------|-------------|
+| **project-overview-pdr.md** | Requirements & API reference | Understanding features |
+| **system-architecture.md** | Architecture & data flows | System design context |
+| **code-standards.md** | Coding guidelines | Development |
+| **codebase-summary.md** | Code structure | Navigating codebase |
+| **project-roadmap.md** | Development timeline | Planning |
 
 ---
 
 ## For Different Roles
 
-### 👨‍💼 Project Managers
-→ Read: `DESIGN-SUMMARY.md`
+### Project Managers
+→ Read: `project-overview-pdr.md`, `project-roadmap.md`
 
-### 🎨 Designers
-→ Open: Wireframe HTML files
-→ Read: `design-guidelines.md`
+### Backend Developers
+→ Read: `system-architecture.md`, `code-standards.md`
+→ Reference: `codebase-summary.md`
 
-### 💻 Frontend Developers
-→ Open: All wireframe HTML files
-→ Read: `WIREFRAME-GUIDE.md`
-→ Reference: `design-guidelines.md`
+### DevOps/Operations
+→ Read: `system-architecture.md` (Deployment section)
 
-### 🧪 QA Engineers
-→ Read: `design-guidelines.md` (Accessibility section)
-→ Reference: `wireframes/README.md` (Testing checklist)
+### QA Engineers
+→ Read: `project-overview-pdr.md` (API Reference)
 
 ---
 
-## Design System at a Glance
+## Technology Stack
 
-**Colors:** Blue (#3B82F6), Emerald (#10B981), Amber (#F59E0B), Red (#EF4444)
-
-**Typography:** Inter (headers), IBM Plex Sans (body), IBM Plex Mono (code)
-
-**Spacing:** 8px grid system (4px → 48px)
-
-**Responsive:** Mobile (320px) → Tablet (768px) → Desktop (1024px) → Wide (1280px)
-
-**Accessibility:** WCAG 2.1 AA compliant
+- **Runtime:** Java 21, Quarkus 3.20.2
+- **Database:** PostgreSQL with pgvector
+- **AI Integration:** Ollama embedding service
+- **Build:** Maven
 
 ---
 
-## Wireframe Pages Summary
+## API Overview
 
-| # | Page | Purpose |
-|---|------|---------|
-| 1 | Skill Discovery | Search and browse skills |
-| 2 | Skill Detail | View complete skill info |
-| 3 | Publish Workflow | Publish new skills (5-step) |
-| 4 | Admin Dashboard | Monitor KPIs and manage |
-| 5 | Version Management | Compare versions and changes |
-
----
-
-## Key Numbers
-
-- 5 complete wireframe pages
-- 3,200+ lines of wireframe code
-- 40+ design tokens
-- 50+ components designed
-- 1,800+ lines of documentation
-- 4 responsive breakpoints
-- WCAG 2.1 AA accessibility
+| Method | Path | Auth | Description |
+|--------|------|------|-------------|
+| POST | `/api/v1/skills/publish` | API Key | Publish skill |
+| GET | `/api/v1/skills/{name}` | - | Get skill detail |
+| GET | `/api/v1/skills` | - | List skills |
+| POST | `/api/v1/skills/{name}/versions/{version}/yank` | API Key | Yank version |
+| GET | `/api/v1/skills/search` | - | Hybrid search |
+| GET | `/api/v1/skills/{name}/versions` | - | List versions |
+| GET | `/api/v1/skills/{name}/resolve` | - | Resolve version |
+| GET | `/api/v1/skills/{name}/dependencies/{version}` | - | Dependency tree |
 
 ---
 
-## Next Steps
+## Key Features
 
-1. ✅ Design system created
-2. ✅ Wireframes completed
-3. → **React component development**
-4. → **API integration**
-5. → **Testing & QA**
-6. → **Deployment**
-
----
-
-## Browser Compatibility
-
-✅ Chrome 90+  |  ✅ Firefox 88+  |  ✅ Safari 14+  |  ✅ Edge 90+
+- Skill publishing with manifest validation
+- Hybrid search (keyword + semantic + popularity)
+- Semantic version resolution
+- Dependency tree analysis
+- API key authentication
+- PostgreSQL vector search
 
 ---
 
-**Created:** 2026-02-21 | **Status:** ✅ Production Ready
-
-[Start with INDEX.md →](./INDEX.md)
+**Created:** 2026-02-21 | **Status:** Active Development
