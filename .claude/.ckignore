@@ -16,7 +16,7 @@ venv
 
 # Go/PHP/Rust/Java
 vendor
-target
+target/*
 
 # VCS & Coverage
 .git
@@ -24,5 +24,6 @@ coverage
 
 # Allow reading these files
 !.env
-!.env.*
-!target
+!.env.example
+!.env.sample
+!target/**

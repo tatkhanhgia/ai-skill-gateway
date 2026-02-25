@@ -61,7 +61,7 @@ This PR successfully transitions the project documentation from a Vietnamese des
 **Nitpick (from CodeRabbit):** Key ordering could be alphabetized within sections to satisfy `dotenv-linter` conventions. This is non-blocking.
 
 **Suggestion:** Consider reordering:
-```
+```dotenv
 AI_EMBEDDING_MODEL before AI_EMBEDDING_URL (alphabetical)
 DB_JDBC_URL, DB_PASSWORD, DB_USERNAME (alphabetical)
 ```

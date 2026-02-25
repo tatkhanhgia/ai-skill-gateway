@@ -13,7 +13,7 @@
 
 ## 🏗️ Architecture
 
-```
+```text
 ┌─────────────┐     ┌─────────────────┐     ┌─────────────────┐
 │   Client    │────▶│  SkillResource  │────▶│  SkillService   │
 └─────────────┘     └────────┬────────┘     └────────┬────────┘
@@ -46,7 +46,7 @@
 docker compose up -d db
 
 # Run server
-export AUTH_API_KEY=dev-api-key
+export AUTH_API_KEY=YOUR_AUTH_API_KEY
 mvn quarkus:dev
 ```
 
@@ -63,7 +63,7 @@ curl "http://localhost:8080/api/v1/skills/search?query=log%20analysis&limit=10"
 
 # Publish skill (requires API key)
 curl -X POST "http://localhost:8080/api/v1/skills/publish" \
-  -H "X-API-Key: dev-api-key" \
+  -H "X-API-Key: $AUTH_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{"name":"skill-analytics","version":"1.0.0","description":"Analytics helper","category":"data","tags":["analytics"]}'
 ```

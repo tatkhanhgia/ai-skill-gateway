@@ -69,7 +69,7 @@
 ## Warnings / Notes
 
 1. **LogManager Warning:** One non-critical error observed:
-   ```
+   ```text
    ERROR: The LogManager accessed before the "java.util.logging.manager" system property was set to "org.jboss.logmanager.LogManager". Results may be unexpected.
    ```
    This is a known JBoss LogManager initialization warning and does not affect test results.

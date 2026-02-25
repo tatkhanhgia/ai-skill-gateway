@@ -74,7 +74,7 @@
 ## Data Flow Examples
 
 ### Publish Flow
-```
+```text
 Client → POST /api/v1/skills/publish
   → ApiKeyFilter (auth check)
   → SkillResource.publish()
@@ -88,7 +88,7 @@ Client → POST /api/v1/skills/publish
 ```
 
 ### Search Flow
-```
+```text
 Client → GET /api/v1/skills/search?query=...
   → SkillResource.search()
   → SearchService.search()
@@ -102,7 +102,7 @@ Client → GET /api/v1/skills/search?query=...
 ```
 
 ### Version Resolution Flow
-```
+```text
 Client → GET /api/v1/skills/{name}/resolve?constraint=^1.0.0
   → SkillResource.resolve()
   → VersionService.resolve()
