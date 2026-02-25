@@ -65,6 +65,7 @@ config/*.pem
 build/
 dist/
 *.spec
+target/
 
 # Temporary
 tmp/
