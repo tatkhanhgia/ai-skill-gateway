@@ -21,7 +21,7 @@ Browserbase provides remote browser infrastructure. Use when:
 
 ```bash
 # Required
-export BROWSERBASE_API_KEY="bb_live_xxxxxxxxxxxxx"
+export BROWSERBASE_API_KEY="your_browserbase_api_key"
 export BROWSERBASE_PROJECT_ID="proj_xxxxxxxxxxxxx"
 
 # Optional: set provider default

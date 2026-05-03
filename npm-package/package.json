@@ -1,0 +1,41 @@
+{
+  "name": "gtk-skill",
+  "version": "0.1.0",
+  "description": "Install curated Claude and OpenCode skills into projects.",
+  "type": "module",
+  "bin": {
+    "gtk-skill": "bin/gtk-skill.js"
+  },
+  "files": [
+    "bin",
+    "dist",
+    "assets",
+    "assets-manifest.json",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "build:manifest": "node dist/src/manifest/build-manifest.js",
+    "prepare:assets": "node dist/src/manifest/copy-assets.js && node dist/src/manifest/build-manifest.js",
+    "prepack": "npm run build && npm run prepare:assets",
+    "test": "npm run build && node --test dist/tests/*.test.js",
+    "pack:dry-run": "npm pack --dry-run --json"
+  },
+  "dependencies": {
+    "commander": "^12.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "claude",
+    "opencode",
+    "skills",
+    "cli"
+  ],
+  "license": "MIT"
+}
