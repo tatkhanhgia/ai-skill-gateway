@@ -1,12 +1,12 @@
 # System Architecture - Java MCP Skill Gateway
 
-**Scope:** Documents the layered architecture implemented in the Java 21 + Quarkus MCP skill gateway server and the `gtk-skill` npm packaging/distribution workflow.
+**Scope:** Documents the layered architecture implemented in the Java 17 + Quarkus REST skill gateway server and the `gtk-skill` npm packaging/distribution workflow.
 **Last Updated:** 2026-05-01
 
 ---
 
 ## High-Level Overview
-- **Server runtime:** Java 21, Quarkus 3.20.2, Maven-managed build with Quarkus MCP server HTTP extensions.
+- **Server runtime:** Java 17, Quarkus 3.20.2, Maven-managed build. MCP HTTP extension remains deferred due version compatibility.
 - **Package runtime:** `gtk-skill` is a Node 20+ TypeScript CLI built with `tsc` and published from `npm-package/`.
 - **Purpose:** Expose `/api/v1/skills` endpoints for gateway operations and ship curated `.claude/` / `.opencode/` assets that can be installed into external projects with explicit CLI commands.
 - **Data stores:** PostgreSQL with `vector` and `tsvector` columns for embeddings/search; local package install metadata stored under `.gtk-skill/install-manifest.json` in consumer projects.
@@ -16,7 +16,7 @@
 ## API Layer
 - **SkillResource** exposes REST endpoints (`publish`, `list`, `get`, `search`, `versions`, `resolve`, `yank`, `dependencies`).
 - **DTOs:** The API layer uses typed request/response DTOs documented in the codebase docs where they are verified.
-- **Filters & Exception Mapping:** `ApiKeyFilter` enforces `X-Api-Key` before controllers execute; `GlobalExceptionMapper` maps domain errors to consistent JSON responses with proper status codes.
+- **Filters & Exception Mapping:** `ApiKeyFilter` enforces `X-Api-Key` for mutating endpoints; `GlobalExceptionMapper` maps domain errors to consistent JSON responses with proper status codes.
 
 ## npm Package Layer
 - **CLI entrypoint:** `npm-package/src/cli.ts` registers `install`, `list`, `doctor`, `update`, and `version` commands using `commander`.
@@ -59,7 +59,7 @@
 ## Configuration & Runtime
 - **Properties:** Quarkus config fields centralize settings such as `search.weight.*`, `search.default-limit`, `search.max-limit`, `ai.embedding.url/model`, and pagination defaults.
 - **Resiliency:** Embedding failures are caught in `SearchService` and `SkillService`, allowing API responses even when external AI endpoints miss.
-- **Security:** `ApiKeyFilter` rejects unauthorized calls with HTTP 401 before they reach services; domain errors are normalized afterward.
+- **Security:** `ApiKeyFilter` rejects unauthorized mutating calls with HTTP 401 before they reach services; public GET endpoints support catalog discovery.
 
 ## Observability & Operations
 - **Logging:** Domain exceptions should include contextual identifiers such as skill name and version when logging is added.
@@ -67,7 +67,7 @@
 - **Deployment:** Standard JVM invocation (`mvn quarkus:dev`) for local development; `mvn package` or `mvn -Pnative package` for production/native builds defined in `pom.xml`.
 
 ## Testing & Verification
-- **Java 21 compliance:** Project compiles and runs under Java 21. Maven Surefire 3.5.2 executes JUnit 5 suites that include `SemVerParserTest`, `SemVerConstraintTest`, and `ManifestValidatorTest`.
+- **Java 17 compliance:** Project compiles and runs under Java 17. Maven Surefire 3.5.2 executes JUnit 5 suites that include `SemVerParserTest`, `SemVerConstraintTest`, and `ManifestValidatorTest`.
 - **npm package verification:** `npm test --prefix npm-package` builds the TypeScript CLI and runs package tests; per task context, CLI dry-run and forbidden-file pack audit also passed.
 
 ## Maintenance Notes

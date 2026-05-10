@@ -1,0 +1,86 @@
+# AI Skill Gateway System Flow
+
+```mermaid
+%%{init: {"flowchart": {"defaultRenderer": "elk"}, "theme": "base", "themeVariables": {"primaryColor": "#eef7f1", "primaryTextColor": "#173523", "primaryBorderColor": "#4d8f66", "lineColor": "#61707a", "secondaryColor": "#f4f7fb", "tertiaryColor": "#fff7e8", "clusterBkg": "#fbfcfd", "clusterBorder": "#c6d1d8", "fontFamily": "Inter, Segoe UI, Arial, sans-serif"}}}%%
+%% Source: plans/visuals/system-flow.mmd
+flowchart TD
+    client["Client / App / MCP consumer"]
+    api["REST API<br/>/api/v1/skills"]
+    auth["ApiKeyFilter<br/>X-API-Key"]
+    errors["GlobalExceptionMapper<br/>JSON errors"]
+
+    subgraph quarkus["Java Quarkus Gateway"]
+        resource["SkillResource"]
+        publish["Publish flow<br/>SkillService.publish"]
+        search["Search flow<br/>SearchService.search"]
+        versions["Version flow<br/>VersionService"]
+        deps["Dependency flow<br/>DependencyResolver"]
+        validator["ManifestValidator"]
+        embedding["EmbeddingService"]
+    end
+
+    subgraph postgres["PostgreSQL + pgvector"]
+        skills[("skills")]
+        skill_versions[("skill_versions")]
+        search_index["tsvector + indexes"]
+        vector_index["vector column<br/>semantic similarity"]
+    end
+
+    ollama["Ollama / embedding provider<br/>nomic-embed-text"]
+    health["Quarkus health<br/>/q/health"]
+
+    client -->|"publish / list / get / search / resolve / yank"| api
+    api --> auth
+    auth --> resource
+    resource --> publish
+    resource --> search
+    resource --> versions
+    resource --> deps
+    resource -. domain errors .-> errors
+
+    publish --> validator
+    publish -->|"name + description"| embedding
+    embedding -->|"HTTP embeddings"| ollama
+    publish -->|"persist skill metadata"| skills
+    publish -->|"persist semver, latest, yanked, requires"| skill_versions
+    skills --> search_index
+    skills --> vector_index
+
+    search -->|"keyword query"| search_index
+    search -->|"query text"| embedding
+    search -->|"vector similarity"| vector_index
+    search -->|"merge keyword + semantic + popularity"| resource
+
+    versions --> skill_versions
+    deps --> skill_versions
+    deps -->|"cycle guard"| deps
+
+    health --> quarkus
+
+    subgraph package_flow["gtk-skill npm package"]
+        cli["gtk-skill CLI<br/>install / update / list / doctor"]
+        manifest["assets-manifest.json"]
+        planner["plan operations<br/>conflict / overwrite / backup"]
+        installer["execute install"]
+        state[".gtk-skill/install-manifest.json"]
+        assets["curated .claude / .opencode assets"]
+        consumer["consumer project"]
+    end
+
+    cli --> manifest
+    manifest --> assets
+    cli --> planner
+    planner --> installer
+    installer --> consumer
+    installer --> state
+    cli -->|"doctor re-hashes files"| state
+
+    classDef external fill:#fff7e8,stroke:#c27c20,color:#3d2a0d;
+    classDef gateway fill:#eef7f1,stroke:#4d8f66,color:#173523;
+    classDef data fill:#f4f7fb,stroke:#5c7890,color:#162633;
+    classDef package fill:#f6f0ff,stroke:#8467b3,color:#2b2140;
+    class client,ollama external;
+    class api,auth,errors,resource,publish,search,versions,deps,validator,embedding,health gateway;
+    class skills,skill_versions,search_index,vector_index data;
+    class cli,manifest,planner,installer,state,assets,consumer package;
+```

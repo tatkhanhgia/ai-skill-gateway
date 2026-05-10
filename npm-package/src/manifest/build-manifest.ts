@@ -1,7 +1,7 @@
 import { readFile, stat, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import type { AssetManifest, AssetManifestFile } from '../types.js';
-import { targetPathForAsset } from './asset-rules.js';
+import { isExcludedAsset, targetPathForAsset } from './asset-rules.js';
 import { sha256File } from './checksum.js';
 import { packageRoot } from './paths.js';
 import { walkFiles } from './walk-files.js';
@@ -17,13 +17,29 @@ function assetType(source: string): AssetManifestFile['type'] {
   throw new Error(`Unsupported asset source: ${source}`);
 }
 
+function isAssetContainer(source: string): boolean {
+  return source === 'assets'
+    || source === 'assets/claude'
+    || source === 'assets/opencode';
+}
+
 async function main(): Promise<void> {
   const root = packageRoot();
   const packageJson = JSON.parse(await readFile(path.join(root, 'package.json'), 'utf8')) as { name: string; version: string };
   const assetsRoot = path.join(root, 'assets');
-  const files = await walkFiles(assetsRoot);
+  const files = await walkFiles(assetsRoot, (directory) => {
+    const source = path.relative(root, directory).split(path.sep).join('/');
+    if (!source || isAssetContainer(source)) return false;
+    if (!source.startsWith('assets/claude/') && !source.startsWith('assets/opencode/')) return true;
+    return isExcludedAsset(targetPathForAsset(source));
+  });
 
-  const manifestFiles = await Promise.all(files.map(async (file) => {
+  const includedFiles = files.filter((file) => {
+    const source = path.relative(root, file).split(path.sep).join('/');
+    return !isExcludedAsset(targetPathForAsset(source));
+  });
+
+  const manifestFiles = await Promise.all(includedFiles.map(async (file) => {
     const source = path.relative(root, file).split(path.sep).join('/');
     const fileStat = await stat(file);
     return {

@@ -6,7 +6,7 @@
 **Last Updated:** 2026-05-01
 
 ## Purpose & Scope
-Deliver a self-hosted MCP skill gateway plus a distributable `gtk-skill` npm package. The Java server exposes RESTful skill catalog management, search, version resolution, and dependency graph services for MCP agents and external clients. The npm package ships curated `.claude/` and `.opencode/` assets that can be installed into external projects with explicit, safety-first CLI commands.
+Deliver a self-hosted REST skill gateway plus a distributable `gtk-skill` npm package. The Java server exposes skill catalog management, search, version resolution, and dependency graph services for agents and external clients. The npm package ships curated `.claude/` and `.opencode/` assets that can be installed into external projects with explicit, safety-first CLI commands. MCP HTTP server integration is deferred until dependency compatibility is restored.
 
 ### Scope
 - Skill publish/list/search endpoints + version metadata management
@@ -26,7 +26,7 @@ Deliver a self-hosted MCP skill gateway plus a distributable `gtk-skill` npm pac
 7. **Safe Conflict Handling** – `gtk-skill install` and `gtk-skill update` preserve local changes by default. Acceptance: default policy reports conflicts instead of overwriting, `--overwrite` replaces changed files, and `--backup --overwrite` stores replaced files under `.gtk-skill/backups/<timestamp>/`.
 8. **Asset Inventory & Integrity Checks** – `gtk-skill list` and `gtk-skill doctor` expose package contents and post-install state. Acceptance: `list` reports manifest-backed counts by asset type, `doctor` compares installed hashes against `.gtk-skill/install-manifest.json`, and missing or changed files produce a failing exit code.
 9. **Package Safety** – Published npm tarballs exclude forbidden runtime artifacts. Acceptance: manifest validation rejects absolute/traversal targets, runtime logs are excluded, and pack validation confirms files such as `.env`, `.venv`, `node_modules`, session state, and local settings are not shipped.
-10. **Security** – Every API request passes `ApiKeyFilter`. Acceptance: requests without valid `X-Api-Key` return 401 before service layer or mapper responses.
+10. **Security** – Mutating API requests pass `ApiKeyFilter`. Acceptance: protected POST requests without valid `X-Api-Key` return 401 before service layer or mapper responses; public GET requests support catalog discovery.
 
 ## Verified npm Package Snapshot
 - `npm-package/package.json` defines package name `gtk-skill`, Node engine `>=20`, explicit `bin` mapping, and a `prepack` workflow that builds TypeScript then regenerates copied assets and `assets-manifest.json`.
@@ -46,10 +46,10 @@ Deliver a self-hosted MCP skill gateway plus a distributable `gtk-skill` npm pac
 - **Compatibility:** `gtk-skill` targets Node.js 20+ and must not execute packaged scripts or hooks during install/update operations.
 
 ## Technical Constraints & Dependencies
-- **Server runtime:** Java 21 + Quarkus with Jakarta REST and Panache patterns.
+- **Server runtime:** Java 17 + Quarkus with Jakarta REST and Panache patterns.
 - **Database:** PostgreSQL with `vector` column for embeddings and `search_vector` for full-text search; migrations `V1` to `V3` manage schema/indexes.
 - **AI integration:** `EmbeddingService` calls `ai.embedding.url` and `model`; `search.weight.*`, `search.default-limit`, and `search.max-limit` come from config. External embedding failure must not abort publish/search.
-- **Security:** API key enforced via `ApiKeyFilter`; domain exceptions mapped by `GlobalExceptionMapper`.
+- **Security:** API key enforced via `ApiKeyFilter` for mutating endpoints; domain exceptions mapped by `GlobalExceptionMapper`.
 - **Dependency resolution:** `SemVer`, `SemVerParser`, `SemVerConstraint`, `DependencyResolver`, and `CircularDependencyException` enforce version graph consistency.
 - **CLI runtime:** `gtk-skill` is a TypeScript/Node package using `commander`; published payload is constrained by the `files` field in `npm-package/package.json` and manifest validation in `npm-package/src/manifest/`.
 - **Install state:** Local installation metadata is written to `.gtk-skill/install-manifest.json` and used by `doctor` to detect missing or changed files.
@@ -67,7 +67,7 @@ Deliver a self-hosted MCP skill gateway plus a distributable `gtk-skill` npm pac
 ## Success Metrics & Acceptance Criteria
 | Metric | Target | Verification |
 | --- | --- | --- |
-| API key enforcement coverage | 100% of protected endpoints | Security tests and manual curl with/without key |
+| API key enforcement coverage | 100% of mutating endpoints | Security tests and manual curl with/without key |
 | Search latency | <500ms for successful semantic path | Benchmark search endpoint with sample text |
 | Functional test coverage | >=80% for service layer | Unit tests for `SkillService`, `SearchService`, `VersionService` |
 | npm package command coverage | Core install/list/doctor/update safety paths covered | `npm test --prefix npm-package` |
@@ -75,7 +75,7 @@ Deliver a self-hosted MCP skill gateway plus a distributable `gtk-skill` npm pac
 | Documentation synchronization | Docs updated for architecture, standards, PDR | Repo review and doc validation script |
 
 ## Testing Status
-- `mvn test` executes JUnit 5 suites in `src/test/java`, proving Java 21 compatibility for the server.
+- `mvn test` executes JUnit 5 suites in `src/test/java`, proving Java 17 compatibility for the server.
 - Core Java tests include `SemVerParserTest`, `SemVerConstraintTest`, and `ManifestValidatorTest`.
 - `npm test --prefix npm-package` builds the TypeScript CLI and runs Node test suites from `dist/tests/*.test.js`, covering manifest validation and installer behavior.
 - Per task context, additional release checks passed: CLI dry-run and `npm pack` forbidden-file audit.

@@ -11,6 +11,14 @@ downloads/
 eggs/
 .eggs/
 lib/
+!.claude/skills/media-tools/scripts/lib/
+!.claude/skills/media-tools/scripts/lib/**
+!npm-package/assets/claude/skills/media-tools/scripts/lib/
+!npm-package/assets/claude/skills/media-tools/scripts/lib/**
+!.opencode/skills/media-tools/scripts/lib/
+!.opencode/skills/media-tools/scripts/lib/**
+!npm-package/assets/opencode/skills/media-tools/scripts/lib/
+!npm-package/assets/opencode/skills/media-tools/scripts/lib/**
 lib64/
 parts/
 sdist/

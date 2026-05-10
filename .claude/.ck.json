@@ -74,7 +74,8 @@
           "node $HOME/.claude/hooks/task-completed-handler.cjs",
           "node $HOME/.claude/hooks/teammate-idle-handler.cjs",
           "node $HOME/.claude/hooks/session-state.cjs",
-          "node $HOME/.claude/hooks/plan-format-kanban.cjs"
+          "node $HOME/.claude/hooks/plan-format-kanban.cjs",
+          "node $HOME/.claude/hooks/usage-quota-cache-refresh.cjs"
         ],
         "mcpServers": []
       }

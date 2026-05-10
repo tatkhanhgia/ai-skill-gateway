@@ -12,6 +12,7 @@ import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
+import org.hibernate.annotations.ColumnTransformer;
 
 @Entity
 @Table(name = "skills")
@@ -53,5 +54,6 @@ public class Skill extends PanacheEntityBase {
     public Set<String> tags = new HashSet<>();
 
     @Column(name = "embedding", columnDefinition = "vector(768)")
+    @ColumnTransformer(write = "?::vector")
     public String embedding;
 }

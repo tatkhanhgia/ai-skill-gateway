@@ -24,7 +24,7 @@ async function main(): Promise<void> {
     const absoluteSourceRoot = path.join(sourceRoot, root.source);
     if (!(await exists(absoluteSourceRoot))) continue;
 
-    const files = await walkFiles(absoluteSourceRoot);
+    const files = await walkFiles(absoluteSourceRoot, (directory) => isExcludedAsset(path.relative(sourceRoot, directory)));
     for (const file of files) {
       const repoRelative = path.relative(sourceRoot, file);
       if (isExcludedAsset(repoRelative)) continue;

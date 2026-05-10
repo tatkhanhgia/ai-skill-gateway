@@ -22,8 +22,10 @@ const excludedSegments = new Set([
   '.venv',
   'node_modules',
   '__pycache__',
+  '__tests__',
   '.pytest_cache',
   'coverage',
+  'tests',
   'session-state',
   '.logs'
 ]);
@@ -34,10 +36,17 @@ export function isExcludedAsset(relativePath: string): boolean {
   const basename = segments.at(-1) ?? '';
 
   if (segments.some((segment) => excludedSegments.has(segment))) return true;
+  if (basename === '.coverage') return true;
   if (basename === '.DS_Store') return true;
   if (basename.endsWith('.log') || basename.endsWith('.tmp') || basename.endsWith('.jsonl')) return true;
+  if (basename.includes('.test.')) return true;
   if (basename === 'metadata.json' && normalized.startsWith('.claude/')) return true;
   if (basename === 'settings.local.json') return true;
+  if (
+    basename === '.env.example' &&
+    (normalized === '.claude/skills/media-tools/.env.example' ||
+      normalized === '.opencode/skills/media-tools/.env.example')
+  ) return false;
   if (basename === '.env' || basename.startsWith('.env.')) return true;
 
   return false;

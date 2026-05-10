@@ -1,7 +1,7 @@
 {
   "packageName": "gtk-skill",
   "packageVersion": "0.1.0",
-  "generatedAt": "2026-05-03T18:56:50.850Z",
+  "generatedAt": "2026-05-10T07:59:06.017Z",
   "files": [
     {
       "source": "assets/claude/agents/brainstormer.md",
@@ -109,6 +109,13 @@
       "size": 4160
     },
     {
+      "source": "assets/claude/agents/media-designer.md",
+      "target": ".claude/agents/media-designer.md",
+      "type": "claude-agent",
+      "sha256": "88c1f8656391481ad6831f15e8eaaceddbb3a3432d2c660bc964fbd58226a580",
+      "size": 14400
+    },
+    {
       "source": "assets/claude/agents/oracle.md",
       "target": ".claude/agents/oracle.md",
       "type": "claude-agent",
@@ -165,118 +172,6 @@
       "size": 15101
     },
     {
-      "source": "assets/claude/hooks/__tests__/ck-config-utils.test.cjs",
-      "target": ".claude/hooks/__tests__/ck-config-utils.test.cjs",
-      "type": "claude-hook",
-      "sha256": "7e35cae856bdd258188400d5bc17673f4a53bd9bad726447c7b0ea1a84d0584b",
-      "size": 17595
-    },
-    {
-      "source": "assets/claude/hooks/__tests__/descriptive-name.test.cjs",
-      "target": ".claude/hooks/__tests__/descriptive-name.test.cjs",
-      "type": "claude-hook",
-      "sha256": "b307a81902cab7d4c0b016df32837cc8598c0adc493ae7d05d016069908a86be",
-      "size": 9123
-    },
-    {
-      "source": "assets/claude/hooks/__tests__/dev-rules-reminder.test.cjs",
-      "target": ".claude/hooks/__tests__/dev-rules-reminder.test.cjs",
-      "type": "claude-hook",
-      "sha256": "a24c0c2d392cc257bd692af613cb3e5f54809e56622a3496ebb1cff8328f69e6",
-      "size": 17827
-    },
-    {
-      "source": "assets/claude/hooks/__tests__/hook-logger.test.cjs",
-      "target": ".claude/hooks/__tests__/hook-logger.test.cjs",
-      "type": "claude-hook",
-      "sha256": "eee8c5570c8359cd920c55d755b9fd86f88605a0fe527da9731c939e84827b34",
-      "size": 3244
-    },
-    {
-      "source": "assets/claude/hooks/__tests__/integration/path-resolution.test.cjs",
-      "target": ".claude/hooks/__tests__/integration/path-resolution.test.cjs",
-      "type": "claude-hook",
-      "sha256": "676c66ff215569ecfe56dd1eddd2f822d592684e457a802ed0ff15af66bc258e",
-      "size": 12760
-    },
-    {
-      "source": "assets/claude/hooks/__tests__/plan-format-kanban.test.cjs",
-      "target": ".claude/hooks/__tests__/plan-format-kanban.test.cjs",
-      "type": "claude-hook",
-      "sha256": "b2136700525ae21db825dae4a68ba2f74e9970867a698d137a3254cf622f9614",
-      "size": 12650
-    },
-    {
-      "source": "assets/claude/hooks/__tests__/privacy-block.test.cjs",
-      "target": ".claude/hooks/__tests__/privacy-block.test.cjs",
-      "type": "claude-hook",
-      "sha256": "364cd461a51c27b9e657ed5eaf3cc54944fd3d8d655042eaa48b96c841718f3e",
-      "size": 9940
-    },
-    {
-      "source": "assets/claude/hooks/__tests__/session-init.test.cjs",
-      "target": ".claude/hooks/__tests__/session-init.test.cjs",
-      "type": "claude-hook",
-      "sha256": "bd34c4e452032d1d96824c5c61e730ffbc7af8f7e8c51967f33dec277b6e6c0f",
-      "size": 18353
-    },
-    {
-      "source": "assets/claude/hooks/__tests__/session-state-lock.test.cjs",
-      "target": ".claude/hooks/__tests__/session-state-lock.test.cjs",
-      "type": "claude-hook",
-      "sha256": "b4383e17cc03ba3d0defbb6cf14d4394ef5fa32a9df6e95d2f5080d8e378fe9b",
-      "size": 3054
-    },
-    {
-      "source": "assets/claude/hooks/__tests__/session-state.test.cjs",
-      "target": ".claude/hooks/__tests__/session-state.test.cjs",
-      "type": "claude-hook",
-      "sha256": "211e92d0fc53dcfc6fc77d999250d0b0f513d64cf51252215fb708c2b768cceb",
-      "size": 16827
-    },
-    {
-      "source": "assets/claude/hooks/__tests__/skill-dedup.test.cjs",
-      "target": ".claude/hooks/__tests__/skill-dedup.test.cjs",
-      "type": "claude-hook",
-      "sha256": "790082bdcfbe54abaa792a109b23325a8501b98f4c62fe5dc9ba749ef9cb0093",
-      "size": 18335
-    },
-    {
-      "source": "assets/claude/hooks/__tests__/subagent-init.test.cjs",
-      "target": ".claude/hooks/__tests__/subagent-init.test.cjs",
-      "type": "claude-hook",
-      "sha256": "0427418c35a596d2dce8991e40affa2441946e4b974efb6ea7bb96dc91ba6465",
-      "size": 22434
-    },
-    {
-      "source": "assets/claude/hooks/__tests__/task-completed-handler.test.cjs",
-      "target": ".claude/hooks/__tests__/task-completed-handler.test.cjs",
-      "type": "claude-hook",
-      "sha256": "941b750b64fd770ba290e4c08fd488f7f3862af947cb44fee3517547775f5803",
-      "size": 8625
-    },
-    {
-      "source": "assets/claude/hooks/__tests__/team-context-inject.test.cjs",
-      "target": ".claude/hooks/__tests__/team-context-inject.test.cjs",
-      "type": "claude-hook",
-      "sha256": "ab4cb25e57b602e4f608753252f7994b6e90fffd6a19e5eee3d5f59dd904463a",
-      "size": 26356
-    },
-    {
-      "source": "assets/claude/hooks/__tests__/teammate-idle-handler.test.cjs",
-      "target": ".claude/hooks/__tests__/teammate-idle-handler.test.cjs",
-      "type": "claude-hook",
-      "sha256": "48d551b4808696b3ecde8af224c3566501b64e21a1c865d952e570522371cff9",
-      "size": 9223
-    },
-    {
-      "source": "assets/claude/hooks/__tests__/usage-quota-cache-refresh.test.cjs",
-      "target": ".claude/hooks/__tests__/usage-quota-cache-refresh.test.cjs",
-      "type": "claude-hook",
-      "sha256": "479156f615f63a452f9512cc79adc699fbdd43ed6ead0a80c90626afdd768997",
-      "size": 1651
-    },
-    {
       "source": "assets/claude/hooks/cook-after-plan-reminder.cjs",
       "target": ".claude/hooks/cook-after-plan-reminder.cjs",
       "type": "claude-hook",
@@ -303,69 +198,6 @@
       "type": "claude-hook",
       "sha256": "d6936804228ee2a66e42095073370ffd9d25820c30e9ce07a74c1fa693578942",
       "size": 5417
-    },
-    {
-      "source": "assets/claude/hooks/lib/__tests__/ck-config-utils.test.cjs",
-      "target": ".claude/hooks/lib/__tests__/ck-config-utils.test.cjs",
-      "type": "claude-hook",
-      "sha256": "62e59b8419a2a2f2baaf4aa3e2d4d9235e4366572620382d01dcd8dde30f8f05",
-      "size": 26812
-    },
-    {
-      "source": "assets/claude/hooks/lib/__tests__/context-builder.test.cjs",
-      "target": ".claude/hooks/lib/__tests__/context-builder.test.cjs",
-      "type": "claude-hook",
-      "sha256": "cfa787542970544edd50b3d4a5b5aa9c5e2633e7adbfc17d5725d4a7986b9eae",
-      "size": 20753
-    },
-    {
-      "source": "assets/claude/hooks/lib/__tests__/project-detector.test.cjs",
-      "target": ".claude/hooks/lib/__tests__/project-detector.test.cjs",
-      "type": "claude-hook",
-      "sha256": "4b442b2a9807a3c38075ca0928bf0a7d677d2d821eba03ca99c34b4f2f6b7230",
-      "size": 24050
-    },
-    {
-      "source": "assets/claude/hooks/lib/__tests__/README.md",
-      "target": ".claude/hooks/lib/__tests__/README.md",
-      "type": "claude-hook",
-      "sha256": "5c564c3d17aa201b3322a9b94068e072ea162c6a51ad433041b9a70293662998",
-      "size": 3163
-    },
-    {
-      "source": "assets/claude/hooks/lib/__tests__/statusline-integration.test.cjs",
-      "target": ".claude/hooks/lib/__tests__/statusline-integration.test.cjs",
-      "type": "claude-hook",
-      "sha256": "a25c09253cdaa3e04afbab6cb932d390c0922ff951e73e7a73315e501578babc",
-      "size": 22983
-    },
-    {
-      "source": "assets/claude/hooks/lib/__tests__/statusline-scenarios.test.cjs",
-      "target": ".claude/hooks/lib/__tests__/statusline-scenarios.test.cjs",
-      "type": "claude-hook",
-      "sha256": "b2297f5266226153ca53ecfae19372f73a2c936cd85c511b92fa6ab3880aa42a",
-      "size": 39896
-    },
-    {
-      "source": "assets/claude/hooks/lib/__tests__/statusline-suite.cjs",
-      "target": ".claude/hooks/lib/__tests__/statusline-suite.cjs",
-      "type": "claude-hook",
-      "sha256": "1469cb129be16c87a4f0450cc2ebe482018dcf5332dc840bad04a607e7a1a7ed",
-      "size": 1301
-    },
-    {
-      "source": "assets/claude/hooks/lib/__tests__/statusline.test.cjs",
-      "target": ".claude/hooks/lib/__tests__/statusline.test.cjs",
-      "type": "claude-hook",
-      "sha256": "b68025aa7a5f454c98dac14561d1371a6dcd87fcb70d862091d4651fc01fe8fe",
-      "size": 34053
-    },
-    {
-      "source": "assets/claude/hooks/lib/__tests__/usage-limits-cache.test.cjs",
-      "target": ".claude/hooks/lib/__tests__/usage-limits-cache.test.cjs",
-      "type": "claude-hook",
-      "sha256": "68360bae745e58b812c05f6e9ec22dc718d5fd22d775d2e1d933ab496c3d110e",
-      "size": 8731
     },
     {
       "source": "assets/claude/hooks/lib/ck-config-utils.cjs",
@@ -606,55 +438,6 @@
       "size": 5804
     },
     {
-      "source": "assets/claude/hooks/scout-block/tests/test-broad-pattern-detector.cjs",
-      "target": ".claude/hooks/scout-block/tests/test-broad-pattern-detector.cjs",
-      "type": "claude-hook",
-      "sha256": "9060faaf319a3b90a13b9f784493c44af30d36b3a493d8cd5f82172478c2abc6",
-      "size": 5324
-    },
-    {
-      "source": "assets/claude/hooks/scout-block/tests/test-build-command-allowlist.cjs",
-      "target": ".claude/hooks/scout-block/tests/test-build-command-allowlist.cjs",
-      "type": "claude-hook",
-      "sha256": "e202330f51d85ff94e08434d7096e330dfb831532328f7266cda09c5f2f87d6e",
-      "size": 6959
-    },
-    {
-      "source": "assets/claude/hooks/scout-block/tests/test-error-formatter.cjs",
-      "target": ".claude/hooks/scout-block/tests/test-error-formatter.cjs",
-      "type": "claude-hook",
-      "sha256": "1d21c12f43d7e17441281a0a51b0448ffc42b3f9754ce05ad5cc208996b34f6e",
-      "size": 4307
-    },
-    {
-      "source": "assets/claude/hooks/scout-block/tests/test-full-flow-edge-cases.cjs",
-      "target": ".claude/hooks/scout-block/tests/test-full-flow-edge-cases.cjs",
-      "type": "claude-hook",
-      "sha256": "4bcf0e9b031b3ebee7719092e76dff1d28f9d15d291b54bcc12fe1e67c49a01e",
-      "size": 3115
-    },
-    {
-      "source": "assets/claude/hooks/scout-block/tests/test-monorepo-scenarios.cjs",
-      "target": ".claude/hooks/scout-block/tests/test-monorepo-scenarios.cjs",
-      "type": "claude-hook",
-      "sha256": "dd8fe1f3ac36168d353fb903ae64da94059a761fee8dc4847374fc3f2e0aa2d0",
-      "size": 6897
-    },
-    {
-      "source": "assets/claude/hooks/scout-block/tests/test-path-extractor.cjs",
-      "target": ".claude/hooks/scout-block/tests/test-path-extractor.cjs",
-      "type": "claude-hook",
-      "sha256": "5197e9604cf4b27999f3198583ec1da991f328d636ce3d590926f3854a9fe793",
-      "size": 4935
-    },
-    {
-      "source": "assets/claude/hooks/scout-block/tests/test-pattern-matcher.cjs",
-      "target": ".claude/hooks/scout-block/tests/test-pattern-matcher.cjs",
-      "type": "claude-hook",
-      "sha256": "db76854f1557faa91a8bb7f53ef141875df841517b88d5e10ba80cc3b5c06b4c",
-      "size": 3103
-    },
-    {
       "source": "assets/claude/hooks/scout-block/vendor/ignore.cjs",
       "target": ".claude/hooks/scout-block/vendor/ignore.cjs",
       "type": "claude-hook",
@@ -709,90 +492,6 @@
       "type": "claude-hook",
       "sha256": "40a6036d4761c27767c2dd8d376f667bae018c7de201199b40ebf06875237da3",
       "size": 4201
-    },
-    {
-      "source": "assets/claude/hooks/tests/scout-block/broad-pattern-detector.test.cjs",
-      "target": ".claude/hooks/tests/scout-block/broad-pattern-detector.test.cjs",
-      "type": "claude-hook",
-      "sha256": "2a06e042bc22056971a76e70d8e5fb22285d6bd9e86820eb3a2233a32017655e",
-      "size": 8538
-    },
-    {
-      "source": "assets/claude/hooks/tests/scout-block/fixtures/ckignore-custom.txt",
-      "target": ".claude/hooks/tests/scout-block/fixtures/ckignore-custom.txt",
-      "type": "claude-hook",
-      "sha256": "b3d2b5b9e84565d986825cec893bd63a1ed5819c3e96ad394de97b4f65203a55",
-      "size": 74
-    },
-    {
-      "source": "assets/claude/hooks/tests/scout-block/fixtures/ckignore-default.txt",
-      "target": ".claude/hooks/tests/scout-block/fixtures/ckignore-default.txt",
-      "type": "claude-hook",
-      "sha256": "f61933852ac690d8e4f0b6a4cdfb4f293fe1ebc59d315eeb013029d530654fd1",
-      "size": 119
-    },
-    {
-      "source": "assets/claude/hooks/tests/scout-block/fixtures/ckignore-negation.txt",
-      "target": ".claude/hooks/tests/scout-block/fixtures/ckignore-negation.txt",
-      "type": "claude-hook",
-      "sha256": "eb9bad13defed2dc15360021783c5a7377a663a4f310e3b2dbac6cb8578f84e6",
-      "size": 116
-    },
-    {
-      "source": "assets/claude/hooks/tests/scout-block/fixtures/ckignore-project-override.txt",
-      "target": ".claude/hooks/tests/scout-block/fixtures/ckignore-project-override.txt",
-      "type": "claude-hook",
-      "sha256": "d49eb3caf010b3ecd69b2e51f6d6ec2ae7deb10f11277961b0dfeab81f82382b",
-      "size": 42
-    },
-    {
-      "source": "assets/claude/hooks/tests/scout-block/path-extractor.test.cjs",
-      "target": ".claude/hooks/tests/scout-block/path-extractor.test.cjs",
-      "type": "claude-hook",
-      "sha256": "a5865b54457f49726d53a44e57682b2312526462974a0ce62923eb2414c4cf92",
-      "size": 18668
-    },
-    {
-      "source": "assets/claude/hooks/tests/scout-block/pattern-matcher.test.cjs",
-      "target": ".claude/hooks/tests/scout-block/pattern-matcher.test.cjs",
-      "type": "claude-hook",
-      "sha256": "f27b665d9a4e9c015c7320a511a34d24849b57d5e2b4d60b4e8ded0d2059b676",
-      "size": 13124
-    },
-    {
-      "source": "assets/claude/hooks/tests/scout-block/scout-checker.test.cjs",
-      "target": ".claude/hooks/tests/scout-block/scout-checker.test.cjs",
-      "type": "claude-hook",
-      "sha256": "0a8aa2241ad30c9ce7d5499ee2ef09e18bf091f6850e7a380e0f176f5c252e12",
-      "size": 36636
-    },
-    {
-      "source": "assets/claude/hooks/tests/test-ckignore.cjs",
-      "target": ".claude/hooks/tests/test-ckignore.cjs",
-      "type": "claude-hook",
-      "sha256": "8dccf1d6b3739663680baecaafe7926ae070a61a79ba129df800d4ccf3b31a25",
-      "size": 5393
-    },
-    {
-      "source": "assets/claude/hooks/tests/test-modularization-hook.cjs",
-      "target": ".claude/hooks/tests/test-modularization-hook.cjs",
-      "type": "claude-hook",
-      "sha256": "bb2243f5a1ae4b1518d3f5a2ad16376297b35623cae56582aa489c1044e6e70c",
-      "size": 3445
-    },
-    {
-      "source": "assets/claude/hooks/tests/test-privacy-block.cjs",
-      "target": ".claude/hooks/tests/test-privacy-block.cjs",
-      "type": "claude-hook",
-      "sha256": "9b35609bd7e70bd58a642e72f7211fe75b72e873dc4746f94dee5601a3b8d55d",
-      "size": 8681
-    },
-    {
-      "source": "assets/claude/hooks/tests/test-scout-block.cjs",
-      "target": ".claude/hooks/tests/test-scout-block.cjs",
-      "type": "claude-hook",
-      "sha256": "0e75ed4b52578c9fe640a334ba27e38f2078af584ee2638d06415bb01059a8f8",
-      "size": 10153
     },
     {
       "source": "assets/claude/hooks/usage-context-awareness.cjs",
@@ -921,25 +620,11 @@
       "size": 212
     },
     {
-      "source": "assets/claude/scripts/worktree.test.cjs",
-      "target": ".claude/scripts/worktree.test.cjs",
-      "type": "claude-script",
-      "sha256": "ee8396d68c51f79a3f18e058ef691d69056807ebcb26c3aad1256acffdd03902",
-      "size": 220
-    },
-    {
       "source": "assets/claude/skills/_shared/lib/plan-table-parser.cjs",
       "target": ".claude/skills/_shared/lib/plan-table-parser.cjs",
       "type": "claude-skill",
       "sha256": "fbbea9604cd5587d141b8fc6290c1becd8e43d3d15f8e57f5b34c8e69da02795",
       "size": 10123
-    },
-    {
-      "source": "assets/claude/skills/_shared/tests/plan-table-parser.test.cjs",
-      "target": ".claude/skills/_shared/tests/plan-table-parser.test.cjs",
-      "type": "claude-skill",
-      "sha256": "c4fffdc3696899afda24ddf6389cbfb49339a1fe0d34023637b6ac170720a5b6",
-      "size": 14897
     },
     {
       "source": "assets/claude/skills/.gitignore",
@@ -1201,13 +886,6 @@
       "size": 11040
     },
     {
-      "source": "assets/claude/skills/ai-multimodal/scripts/.coverage",
-      "target": ".claude/skills/ai-multimodal/scripts/.coverage",
-      "type": "claude-skill",
-      "sha256": "1025c4cc0f9a0e8231b58ff45705eff817fce0bef13633f259390f7722beced7",
-      "size": 53248
-    },
-    {
       "source": "assets/claude/skills/ai-multimodal/scripts/check_setup.py",
       "target": ".claude/skills/ai-multimodal/scripts/check_setup.py",
       "type": "claude-skill",
@@ -1262,62 +940,6 @@
       "type": "claude-skill",
       "sha256": "ca4e56c561613a6ed22b7b9b7f2853ea8f1bbe3adfc9b52103de0df7d65fae6b",
       "size": 442
-    },
-    {
-      "source": "assets/claude/skills/ai-multimodal/scripts/tests/.coverage",
-      "target": ".claude/skills/ai-multimodal/scripts/tests/.coverage",
-      "type": "claude-skill",
-      "sha256": "e9f57ddb82d3fe6ff4cc23288c3a10236f24d6171ecb3e886e7063b5a1dd0911",
-      "size": 53248
-    },
-    {
-      "source": "assets/claude/skills/ai-multimodal/scripts/tests/requirements.txt",
-      "target": ".claude/skills/ai-multimodal/scripts/tests/requirements.txt",
-      "type": "claude-skill",
-      "sha256": "15a909ef1471e0d1fe9d523c3b02016f01abc9ab3a81b8d047a1222c3f3af2d2",
-      "size": 352
-    },
-    {
-      "source": "assets/claude/skills/ai-multimodal/scripts/tests/test_document_converter.py",
-      "target": ".claude/skills/ai-multimodal/scripts/tests/test_document_converter.py",
-      "type": "claude-skill",
-      "sha256": "3e84d80ea301b631df8d7170978128ec272058b9c82a01e0113c64525d68658f",
-      "size": 2229
-    },
-    {
-      "source": "assets/claude/skills/ai-multimodal/scripts/tests/test_gemini_batch_process.py",
-      "target": ".claude/skills/ai-multimodal/scripts/tests/test_gemini_batch_process.py",
-      "type": "claude-skill",
-      "sha256": "799bec3975ba750c056b35090148325811b1c9488ae50c05e98ac651cf9e6dfc",
-      "size": 12677
-    },
-    {
-      "source": "assets/claude/skills/ai-multimodal/scripts/tests/test_media_optimizer.py",
-      "target": ".claude/skills/ai-multimodal/scripts/tests/test_media_optimizer.py",
-      "type": "claude-skill",
-      "sha256": "8451512f789ad3519dccac1ab8221397c85188abfd528c8f9d66cecccdfd8040",
-      "size": 11824
-    },
-    {
-      "source": "assets/claude/skills/ai-multimodal/scripts/tests/test_minimax_api_client.py",
-      "target": ".claude/skills/ai-multimodal/scripts/tests/test_minimax_api_client.py",
-      "type": "claude-skill",
-      "sha256": "ea1de900949b6b8b88b119dad6e4062b215478ab20c53e9789e7c3ba936299c7",
-      "size": 8252
-    },
-    {
-      "source": "assets/claude/skills/ai-multimodal/scripts/tests/test_minimax_cli.py",
-      "target": ".claude/skills/ai-multimodal/scripts/tests/test_minimax_cli.py",
-      "type": "claude-skill",
-      "sha256": "4a0614520142329e0656dd62ccf7c8ab8391f5d1f6dc90d5d9a51c549e43e171",
-      "size": 7726
-    },
-    {
-      "source": "assets/claude/skills/ai-multimodal/scripts/tests/test_minimax_generate.py",
-      "target": ".claude/skills/ai-multimodal/scripts/tests/test_minimax_generate.py",
-      "type": "claude-skill",
-      "sha256": "2c4a8f5b0cc34f7262c0b86b4ba60c48f7300906cd8267acdb26445c278d8283",
-      "size": 14121
     },
     {
       "source": "assets/claude/skills/ai-multimodal/SKILL.md",
@@ -1446,13 +1068,6 @@
       "size": 9293
     },
     {
-      "source": "assets/claude/skills/better-auth/scripts/.coverage",
-      "target": ".claude/skills/better-auth/scripts/.coverage",
-      "type": "claude-skill",
-      "sha256": "f0eb0985b3a10c20dc53020b9aee09cbabd40e96955c47085f5678e437560528",
-      "size": 53248
-    },
-    {
       "source": "assets/claude/skills/better-auth/scripts/better_auth_init.py",
       "target": ".claude/skills/better-auth/scripts/better_auth_init.py",
       "type": "claude-skill",
@@ -1465,20 +1080,6 @@
       "type": "claude-skill",
       "sha256": "4c164fd0ed4d81bba6da0852149aadfc80e169e488b86ba33cc757a3cc64bff2",
       "size": 402
-    },
-    {
-      "source": "assets/claude/skills/better-auth/scripts/tests/.coverage",
-      "target": ".claude/skills/better-auth/scripts/tests/.coverage",
-      "type": "claude-skill",
-      "sha256": "0c77c29e26616abf909054079e5b0d0e316329e09ab0569c330e0cd2e22caa66",
-      "size": 53248
-    },
-    {
-      "source": "assets/claude/skills/better-auth/scripts/tests/test_better_auth_init.py",
-      "target": ".claude/skills/better-auth/scripts/tests/test_better_auth_init.py",
-      "type": "claude-skill",
-      "sha256": "134df79e3238f4e15e2a7c8df4d9db4c143e404a7454f8f618e56374e0de8a94",
-      "size": 15496
     },
     {
       "source": "assets/claude/skills/better-auth/SKILL.md",
@@ -1556,20 +1157,6 @@
       "type": "claude-skill",
       "sha256": "dcec4af083b7fe2d405a40aad2b511317c1e9deaa2bec5ca91ec9959aff1a423",
       "size": 19065
-    },
-    {
-      "source": "assets/claude/skills/chrome-devtools/scripts/__tests__/error-handling.test.js",
-      "target": ".claude/skills/chrome-devtools/scripts/__tests__/error-handling.test.js",
-      "type": "claude-skill",
-      "sha256": "f357f96e84393791b350edcfeafedbe661d7f1efa4c6a330837e15861d7f96f4",
-      "size": 3711
-    },
-    {
-      "source": "assets/claude/skills/chrome-devtools/scripts/__tests__/selector.test.js",
-      "target": ".claude/skills/chrome-devtools/scripts/__tests__/selector.test.js",
-      "type": "claude-skill",
-      "sha256": "69fa6c4d04f2c8d0578325894fc06ea820e4c771d267d90969f09343e076d5e2",
-      "size": 6525
     },
     {
       "source": "assets/claude/skills/chrome-devtools/scripts/.gitignore",
@@ -1864,13 +1451,6 @@
       "type": "claude-skill",
       "sha256": "f4dc594206175b17de25464b5f60a0e011774a7c7843014b6442338a085eba57",
       "size": 1520
-    },
-    {
-      "source": "assets/claude/skills/ck-debug/scripts/find-polluter.test.md",
-      "target": ".claude/skills/ck-debug/scripts/find-polluter.test.md",
-      "type": "claude-skill",
-      "sha256": "3147fa73a49f7ae82312277d36a357c71dde430f14a7fa86e81516f5e71365ee",
-      "size": 2117
     },
     {
       "source": "assets/claude/skills/ck-debug/SKILL.md",
@@ -2265,13 +1845,6 @@
       "size": 11131
     },
     {
-      "source": "assets/claude/skills/context-engineering/scripts/tests/test_edge_cases.py",
-      "target": ".claude/skills/context-engineering/scripts/tests/test_edge_cases.py",
-      "type": "claude-skill",
-      "sha256": "06d705178ded2fa7e571e35c7bc875580337dcb15e4b27b1814c644f15115dfe",
-      "size": 9651
-    },
-    {
       "source": "assets/claude/skills/context-engineering/SKILL.md",
       "target": ".claude/skills/context-engineering/SKILL.md",
       "type": "claude-skill",
@@ -2503,13 +2076,6 @@
       "size": 10091
     },
     {
-      "source": "assets/claude/skills/databases/scripts/.coverage",
-      "target": ".claude/skills/databases/scripts/.coverage",
-      "type": "claude-skill",
-      "sha256": "e58277507e55c72bd390690e2307f6751cdb9c96e6c6a3ee346f1a710e9c02bd",
-      "size": 53248
-    },
-    {
       "source": "assets/claude/skills/databases/scripts/db_backup.py",
       "target": ".claude/skills/databases/scripts/db_backup.py",
       "type": "claude-skill",
@@ -2536,41 +2102,6 @@
       "type": "claude-skill",
       "sha256": "da0d7d811e02966201fac258844820dc214cb1b3bcea3006bd94029f6a2518d1",
       "size": 558
-    },
-    {
-      "source": "assets/claude/skills/databases/scripts/tests/coverage-db.json",
-      "target": ".claude/skills/databases/scripts/tests/coverage-db.json",
-      "type": "claude-skill",
-      "sha256": "f40c12d1ff34d9c927b31ba3b3f57371f06f45cf462f1516d0eb3f1fa2351b0a",
-      "size": 47444
-    },
-    {
-      "source": "assets/claude/skills/databases/scripts/tests/requirements.txt",
-      "target": ".claude/skills/databases/scripts/tests/requirements.txt",
-      "type": "claude-skill",
-      "sha256": "52a7b73d3f2b08178eb3bac41cdc1786f4b06336f741c817d89347e8dbb5504d",
-      "size": 69
-    },
-    {
-      "source": "assets/claude/skills/databases/scripts/tests/test_db_backup.py",
-      "target": ".claude/skills/databases/scripts/tests/test_db_backup.py",
-      "type": "claude-skill",
-      "sha256": "ba16ff85557dc29a7a424cb80aebcde760f3a3d59ad7eb4d05a7dfed483d67d7",
-      "size": 10800
-    },
-    {
-      "source": "assets/claude/skills/databases/scripts/tests/test_db_migrate.py",
-      "target": ".claude/skills/databases/scripts/tests/test_db_migrate.py",
-      "type": "claude-skill",
-      "sha256": "22f9323d767bdd02a97b7250f14c2cda788f829d9af5497da2417ace21ae2fcc",
-      "size": 9529
-    },
-    {
-      "source": "assets/claude/skills/databases/scripts/tests/test_db_performance_check.py",
-      "target": ".claude/skills/databases/scripts/tests/test_db_performance_check.py",
-      "type": "claude-skill",
-      "sha256": "f89b7421305587cd45daf1f47d02a0f6c791a92b5a1b5ac0332982f91b6ed2e9",
-      "size": 11933
     },
     {
       "source": "assets/claude/skills/databases/SKILL.md",
@@ -3154,27 +2685,6 @@
       "size": 471
     },
     {
-      "source": "assets/claude/skills/devops/scripts/tests/requirements.txt",
-      "target": ".claude/skills/devops/scripts/tests/requirements.txt",
-      "type": "claude-skill",
-      "sha256": "0795bdcfb80afae0ff06e9cbe5bed67b39283e577984bed87d85da3fec798a37",
-      "size": 52
-    },
-    {
-      "source": "assets/claude/skills/devops/scripts/tests/test_cloudflare_deploy.py",
-      "target": ".claude/skills/devops/scripts/tests/test_cloudflare_deploy.py",
-      "type": "claude-skill",
-      "sha256": "66373336b3290bed9ca300699816954006cabc9f91897cb4759358d365dabc69",
-      "size": 9261
-    },
-    {
-      "source": "assets/claude/skills/devops/scripts/tests/test_docker_optimize.py",
-      "target": ".claude/skills/devops/scripts/tests/test_docker_optimize.py",
-      "type": "claude-skill",
-      "sha256": "c82fd9d4f18e60d1ebdbcebda5781d462a6a0c846658512aa5239e1eaee0d9fb",
-      "size": 12969
-    },
-    {
       "source": "assets/claude/skills/devops/SKILL.md",
       "target": ".claude/skills/devops/SKILL.md",
       "type": "claude-skill",
@@ -3229,34 +2739,6 @@
       "type": "claude-skill",
       "sha256": "232937adff9e3c090b73f56ad796867c8a462dc9845130f6d806075efb6e8b1a",
       "size": 4981
-    },
-    {
-      "source": "assets/claude/skills/docs-seeker/scripts/tests/run-tests.js",
-      "target": ".claude/skills/docs-seeker/scripts/tests/run-tests.js",
-      "type": "claude-skill",
-      "sha256": "1c92cd7eb0a1c964d671e9648595e8ffd5276bdb52590d437201b297c5097f6e",
-      "size": 1554
-    },
-    {
-      "source": "assets/claude/skills/docs-seeker/scripts/tests/test-analyze-llms.js",
-      "target": ".claude/skills/docs-seeker/scripts/tests/test-analyze-llms.js",
-      "type": "claude-skill",
-      "sha256": "9435d5e8a39a9b509e297f7783aa40008d75299e1e50eca6f22cd2f373360e69",
-      "size": 3831
-    },
-    {
-      "source": "assets/claude/skills/docs-seeker/scripts/tests/test-detect-topic.js",
-      "target": ".claude/skills/docs-seeker/scripts/tests/test-detect-topic.js",
-      "type": "claude-skill",
-      "sha256": "a1c60bfec4e177aa888ec37e0d27c3b25dcee3c5ef3a55635339649f00099d7f",
-      "size": 4009
-    },
-    {
-      "source": "assets/claude/skills/docs-seeker/scripts/tests/test-fetch-docs.js",
-      "target": ".claude/skills/docs-seeker/scripts/tests/test-fetch-docs.js",
-      "type": "claude-skill",
-      "sha256": "16f3bab18021c44889fd04ba16937787ba158832bc652a49482feff2915a6504",
-      "size": 2294
     },
     {
       "source": "assets/claude/skills/docs-seeker/scripts/utils/env-loader.js",
@@ -4792,6 +4274,20 @@
       "size": 4940
     },
     {
+      "source": "assets/claude/skills/gpt-image-2-pro-max/scripts/search.py",
+      "target": ".claude/skills/gpt-image-2-pro-max/scripts/search.py",
+      "type": "claude-skill",
+      "sha256": "3bcb0797a09096d884b2b8383de1583a7ebf1d99899209f050aedb8598ca81fb",
+      "size": 8398
+    },
+    {
+      "source": "assets/claude/skills/gpt-image-2-pro-max/SKILL.md",
+      "target": ".claude/skills/gpt-image-2-pro-max/SKILL.md",
+      "type": "claude-skill",
+      "sha256": "f560e312799cb67b7b153687be5065db7e00fb55932b462680ea55c6d620d4bc",
+      "size": 5636
+    },
+    {
       "source": "assets/claude/skills/install.ps1",
       "target": ".claude/skills/install.ps1",
       "type": "claude-skill",
@@ -5009,60 +4505,11 @@
       "size": 12750
     },
     {
-      "source": "assets/claude/skills/markdown-novel-viewer/scripts/tests/server.test.cjs",
-      "target": ".claude/skills/markdown-novel-viewer/scripts/tests/server.test.cjs",
-      "type": "claude-skill",
-      "sha256": "716d70a43f4c2d7f3a2f39cfc7e573d47dfde5a5aecb237c8609b5cf4e017d47",
-      "size": 11529
-    },
-    {
       "source": "assets/claude/skills/markdown-novel-viewer/SKILL.md",
       "target": ".claude/skills/markdown-novel-viewer/SKILL.md",
       "type": "claude-skill",
       "sha256": "cc436d67613240c4f3d0fb66dbb11bc0f1bb31dac396b69d4b1fa4b3a9addec5",
       "size": 9424
-    },
-    {
-      "source": "assets/claude/skills/markdown-novel-viewer/tests/dashboard-assets.test.cjs",
-      "target": ".claude/skills/markdown-novel-viewer/tests/dashboard-assets.test.cjs",
-      "type": "claude-skill",
-      "sha256": "28a137fcd2ffa1ccf347b804bb861cf1a56539755aba7548a83a661311133f31",
-      "size": 10749
-    },
-    {
-      "source": "assets/claude/skills/markdown-novel-viewer/tests/dashboard-renderer.test.cjs",
-      "target": ".claude/skills/markdown-novel-viewer/tests/dashboard-renderer.test.cjs",
-      "type": "claude-skill",
-      "sha256": "a620de25d3b861a98e8c046ea043c2d5ac08499b8b1041656dc06a29175a5261",
-      "size": 12532
-    },
-    {
-      "source": "assets/claude/skills/markdown-novel-viewer/tests/http-server.test.cjs",
-      "target": ".claude/skills/markdown-novel-viewer/tests/http-server.test.cjs",
-      "type": "claude-skill",
-      "sha256": "a34335e62730a5469099cdf0dafe61328b34543aeeb74391805fb2d54659d72b",
-      "size": 8065
-    },
-    {
-      "source": "assets/claude/skills/markdown-novel-viewer/tests/run-tests.cjs",
-      "target": ".claude/skills/markdown-novel-viewer/tests/run-tests.cjs",
-      "type": "claude-skill",
-      "sha256": "ef6e8268ab352712220e8d9c372b33d7ed90e9a69efcbe6530d0046c6a6d57ee",
-      "size": 1054
-    },
-    {
-      "source": "assets/claude/skills/markdown-novel-viewer/tests/test-framework.cjs",
-      "target": ".claude/skills/markdown-novel-viewer/tests/test-framework.cjs",
-      "type": "claude-skill",
-      "sha256": "c8ac1762e27983a3519c026220d1f7ba6842c747ec337214fff78472ee118809",
-      "size": 3248
-    },
-    {
-      "source": "assets/claude/skills/markdown-novel-viewer/tests/verify-xss.cjs",
-      "target": ".claude/skills/markdown-novel-viewer/tests/verify-xss.cjs",
-      "type": "claude-skill",
-      "sha256": "9e78d9de8feb97637d1342080d019a82ccc94589105f5911744b7270831c0d70",
-      "size": 3451
     },
     {
       "source": "assets/claude/skills/mcp-builder/LICENSE.txt",
@@ -5352,41 +4799,6 @@
       "size": 558
     },
     {
-      "source": "assets/claude/skills/media-processing/scripts/tests/.coverage",
-      "target": ".claude/skills/media-processing/scripts/tests/.coverage",
-      "type": "claude-skill",
-      "sha256": "86e832012e03a2fbebbed563c84e3fbfae6f6fa379db99696301593fa40790bd",
-      "size": 53248
-    },
-    {
-      "source": "assets/claude/skills/media-processing/scripts/tests/requirements.txt",
-      "target": ".claude/skills/media-processing/scripts/tests/requirements.txt",
-      "type": "claude-skill",
-      "sha256": "7f336e73b484fac1a0807a6cfba48eefe79c12f3c348d988a708dda2d6df6d14",
-      "size": 32
-    },
-    {
-      "source": "assets/claude/skills/media-processing/scripts/tests/test_batch_resize.py",
-      "target": ".claude/skills/media-processing/scripts/tests/test_batch_resize.py",
-      "type": "claude-skill",
-      "sha256": "ce898f6a8f10596399a4dfaadb1abc9e2a133e18e375e1b6a5b5e56faf6d0033",
-      "size": 10952
-    },
-    {
-      "source": "assets/claude/skills/media-processing/scripts/tests/test_media_convert.py",
-      "target": ".claude/skills/media-processing/scripts/tests/test_media_convert.py",
-      "type": "claude-skill",
-      "sha256": "c067e325304b7cb84701a1481e2aa077ce8a29a04799a1b31a7768342d4c1f20",
-      "size": 7836
-    },
-    {
-      "source": "assets/claude/skills/media-processing/scripts/tests/test_video_optimize.py",
-      "target": ".claude/skills/media-processing/scripts/tests/test_video_optimize.py",
-      "type": "claude-skill",
-      "sha256": "483f996459f251f9f15affaca183e9bee558432a7b49903a87fff9d7da244273",
-      "size": 12131
-    },
-    {
       "source": "assets/claude/skills/media-processing/scripts/video_optimize.py",
       "target": ".claude/skills/media-processing/scripts/video_optimize.py",
       "type": "claude-skill",
@@ -5399,6 +4811,195 @@
       "type": "claude-skill",
       "sha256": "7d8ed92c013e76593ca3f7aa05d8912295822555276fe6e2903fc23a864eee74",
       "size": 2897
+    },
+    {
+      "source": "assets/claude/skills/media-tools/.env.example",
+      "target": ".claude/skills/media-tools/.env.example",
+      "type": "claude-skill",
+      "sha256": "edc65a19f02e250c58612dc655a4c779e136a4c850a2a54ea6e6833b744cc9c1",
+      "size": 1315
+    },
+    {
+      "source": "assets/claude/skills/media-tools/.gitignore",
+      "target": ".claude/skills/media-tools/.gitignore",
+      "type": "claude-skill",
+      "sha256": "acf9843dd09c8062568bdbfd2061e9e826ad807bd49055fb8c2339c8bf4baf71",
+      "size": 266
+    },
+    {
+      "source": "assets/claude/skills/media-tools/README.md",
+      "target": ".claude/skills/media-tools/README.md",
+      "type": "claude-skill",
+      "sha256": "ee30181878a9cd5bc5d3840ec4099ee89d45280ed1daced3cfe148cc78bcc5a2",
+      "size": 10031
+    },
+    {
+      "source": "assets/claude/skills/media-tools/requirements.txt",
+      "target": ".claude/skills/media-tools/requirements.txt",
+      "type": "claude-skill",
+      "sha256": "209e1da5d2db63b9cfab55375c11fa874941bcf6ab06fb035f9d72d89f14be4f",
+      "size": 15
+    },
+    {
+      "source": "assets/claude/skills/media-tools/scripts/chatgpt_oauth_login.py",
+      "target": ".claude/skills/media-tools/scripts/chatgpt_oauth_login.py",
+      "type": "claude-skill",
+      "sha256": "331c0973eab0bd33e4d041741df1deb988a338d417ceb051cf3387e7c9fc6a2e",
+      "size": 8133
+    },
+    {
+      "source": "assets/claude/skills/media-tools/scripts/create_image.py",
+      "target": ".claude/skills/media-tools/scripts/create_image.py",
+      "type": "claude-skill",
+      "sha256": "6aef224d81d8cd63a82cb5b1afd0c30db8ffdf2087efe776919266d52ea466d8",
+      "size": 10260
+    },
+    {
+      "source": "assets/claude/skills/media-tools/scripts/lib/__init__.py",
+      "target": ".claude/skills/media-tools/scripts/lib/__init__.py",
+      "type": "claude-skill",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "source": "assets/claude/skills/media-tools/scripts/lib/chain.py",
+      "target": ".claude/skills/media-tools/scripts/lib/chain.py",
+      "type": "claude-skill",
+      "sha256": "b20af6709fdf838596ae5907baf3d4c13b29a22f83de4c2592429724f1a2f1bc",
+      "size": 4098
+    },
+    {
+      "source": "assets/claude/skills/media-tools/scripts/lib/chatgpt_oauth_token.py",
+      "target": ".claude/skills/media-tools/scripts/lib/chatgpt_oauth_token.py",
+      "type": "claude-skill",
+      "sha256": "1e7c39d7de36d95b8a5a28ea4bf4b5bc54b1394f19769238ab6208b43acc4b0b",
+      "size": 9984
+    },
+    {
+      "source": "assets/claude/skills/media-tools/scripts/lib/dotenv_loader.py",
+      "target": ".claude/skills/media-tools/scripts/lib/dotenv_loader.py",
+      "type": "claude-skill",
+      "sha256": "77e5cfaab7b9cb2504196c2fb29cd80c8a67b281056eec42827a3ec376b91cfb",
+      "size": 2402
+    },
+    {
+      "source": "assets/claude/skills/media-tools/scripts/lib/env_keys.py",
+      "target": ".claude/skills/media-tools/scripts/lib/env_keys.py",
+      "type": "claude-skill",
+      "sha256": "6c0f4faedd2c8d571b687f97395cf434086213392b56dc795bd77684a6894ce6",
+      "size": 4307
+    },
+    {
+      "source": "assets/claude/skills/media-tools/scripts/lib/filename.py",
+      "target": ".claude/skills/media-tools/scripts/lib/filename.py",
+      "type": "claude-skill",
+      "sha256": "397cf08de78e5af22d268dbfe1041dea29157ec804586036e137726286cb88ea",
+      "size": 1454
+    },
+    {
+      "source": "assets/claude/skills/media-tools/scripts/lib/png_metadata.py",
+      "target": ".claude/skills/media-tools/scripts/lib/png_metadata.py",
+      "type": "claude-skill",
+      "sha256": "75e9edceb7d5c6a16b56036c21fe872516c3b7e280a3810654aa3fb5a7361b0a",
+      "size": 1841
+    },
+    {
+      "source": "assets/claude/skills/media-tools/scripts/lib/providers/__init__.py",
+      "target": ".claude/skills/media-tools/scripts/lib/providers/__init__.py",
+      "type": "claude-skill",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "source": "assets/claude/skills/media-tools/scripts/lib/providers/anthropic_vision.py",
+      "target": ".claude/skills/media-tools/scripts/lib/providers/anthropic_vision.py",
+      "type": "claude-skill",
+      "sha256": "74b6781b3b519b5ff1fae00b9d29325a2551c695ea35b773ca199a2608e7cda2",
+      "size": 1854
+    },
+    {
+      "source": "assets/claude/skills/media-tools/scripts/lib/providers/byteplus_image.py",
+      "target": ".claude/skills/media-tools/scripts/lib/providers/byteplus_image.py",
+      "type": "claude-skill",
+      "sha256": "cf1bde9a2cfe19a5b49419c1bc7624b629a2a674602a3f2a94bb12a2a9e26aef",
+      "size": 2457
+    },
+    {
+      "source": "assets/claude/skills/media-tools/scripts/lib/providers/chatgpt_oauth_image.py",
+      "target": ".claude/skills/media-tools/scripts/lib/providers/chatgpt_oauth_image.py",
+      "type": "claude-skill",
+      "sha256": "0686a40cd3c03735a88c5abb94818d4399f24d92bcdc5c71bb86ff0d43cf4199",
+      "size": 6633
+    },
+    {
+      "source": "assets/claude/skills/media-tools/scripts/lib/providers/dashscope_image.py",
+      "target": ".claude/skills/media-tools/scripts/lib/providers/dashscope_image.py",
+      "type": "claude-skill",
+      "sha256": "1082a4cb233b98e62d8d03da5494930173f1d101c401d376c3fb8c11ebf4fb1a",
+      "size": 4262
+    },
+    {
+      "source": "assets/claude/skills/media-tools/scripts/lib/providers/dashscope_vision.py",
+      "target": ".claude/skills/media-tools/scripts/lib/providers/dashscope_vision.py",
+      "type": "claude-skill",
+      "sha256": "4d4f1a0cb1442c043fe6b2c346607fc639483d3d8c7338e2e31df1c62be6cf78",
+      "size": 1718
+    },
+    {
+      "source": "assets/claude/skills/media-tools/scripts/lib/providers/gemini_image.py",
+      "target": ".claude/skills/media-tools/scripts/lib/providers/gemini_image.py",
+      "type": "claude-skill",
+      "sha256": "e870137e2bb2912a423e5a8e6ff4ba44d23c1e8e1a9186bc56f54fd5e2554b14",
+      "size": 2140
+    },
+    {
+      "source": "assets/claude/skills/media-tools/scripts/lib/providers/gemini_vision.py",
+      "target": ".claude/skills/media-tools/scripts/lib/providers/gemini_vision.py",
+      "type": "claude-skill",
+      "sha256": "6e7ff3aa283455d83eb47a02b3cea3b1a18cdc368c04d24b78784e29e4412749",
+      "size": 1797
+    },
+    {
+      "source": "assets/claude/skills/media-tools/scripts/lib/providers/minimax_image.py",
+      "target": ".claude/skills/media-tools/scripts/lib/providers/minimax_image.py",
+      "type": "claude-skill",
+      "sha256": "1903eb987a1de63397cc1cc5ef4115d298d3c4f20d0ec617c0fef3c7caa2e49c",
+      "size": 2193
+    },
+    {
+      "source": "assets/claude/skills/media-tools/scripts/lib/providers/openai_image.py",
+      "target": ".claude/skills/media-tools/scripts/lib/providers/openai_image.py",
+      "type": "claude-skill",
+      "sha256": "e6266e3b565bb4429563f84348e4ba9c132ebca0736e6a416e5659173f595924",
+      "size": 2739
+    },
+    {
+      "source": "assets/claude/skills/media-tools/scripts/lib/providers/openrouter_image.py",
+      "target": ".claude/skills/media-tools/scripts/lib/providers/openrouter_image.py",
+      "type": "claude-skill",
+      "sha256": "dabb6c8a04dcc5671cb775aa3f091384c6ad5ab61b09b65b0b8039b5ff1ff584",
+      "size": 2475
+    },
+    {
+      "source": "assets/claude/skills/media-tools/scripts/lib/providers/openrouter_vision.py",
+      "target": ".claude/skills/media-tools/scripts/lib/providers/openrouter_vision.py",
+      "type": "claude-skill",
+      "sha256": "9fdfd74b824f302bec7fcc80532697bccd1fe142c2e758ff475d9d425bba62df",
+      "size": 1700
+    },
+    {
+      "source": "assets/claude/skills/media-tools/scripts/read_image.py",
+      "target": ".claude/skills/media-tools/scripts/read_image.py",
+      "type": "claude-skill",
+      "sha256": "42b5c059c422c74a31ea4a4660d82ce09fe48af52db46e361f2bf8ebfbf0d027",
+      "size": 6017
+    },
+    {
+      "source": "assets/claude/skills/media-tools/SKILL.md",
+      "target": ".claude/skills/media-tools/SKILL.md",
+      "type": "claude-skill",
+      "sha256": "94c03bbdcfa917c001bd795ba3c6952cc7a8ab2384a8b8eb2e5491e66ace9bc5",
+      "size": 6055
     },
     {
       "source": "assets/claude/skills/mermaidjs-v11/references/cli-usage.md",
@@ -6787,13 +6388,6 @@
       "size": 7024
     },
     {
-      "source": "assets/claude/skills/repomix/scripts/.coverage",
-      "target": ".claude/skills/repomix/scripts/.coverage",
-      "type": "claude-skill",
-      "sha256": "71b5da5bcfbc4f90b8cc493576c15aad70adf984b5ea7bbf5e6b294706e7ee35",
-      "size": 53248
-    },
-    {
       "source": "assets/claude/skills/repomix/scripts/README.md",
       "target": ".claude/skills/repomix/scripts/README.md",
       "type": "claude-skill",
@@ -6820,13 +6414,6 @@
       "type": "claude-skill",
       "sha256": "abb821f8ee3248ea5c82c2d4b3c103ff411f1f44b484398186844487cf4bd9a6",
       "size": 356
-    },
-    {
-      "source": "assets/claude/skills/repomix/scripts/tests/test_repomix_batch.py",
-      "target": ".claude/skills/repomix/scripts/tests/test_repomix_batch.py",
-      "type": "claude-skill",
-      "sha256": "4f15a013b4f1a92cc73e9fc8d1029ebb05fb8c68ac6c6a9c82d56cefd462db18",
-      "size": 18939
     },
     {
       "source": "assets/claude/skills/repomix/SKILL.md",
@@ -7004,20 +6591,6 @@
       "size": 3169
     },
     {
-      "source": "assets/claude/skills/sequential-thinking/tests/format-thought.test.js",
-      "target": ".claude/skills/sequential-thinking/tests/format-thought.test.js",
-      "type": "claude-skill",
-      "sha256": "0250882b794bfac0777fa65845fa9ab8862bc39128c93d93ae3c9f2474f88f54",
-      "size": 3644
-    },
-    {
-      "source": "assets/claude/skills/sequential-thinking/tests/process-thought.test.js",
-      "target": ".claude/skills/sequential-thinking/tests/process-thought.test.js",
-      "type": "claude-skill",
-      "sha256": "ae62b6f1ba2304c62432fe5f53deef7fb315805d1ae54e1cb5f8f322079897ce",
-      "size": 5698
-    },
-    {
       "source": "assets/claude/skills/shader/references/glsl-cellular-voronoi-worley-noise-patterns.md",
       "target": ".claude/skills/shader/references/glsl-cellular-voronoi-worley-noise-patterns.md",
       "type": "claude-skill",
@@ -7165,13 +6738,6 @@
       "size": 10324
     },
     {
-      "source": "assets/claude/skills/shopify/scripts/.coverage",
-      "target": ".claude/skills/shopify/scripts/.coverage",
-      "type": "claude-skill",
-      "sha256": "9b1a52fa7e42d18f69c31e808c40fb0fe51a4f60da6a9e4696bed1274cc530fb",
-      "size": 53248
-    },
-    {
       "source": "assets/claude/skills/shopify/scripts/requirements.txt",
       "target": ".claude/skills/shopify/scripts/requirements.txt",
       "type": "claude-skill",
@@ -7184,20 +6750,6 @@
       "type": "claude-skill",
       "sha256": "baf22c38a9168edecc5a777bb4eba18bc932546bd6da80a402414b6f109c3c18",
       "size": 12675
-    },
-    {
-      "source": "assets/claude/skills/shopify/scripts/tests/.coverage",
-      "target": ".claude/skills/shopify/scripts/tests/.coverage",
-      "type": "claude-skill",
-      "sha256": "d2b0dfe017df2674b062e577e2b1b1b93651e18353d78e9aede6ed14db6fafd8",
-      "size": 53248
-    },
-    {
-      "source": "assets/claude/skills/shopify/scripts/tests/test_shopify_init.py",
-      "target": ".claude/skills/shopify/scripts/tests/test_shopify_init.py",
-      "type": "claude-skill",
-      "sha256": "7bb517b08c58b2b1b9b10f89f1437dba378188adfe63e93aa1dccb3abbeabbd3",
-      "size": 13319
     },
     {
       "source": "assets/claude/skills/shopify/SKILL.md",
@@ -8495,13 +8047,6 @@
       "size": 9980
     },
     {
-      "source": "assets/claude/skills/ui-styling/scripts/.coverage",
-      "target": ".claude/skills/ui-styling/scripts/.coverage",
-      "type": "claude-skill",
-      "sha256": "a1f68d7a1d6322975c40c893004bc5e811d455d3ab124dab5154aad7060e66f5",
-      "size": 53248
-    },
-    {
       "source": "assets/claude/skills/ui-styling/scripts/requirements.txt",
       "target": ".claude/skills/ui-styling/scripts/requirements.txt",
       "type": "claude-skill",
@@ -8521,34 +8066,6 @@
       "type": "claude-skill",
       "sha256": "e2162f99247e598b50333fda0d55f467422aab0f14631f24d1a2bd93decbe850",
       "size": 13643
-    },
-    {
-      "source": "assets/claude/skills/ui-styling/scripts/tests/coverage-ui.json",
-      "target": ".claude/skills/ui-styling/scripts/tests/coverage-ui.json",
-      "type": "claude-skill",
-      "sha256": "33bdc1f5998db9a38cac8e6128a82711f8f8b65fbb3dcb0c1680ae260441cbce",
-      "size": 35121
-    },
-    {
-      "source": "assets/claude/skills/ui-styling/scripts/tests/requirements.txt",
-      "target": ".claude/skills/ui-styling/scripts/tests/requirements.txt",
-      "type": "claude-skill",
-      "sha256": "80846c98ee02a7e9651ec4eee6709f840b785646b469aad5284ab7ab9b344f17",
-      "size": 52
-    },
-    {
-      "source": "assets/claude/skills/ui-styling/scripts/tests/test_shadcn_add.py",
-      "target": ".claude/skills/ui-styling/scripts/tests/test_shadcn_add.py",
-      "type": "claude-skill",
-      "sha256": "4012b1efe1e51a5dcf31078b0d9069f92cfe2045e9a35dd52fdd4631b1815150",
-      "size": 9920
-    },
-    {
-      "source": "assets/claude/skills/ui-styling/scripts/tests/test_tailwind_config_gen.py",
-      "target": ".claude/skills/ui-styling/scripts/tests/test_tailwind_config_gen.py",
-      "type": "claude-skill",
-      "sha256": "2a8b7b3e8b9ff081532551f2168dd08a8471e71c17747ae8d6026e1273068dc8",
-      "size": 12158
     },
     {
       "source": "assets/claude/skills/ui-styling/SKILL.md",
@@ -8866,13 +8383,6 @@
       "size": 0
     },
     {
-      "source": "assets/claude/skills/web-frameworks/scripts/.coverage",
-      "target": ".claude/skills/web-frameworks/scripts/.coverage",
-      "type": "claude-skill",
-      "sha256": "b27f663f8575c76587c3073b7aab28e6e5d26af02d95abfd55417e142e7268bf",
-      "size": 53248
-    },
-    {
       "source": "assets/claude/skills/web-frameworks/scripts/nextjs_init.py",
       "target": ".claude/skills/web-frameworks/scripts/nextjs_init.py",
       "type": "claude-skill",
@@ -8885,34 +8395,6 @@
       "type": "claude-skill",
       "sha256": "89002a89d32b1f2e71cfb62fe48fe52580aedd6001a4fe761fd1edb8f727af28",
       "size": 430
-    },
-    {
-      "source": "assets/claude/skills/web-frameworks/scripts/tests/coverage-web.json",
-      "target": ".claude/skills/web-frameworks/scripts/tests/coverage-web.json",
-      "type": "claude-skill",
-      "sha256": "737e65f4900cc685612f9831ebd622567efb3bd7de55dd9d97b5aa2e04cd89ec",
-      "size": 34849
-    },
-    {
-      "source": "assets/claude/skills/web-frameworks/scripts/tests/requirements.txt",
-      "target": ".claude/skills/web-frameworks/scripts/tests/requirements.txt",
-      "type": "claude-skill",
-      "sha256": "0795bdcfb80afae0ff06e9cbe5bed67b39283e577984bed87d85da3fec798a37",
-      "size": 52
-    },
-    {
-      "source": "assets/claude/skills/web-frameworks/scripts/tests/test_nextjs_init.py",
-      "target": ".claude/skills/web-frameworks/scripts/tests/test_nextjs_init.py",
-      "type": "claude-skill",
-      "sha256": "770ea000b05f56cf199aa93533a070afd2f6113dd1f7a975de0a5ef0168f64d9",
-      "size": 10735
-    },
-    {
-      "source": "assets/claude/skills/web-frameworks/scripts/tests/test_turborepo_migrate.py",
-      "target": ".claude/skills/web-frameworks/scripts/tests/test_turborepo_migrate.py",
-      "type": "claude-skill",
-      "sha256": "2897b6b62df7a8b7d029520ac32a92634e6a19d3cac043ff4ffc3441c014c671",
-      "size": 12861
     },
     {
       "source": "assets/claude/skills/web-frameworks/scripts/turborepo_migrate.py",
@@ -9125,13 +8607,6 @@
       "size": 32981
     },
     {
-      "source": "assets/claude/skills/worktree/scripts/worktree.test.cjs",
-      "target": ".claude/skills/worktree/scripts/worktree.test.cjs",
-      "type": "claude-skill",
-      "sha256": "88cc9dedf639c8db9762837e1dad247182503d80f3517c9942f57efa46301231",
-      "size": 35587
-    },
-    {
       "source": "assets/claude/skills/worktree/SKILL.md",
       "target": ".claude/skills/worktree/SKILL.md",
       "type": "claude-skill",
@@ -9200,6 +8675,13 @@
       "type": "opencode-agent",
       "sha256": "2cd1feb10e3adac35e8b3415812d9a64ead1fb57885541ee50986f8b11ee56cc",
       "size": 3921
+    },
+    {
+      "source": "assets/opencode/agents/media-designer.md",
+      "target": ".opencode/agents/media-designer.md",
+      "type": "opencode-agent",
+      "sha256": "3ef018b3aedca70f7ee0d46e1bd664b704c019189617bbf120a1a06f0b6f8351",
+      "size": 14432
     },
     {
       "source": "assets/opencode/agents/planner.md",
@@ -9482,13 +8964,6 @@
       "size": 11040
     },
     {
-      "source": "assets/opencode/skills/ai-multimodal/scripts/.coverage",
-      "target": ".opencode/skills/ai-multimodal/scripts/.coverage",
-      "type": "opencode-skill",
-      "sha256": "1025c4cc0f9a0e8231b58ff45705eff817fce0bef13633f259390f7722beced7",
-      "size": 53248
-    },
-    {
       "source": "assets/opencode/skills/ai-multimodal/scripts/check_setup.py",
       "target": ".opencode/skills/ai-multimodal/scripts/check_setup.py",
       "type": "opencode-skill",
@@ -9543,62 +9018,6 @@
       "type": "opencode-skill",
       "sha256": "ca4e56c561613a6ed22b7b9b7f2853ea8f1bbe3adfc9b52103de0df7d65fae6b",
       "size": 442
-    },
-    {
-      "source": "assets/opencode/skills/ai-multimodal/scripts/tests/.coverage",
-      "target": ".opencode/skills/ai-multimodal/scripts/tests/.coverage",
-      "type": "opencode-skill",
-      "sha256": "e9f57ddb82d3fe6ff4cc23288c3a10236f24d6171ecb3e886e7063b5a1dd0911",
-      "size": 53248
-    },
-    {
-      "source": "assets/opencode/skills/ai-multimodal/scripts/tests/requirements.txt",
-      "target": ".opencode/skills/ai-multimodal/scripts/tests/requirements.txt",
-      "type": "opencode-skill",
-      "sha256": "15a909ef1471e0d1fe9d523c3b02016f01abc9ab3a81b8d047a1222c3f3af2d2",
-      "size": 352
-    },
-    {
-      "source": "assets/opencode/skills/ai-multimodal/scripts/tests/test_document_converter.py",
-      "target": ".opencode/skills/ai-multimodal/scripts/tests/test_document_converter.py",
-      "type": "opencode-skill",
-      "sha256": "3e84d80ea301b631df8d7170978128ec272058b9c82a01e0113c64525d68658f",
-      "size": 2229
-    },
-    {
-      "source": "assets/opencode/skills/ai-multimodal/scripts/tests/test_gemini_batch_process.py",
-      "target": ".opencode/skills/ai-multimodal/scripts/tests/test_gemini_batch_process.py",
-      "type": "opencode-skill",
-      "sha256": "799bec3975ba750c056b35090148325811b1c9488ae50c05e98ac651cf9e6dfc",
-      "size": 12677
-    },
-    {
-      "source": "assets/opencode/skills/ai-multimodal/scripts/tests/test_media_optimizer.py",
-      "target": ".opencode/skills/ai-multimodal/scripts/tests/test_media_optimizer.py",
-      "type": "opencode-skill",
-      "sha256": "8451512f789ad3519dccac1ab8221397c85188abfd528c8f9d66cecccdfd8040",
-      "size": 11824
-    },
-    {
-      "source": "assets/opencode/skills/ai-multimodal/scripts/tests/test_minimax_api_client.py",
-      "target": ".opencode/skills/ai-multimodal/scripts/tests/test_minimax_api_client.py",
-      "type": "opencode-skill",
-      "sha256": "ea1de900949b6b8b88b119dad6e4062b215478ab20c53e9789e7c3ba936299c7",
-      "size": 8252
-    },
-    {
-      "source": "assets/opencode/skills/ai-multimodal/scripts/tests/test_minimax_cli.py",
-      "target": ".opencode/skills/ai-multimodal/scripts/tests/test_minimax_cli.py",
-      "type": "opencode-skill",
-      "sha256": "4a0614520142329e0656dd62ccf7c8ab8391f5d1f6dc90d5d9a51c549e43e171",
-      "size": 7726
-    },
-    {
-      "source": "assets/opencode/skills/ai-multimodal/scripts/tests/test_minimax_generate.py",
-      "target": ".opencode/skills/ai-multimodal/scripts/tests/test_minimax_generate.py",
-      "type": "opencode-skill",
-      "sha256": "2c4a8f5b0cc34f7262c0b86b4ba60c48f7300906cd8267acdb26445c278d8283",
-      "size": 14121
     },
     {
       "source": "assets/opencode/skills/ai-multimodal/SKILL.md",
@@ -9727,13 +9146,6 @@
       "size": 9293
     },
     {
-      "source": "assets/opencode/skills/better-auth/scripts/.coverage",
-      "target": ".opencode/skills/better-auth/scripts/.coverage",
-      "type": "opencode-skill",
-      "sha256": "f0eb0985b3a10c20dc53020b9aee09cbabd40e96955c47085f5678e437560528",
-      "size": 53248
-    },
-    {
       "source": "assets/opencode/skills/better-auth/scripts/better_auth_init.py",
       "target": ".opencode/skills/better-auth/scripts/better_auth_init.py",
       "type": "opencode-skill",
@@ -9746,20 +9158,6 @@
       "type": "opencode-skill",
       "sha256": "4c164fd0ed4d81bba6da0852149aadfc80e169e488b86ba33cc757a3cc64bff2",
       "size": 402
-    },
-    {
-      "source": "assets/opencode/skills/better-auth/scripts/tests/.coverage",
-      "target": ".opencode/skills/better-auth/scripts/tests/.coverage",
-      "type": "opencode-skill",
-      "sha256": "0c77c29e26616abf909054079e5b0d0e316329e09ab0569c330e0cd2e22caa66",
-      "size": 53248
-    },
-    {
-      "source": "assets/opencode/skills/better-auth/scripts/tests/test_better_auth_init.py",
-      "target": ".opencode/skills/better-auth/scripts/tests/test_better_auth_init.py",
-      "type": "opencode-skill",
-      "sha256": "134df79e3238f4e15e2a7c8df4d9db4c143e404a7454f8f618e56374e0de8a94",
-      "size": 15496
     },
     {
       "source": "assets/opencode/skills/better-auth/SKILL.md",
@@ -9837,20 +9235,6 @@
       "type": "opencode-skill",
       "sha256": "dcec4af083b7fe2d405a40aad2b511317c1e9deaa2bec5ca91ec9959aff1a423",
       "size": 19065
-    },
-    {
-      "source": "assets/opencode/skills/chrome-devtools/scripts/__tests__/error-handling.test.js",
-      "target": ".opencode/skills/chrome-devtools/scripts/__tests__/error-handling.test.js",
-      "type": "opencode-skill",
-      "sha256": "f357f96e84393791b350edcfeafedbe661d7f1efa4c6a330837e15861d7f96f4",
-      "size": 3711
-    },
-    {
-      "source": "assets/opencode/skills/chrome-devtools/scripts/__tests__/selector.test.js",
-      "target": ".opencode/skills/chrome-devtools/scripts/__tests__/selector.test.js",
-      "type": "opencode-skill",
-      "sha256": "69fa6c4d04f2c8d0578325894fc06ea820e4c771d267d90969f09343e076d5e2",
-      "size": 6525
     },
     {
       "source": "assets/opencode/skills/chrome-devtools/scripts/.gitignore",
@@ -10138,13 +9522,6 @@
       "type": "opencode-skill",
       "sha256": "f4dc594206175b17de25464b5f60a0e011774a7c7843014b6442338a085eba57",
       "size": 1520
-    },
-    {
-      "source": "assets/opencode/skills/ck-debug/scripts/find-polluter.test.md",
-      "target": ".opencode/skills/ck-debug/scripts/find-polluter.test.md",
-      "type": "opencode-skill",
-      "sha256": "3147fa73a49f7ae82312277d36a357c71dde430f14a7fa86e81516f5e71365ee",
-      "size": 2117
     },
     {
       "source": "assets/opencode/skills/ck-debug/SKILL.md",
@@ -10546,13 +9923,6 @@
       "size": 11131
     },
     {
-      "source": "assets/opencode/skills/context-engineering/scripts/tests/test_edge_cases.py",
-      "target": ".opencode/skills/context-engineering/scripts/tests/test_edge_cases.py",
-      "type": "opencode-skill",
-      "sha256": "06d705178ded2fa7e571e35c7bc875580337dcb15e4b27b1814c644f15115dfe",
-      "size": 9651
-    },
-    {
       "source": "assets/opencode/skills/context-engineering/SKILL.md",
       "target": ".opencode/skills/context-engineering/SKILL.md",
       "type": "opencode-skill",
@@ -10784,13 +10154,6 @@
       "size": 10091
     },
     {
-      "source": "assets/opencode/skills/databases/scripts/.coverage",
-      "target": ".opencode/skills/databases/scripts/.coverage",
-      "type": "opencode-skill",
-      "sha256": "e58277507e55c72bd390690e2307f6751cdb9c96e6c6a3ee346f1a710e9c02bd",
-      "size": 53248
-    },
-    {
       "source": "assets/opencode/skills/databases/scripts/db_backup.py",
       "target": ".opencode/skills/databases/scripts/db_backup.py",
       "type": "opencode-skill",
@@ -10817,41 +10180,6 @@
       "type": "opencode-skill",
       "sha256": "da0d7d811e02966201fac258844820dc214cb1b3bcea3006bd94029f6a2518d1",
       "size": 558
-    },
-    {
-      "source": "assets/opencode/skills/databases/scripts/tests/coverage-db.json",
-      "target": ".opencode/skills/databases/scripts/tests/coverage-db.json",
-      "type": "opencode-skill",
-      "sha256": "f40c12d1ff34d9c927b31ba3b3f57371f06f45cf462f1516d0eb3f1fa2351b0a",
-      "size": 47444
-    },
-    {
-      "source": "assets/opencode/skills/databases/scripts/tests/requirements.txt",
-      "target": ".opencode/skills/databases/scripts/tests/requirements.txt",
-      "type": "opencode-skill",
-      "sha256": "52a7b73d3f2b08178eb3bac41cdc1786f4b06336f741c817d89347e8dbb5504d",
-      "size": 69
-    },
-    {
-      "source": "assets/opencode/skills/databases/scripts/tests/test_db_backup.py",
-      "target": ".opencode/skills/databases/scripts/tests/test_db_backup.py",
-      "type": "opencode-skill",
-      "sha256": "ba16ff85557dc29a7a424cb80aebcde760f3a3d59ad7eb4d05a7dfed483d67d7",
-      "size": 10800
-    },
-    {
-      "source": "assets/opencode/skills/databases/scripts/tests/test_db_migrate.py",
-      "target": ".opencode/skills/databases/scripts/tests/test_db_migrate.py",
-      "type": "opencode-skill",
-      "sha256": "22f9323d767bdd02a97b7250f14c2cda788f829d9af5497da2417ace21ae2fcc",
-      "size": 9529
-    },
-    {
-      "source": "assets/opencode/skills/databases/scripts/tests/test_db_performance_check.py",
-      "target": ".opencode/skills/databases/scripts/tests/test_db_performance_check.py",
-      "type": "opencode-skill",
-      "sha256": "f89b7421305587cd45daf1f47d02a0f6c791a92b5a1b5ac0332982f91b6ed2e9",
-      "size": 11933
     },
     {
       "source": "assets/opencode/skills/databases/SKILL.md",
@@ -10978,13 +10306,6 @@
       "type": "opencode-skill",
       "sha256": "f4dc594206175b17de25464b5f60a0e011774a7c7843014b6442338a085eba57",
       "size": 1520
-    },
-    {
-      "source": "assets/opencode/skills/debug/scripts/find-polluter.test.md",
-      "target": ".opencode/skills/debug/scripts/find-polluter.test.md",
-      "type": "opencode-skill",
-      "sha256": "3147fa73a49f7ae82312277d36a357c71dde430f14a7fa86e81516f5e71365ee",
-      "size": 2117
     },
     {
       "source": "assets/opencode/skills/debug/SKILL.md",
@@ -11526,27 +10847,6 @@
       "size": 471
     },
     {
-      "source": "assets/opencode/skills/devops/scripts/tests/requirements.txt",
-      "target": ".opencode/skills/devops/scripts/tests/requirements.txt",
-      "type": "opencode-skill",
-      "sha256": "0795bdcfb80afae0ff06e9cbe5bed67b39283e577984bed87d85da3fec798a37",
-      "size": 52
-    },
-    {
-      "source": "assets/opencode/skills/devops/scripts/tests/test_cloudflare_deploy.py",
-      "target": ".opencode/skills/devops/scripts/tests/test_cloudflare_deploy.py",
-      "type": "opencode-skill",
-      "sha256": "66373336b3290bed9ca300699816954006cabc9f91897cb4759358d365dabc69",
-      "size": 9261
-    },
-    {
-      "source": "assets/opencode/skills/devops/scripts/tests/test_docker_optimize.py",
-      "target": ".opencode/skills/devops/scripts/tests/test_docker_optimize.py",
-      "type": "opencode-skill",
-      "sha256": "c82fd9d4f18e60d1ebdbcebda5781d462a6a0c846658512aa5239e1eaee0d9fb",
-      "size": 12969
-    },
-    {
       "source": "assets/opencode/skills/devops/SKILL.md",
       "target": ".opencode/skills/devops/SKILL.md",
       "type": "opencode-skill",
@@ -11601,34 +10901,6 @@
       "type": "opencode-skill",
       "sha256": "232937adff9e3c090b73f56ad796867c8a462dc9845130f6d806075efb6e8b1a",
       "size": 4981
-    },
-    {
-      "source": "assets/opencode/skills/docs-seeker/scripts/tests/run-tests.js",
-      "target": ".opencode/skills/docs-seeker/scripts/tests/run-tests.js",
-      "type": "opencode-skill",
-      "sha256": "1c92cd7eb0a1c964d671e9648595e8ffd5276bdb52590d437201b297c5097f6e",
-      "size": 1554
-    },
-    {
-      "source": "assets/opencode/skills/docs-seeker/scripts/tests/test-analyze-llms.js",
-      "target": ".opencode/skills/docs-seeker/scripts/tests/test-analyze-llms.js",
-      "type": "opencode-skill",
-      "sha256": "9435d5e8a39a9b509e297f7783aa40008d75299e1e50eca6f22cd2f373360e69",
-      "size": 3831
-    },
-    {
-      "source": "assets/opencode/skills/docs-seeker/scripts/tests/test-detect-topic.js",
-      "target": ".opencode/skills/docs-seeker/scripts/tests/test-detect-topic.js",
-      "type": "opencode-skill",
-      "sha256": "a1c60bfec4e177aa888ec37e0d27c3b25dcee3c5ef3a55635339649f00099d7f",
-      "size": 4009
-    },
-    {
-      "source": "assets/opencode/skills/docs-seeker/scripts/tests/test-fetch-docs.js",
-      "target": ".opencode/skills/docs-seeker/scripts/tests/test-fetch-docs.js",
-      "type": "opencode-skill",
-      "sha256": "16f3bab18021c44889fd04ba16937787ba158832bc652a49482feff2915a6504",
-      "size": 2294
     },
     {
       "source": "assets/opencode/skills/docs-seeker/scripts/utils/env-loader.js",
@@ -12254,6 +11526,20 @@
       "size": 4940
     },
     {
+      "source": "assets/opencode/skills/gpt-image-2-pro-max/scripts/search.py",
+      "target": ".opencode/skills/gpt-image-2-pro-max/scripts/search.py",
+      "type": "opencode-skill",
+      "sha256": "657e382ffe88ad18364940bdc72a60f4e9c5f3246cc3131fb3bbada5f8923b80",
+      "size": 8400
+    },
+    {
+      "source": "assets/opencode/skills/gpt-image-2-pro-max/SKILL.md",
+      "target": ".opencode/skills/gpt-image-2-pro-max/SKILL.md",
+      "type": "opencode-skill",
+      "sha256": "f68f6980e25e307bdfd689a54b3bbea83cb67c04f37f22638ee5aee53cb5eaf3",
+      "size": 5662
+    },
+    {
       "source": "assets/opencode/skills/journal/SKILL.md",
       "target": ".opencode/skills/journal/SKILL.md",
       "type": "opencode-skill",
@@ -12443,60 +11729,11 @@
       "size": 12750
     },
     {
-      "source": "assets/opencode/skills/markdown-novel-viewer/scripts/tests/server.test.cjs",
-      "target": ".opencode/skills/markdown-novel-viewer/scripts/tests/server.test.cjs",
-      "type": "opencode-skill",
-      "sha256": "716d70a43f4c2d7f3a2f39cfc7e573d47dfde5a5aecb237c8609b5cf4e017d47",
-      "size": 11529
-    },
-    {
       "source": "assets/opencode/skills/markdown-novel-viewer/SKILL.md",
       "target": ".opencode/skills/markdown-novel-viewer/SKILL.md",
       "type": "opencode-skill",
       "sha256": "a2e63449594596cdb5558dd1dae61e0eb9ff2ff9a92621a77d9c83306b05f0ea",
       "size": 9436
-    },
-    {
-      "source": "assets/opencode/skills/markdown-novel-viewer/tests/dashboard-assets.test.cjs",
-      "target": ".opencode/skills/markdown-novel-viewer/tests/dashboard-assets.test.cjs",
-      "type": "opencode-skill",
-      "sha256": "28a137fcd2ffa1ccf347b804bb861cf1a56539755aba7548a83a661311133f31",
-      "size": 10749
-    },
-    {
-      "source": "assets/opencode/skills/markdown-novel-viewer/tests/dashboard-renderer.test.cjs",
-      "target": ".opencode/skills/markdown-novel-viewer/tests/dashboard-renderer.test.cjs",
-      "type": "opencode-skill",
-      "sha256": "a620de25d3b861a98e8c046ea043c2d5ac08499b8b1041656dc06a29175a5261",
-      "size": 12532
-    },
-    {
-      "source": "assets/opencode/skills/markdown-novel-viewer/tests/http-server.test.cjs",
-      "target": ".opencode/skills/markdown-novel-viewer/tests/http-server.test.cjs",
-      "type": "opencode-skill",
-      "sha256": "a34335e62730a5469099cdf0dafe61328b34543aeeb74391805fb2d54659d72b",
-      "size": 8065
-    },
-    {
-      "source": "assets/opencode/skills/markdown-novel-viewer/tests/run-tests.cjs",
-      "target": ".opencode/skills/markdown-novel-viewer/tests/run-tests.cjs",
-      "type": "opencode-skill",
-      "sha256": "ef6e8268ab352712220e8d9c372b33d7ed90e9a69efcbe6530d0046c6a6d57ee",
-      "size": 1054
-    },
-    {
-      "source": "assets/opencode/skills/markdown-novel-viewer/tests/test-framework.cjs",
-      "target": ".opencode/skills/markdown-novel-viewer/tests/test-framework.cjs",
-      "type": "opencode-skill",
-      "sha256": "c8ac1762e27983a3519c026220d1f7ba6842c747ec337214fff78472ee118809",
-      "size": 3248
-    },
-    {
-      "source": "assets/opencode/skills/markdown-novel-viewer/tests/verify-xss.cjs",
-      "target": ".opencode/skills/markdown-novel-viewer/tests/verify-xss.cjs",
-      "type": "opencode-skill",
-      "sha256": "9e78d9de8feb97637d1342080d019a82ccc94589105f5911744b7270831c0d70",
-      "size": 3451
     },
     {
       "source": "assets/opencode/skills/mcp-builder/LICENSE.txt",
@@ -12779,41 +12016,6 @@
       "size": 558
     },
     {
-      "source": "assets/opencode/skills/media-processing/scripts/tests/.coverage",
-      "target": ".opencode/skills/media-processing/scripts/tests/.coverage",
-      "type": "opencode-skill",
-      "sha256": "86e832012e03a2fbebbed563c84e3fbfae6f6fa379db99696301593fa40790bd",
-      "size": 53248
-    },
-    {
-      "source": "assets/opencode/skills/media-processing/scripts/tests/requirements.txt",
-      "target": ".opencode/skills/media-processing/scripts/tests/requirements.txt",
-      "type": "opencode-skill",
-      "sha256": "7f336e73b484fac1a0807a6cfba48eefe79c12f3c348d988a708dda2d6df6d14",
-      "size": 32
-    },
-    {
-      "source": "assets/opencode/skills/media-processing/scripts/tests/test_batch_resize.py",
-      "target": ".opencode/skills/media-processing/scripts/tests/test_batch_resize.py",
-      "type": "opencode-skill",
-      "sha256": "ce898f6a8f10596399a4dfaadb1abc9e2a133e18e375e1b6a5b5e56faf6d0033",
-      "size": 10952
-    },
-    {
-      "source": "assets/opencode/skills/media-processing/scripts/tests/test_media_convert.py",
-      "target": ".opencode/skills/media-processing/scripts/tests/test_media_convert.py",
-      "type": "opencode-skill",
-      "sha256": "c067e325304b7cb84701a1481e2aa077ce8a29a04799a1b31a7768342d4c1f20",
-      "size": 7836
-    },
-    {
-      "source": "assets/opencode/skills/media-processing/scripts/tests/test_video_optimize.py",
-      "target": ".opencode/skills/media-processing/scripts/tests/test_video_optimize.py",
-      "type": "opencode-skill",
-      "sha256": "483f996459f251f9f15affaca183e9bee558432a7b49903a87fff9d7da244273",
-      "size": 12131
-    },
-    {
       "source": "assets/opencode/skills/media-processing/scripts/video_optimize.py",
       "target": ".opencode/skills/media-processing/scripts/video_optimize.py",
       "type": "opencode-skill",
@@ -12826,6 +12028,195 @@
       "type": "opencode-skill",
       "sha256": "7d8ed92c013e76593ca3f7aa05d8912295822555276fe6e2903fc23a864eee74",
       "size": 2897
+    },
+    {
+      "source": "assets/opencode/skills/media-tools/.env.example",
+      "target": ".opencode/skills/media-tools/.env.example",
+      "type": "opencode-skill",
+      "sha256": "206be376e9548ebcfcf283a8d0c46611297305195ecffacaaa5795ea8026d8ad",
+      "size": 1317
+    },
+    {
+      "source": "assets/opencode/skills/media-tools/.gitignore",
+      "target": ".opencode/skills/media-tools/.gitignore",
+      "type": "opencode-skill",
+      "sha256": "acf9843dd09c8062568bdbfd2061e9e826ad807bd49055fb8c2339c8bf4baf71",
+      "size": 266
+    },
+    {
+      "source": "assets/opencode/skills/media-tools/README.md",
+      "target": ".opencode/skills/media-tools/README.md",
+      "type": "opencode-skill",
+      "sha256": "470596fbdbaa4accc9769f2b785117471ffa284b2b5e7593d7cbce3993bc75a4",
+      "size": 10105
+    },
+    {
+      "source": "assets/opencode/skills/media-tools/requirements.txt",
+      "target": ".opencode/skills/media-tools/requirements.txt",
+      "type": "opencode-skill",
+      "sha256": "209e1da5d2db63b9cfab55375c11fa874941bcf6ab06fb035f9d72d89f14be4f",
+      "size": 15
+    },
+    {
+      "source": "assets/opencode/skills/media-tools/scripts/chatgpt_oauth_login.py",
+      "target": ".opencode/skills/media-tools/scripts/chatgpt_oauth_login.py",
+      "type": "opencode-skill",
+      "sha256": "331c0973eab0bd33e4d041741df1deb988a338d417ceb051cf3387e7c9fc6a2e",
+      "size": 8133
+    },
+    {
+      "source": "assets/opencode/skills/media-tools/scripts/create_image.py",
+      "target": ".opencode/skills/media-tools/scripts/create_image.py",
+      "type": "opencode-skill",
+      "sha256": "6aef224d81d8cd63a82cb5b1afd0c30db8ffdf2087efe776919266d52ea466d8",
+      "size": 10260
+    },
+    {
+      "source": "assets/opencode/skills/media-tools/scripts/lib/__init__.py",
+      "target": ".opencode/skills/media-tools/scripts/lib/__init__.py",
+      "type": "opencode-skill",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "source": "assets/opencode/skills/media-tools/scripts/lib/chain.py",
+      "target": ".opencode/skills/media-tools/scripts/lib/chain.py",
+      "type": "opencode-skill",
+      "sha256": "b20af6709fdf838596ae5907baf3d4c13b29a22f83de4c2592429724f1a2f1bc",
+      "size": 4098
+    },
+    {
+      "source": "assets/opencode/skills/media-tools/scripts/lib/chatgpt_oauth_token.py",
+      "target": ".opencode/skills/media-tools/scripts/lib/chatgpt_oauth_token.py",
+      "type": "opencode-skill",
+      "sha256": "1e7c39d7de36d95b8a5a28ea4bf4b5bc54b1394f19769238ab6208b43acc4b0b",
+      "size": 9984
+    },
+    {
+      "source": "assets/opencode/skills/media-tools/scripts/lib/dotenv_loader.py",
+      "target": ".opencode/skills/media-tools/scripts/lib/dotenv_loader.py",
+      "type": "opencode-skill",
+      "sha256": "5c3d45bbfe2c6647101a6789a20d7c83c8f223115269bd38386f815767d6a190",
+      "size": 2406
+    },
+    {
+      "source": "assets/opencode/skills/media-tools/scripts/lib/env_keys.py",
+      "target": ".opencode/skills/media-tools/scripts/lib/env_keys.py",
+      "type": "opencode-skill",
+      "sha256": "6c0f4faedd2c8d571b687f97395cf434086213392b56dc795bd77684a6894ce6",
+      "size": 4307
+    },
+    {
+      "source": "assets/opencode/skills/media-tools/scripts/lib/filename.py",
+      "target": ".opencode/skills/media-tools/scripts/lib/filename.py",
+      "type": "opencode-skill",
+      "sha256": "397cf08de78e5af22d268dbfe1041dea29157ec804586036e137726286cb88ea",
+      "size": 1454
+    },
+    {
+      "source": "assets/opencode/skills/media-tools/scripts/lib/png_metadata.py",
+      "target": ".opencode/skills/media-tools/scripts/lib/png_metadata.py",
+      "type": "opencode-skill",
+      "sha256": "75e9edceb7d5c6a16b56036c21fe872516c3b7e280a3810654aa3fb5a7361b0a",
+      "size": 1841
+    },
+    {
+      "source": "assets/opencode/skills/media-tools/scripts/lib/providers/__init__.py",
+      "target": ".opencode/skills/media-tools/scripts/lib/providers/__init__.py",
+      "type": "opencode-skill",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "source": "assets/opencode/skills/media-tools/scripts/lib/providers/anthropic_vision.py",
+      "target": ".opencode/skills/media-tools/scripts/lib/providers/anthropic_vision.py",
+      "type": "opencode-skill",
+      "sha256": "74b6781b3b519b5ff1fae00b9d29325a2551c695ea35b773ca199a2608e7cda2",
+      "size": 1854
+    },
+    {
+      "source": "assets/opencode/skills/media-tools/scripts/lib/providers/byteplus_image.py",
+      "target": ".opencode/skills/media-tools/scripts/lib/providers/byteplus_image.py",
+      "type": "opencode-skill",
+      "sha256": "cf1bde9a2cfe19a5b49419c1bc7624b629a2a674602a3f2a94bb12a2a9e26aef",
+      "size": 2457
+    },
+    {
+      "source": "assets/opencode/skills/media-tools/scripts/lib/providers/chatgpt_oauth_image.py",
+      "target": ".opencode/skills/media-tools/scripts/lib/providers/chatgpt_oauth_image.py",
+      "type": "opencode-skill",
+      "sha256": "0686a40cd3c03735a88c5abb94818d4399f24d92bcdc5c71bb86ff0d43cf4199",
+      "size": 6633
+    },
+    {
+      "source": "assets/opencode/skills/media-tools/scripts/lib/providers/dashscope_image.py",
+      "target": ".opencode/skills/media-tools/scripts/lib/providers/dashscope_image.py",
+      "type": "opencode-skill",
+      "sha256": "1082a4cb233b98e62d8d03da5494930173f1d101c401d376c3fb8c11ebf4fb1a",
+      "size": 4262
+    },
+    {
+      "source": "assets/opencode/skills/media-tools/scripts/lib/providers/dashscope_vision.py",
+      "target": ".opencode/skills/media-tools/scripts/lib/providers/dashscope_vision.py",
+      "type": "opencode-skill",
+      "sha256": "4d4f1a0cb1442c043fe6b2c346607fc639483d3d8c7338e2e31df1c62be6cf78",
+      "size": 1718
+    },
+    {
+      "source": "assets/opencode/skills/media-tools/scripts/lib/providers/gemini_image.py",
+      "target": ".opencode/skills/media-tools/scripts/lib/providers/gemini_image.py",
+      "type": "opencode-skill",
+      "sha256": "e870137e2bb2912a423e5a8e6ff4ba44d23c1e8e1a9186bc56f54fd5e2554b14",
+      "size": 2140
+    },
+    {
+      "source": "assets/opencode/skills/media-tools/scripts/lib/providers/gemini_vision.py",
+      "target": ".opencode/skills/media-tools/scripts/lib/providers/gemini_vision.py",
+      "type": "opencode-skill",
+      "sha256": "6e7ff3aa283455d83eb47a02b3cea3b1a18cdc368c04d24b78784e29e4412749",
+      "size": 1797
+    },
+    {
+      "source": "assets/opencode/skills/media-tools/scripts/lib/providers/minimax_image.py",
+      "target": ".opencode/skills/media-tools/scripts/lib/providers/minimax_image.py",
+      "type": "opencode-skill",
+      "sha256": "1903eb987a1de63397cc1cc5ef4115d298d3c4f20d0ec617c0fef3c7caa2e49c",
+      "size": 2193
+    },
+    {
+      "source": "assets/opencode/skills/media-tools/scripts/lib/providers/openai_image.py",
+      "target": ".opencode/skills/media-tools/scripts/lib/providers/openai_image.py",
+      "type": "opencode-skill",
+      "sha256": "e6266e3b565bb4429563f84348e4ba9c132ebca0736e6a416e5659173f595924",
+      "size": 2739
+    },
+    {
+      "source": "assets/opencode/skills/media-tools/scripts/lib/providers/openrouter_image.py",
+      "target": ".opencode/skills/media-tools/scripts/lib/providers/openrouter_image.py",
+      "type": "opencode-skill",
+      "sha256": "dabb6c8a04dcc5671cb775aa3f091384c6ad5ab61b09b65b0b8039b5ff1ff584",
+      "size": 2475
+    },
+    {
+      "source": "assets/opencode/skills/media-tools/scripts/lib/providers/openrouter_vision.py",
+      "target": ".opencode/skills/media-tools/scripts/lib/providers/openrouter_vision.py",
+      "type": "opencode-skill",
+      "sha256": "9fdfd74b824f302bec7fcc80532697bccd1fe142c2e758ff475d9d425bba62df",
+      "size": 1700
+    },
+    {
+      "source": "assets/opencode/skills/media-tools/scripts/read_image.py",
+      "target": ".opencode/skills/media-tools/scripts/read_image.py",
+      "type": "opencode-skill",
+      "sha256": "42b5c059c422c74a31ea4a4660d82ce09fe48af52db46e361f2bf8ebfbf0d027",
+      "size": 6017
+    },
+    {
+      "source": "assets/opencode/skills/media-tools/SKILL.md",
+      "target": ".opencode/skills/media-tools/SKILL.md",
+      "type": "opencode-skill",
+      "sha256": "23867eb86ef0052ee1de22b66b73930f1e2844457ff637e6bdf4246c2410e3f2",
+      "size": 6081
     },
     {
       "source": "assets/opencode/skills/mermaidjs-v11/references/cli-usage.md",
@@ -14298,13 +13689,6 @@
       "size": 7024
     },
     {
-      "source": "assets/opencode/skills/repomix/scripts/.coverage",
-      "target": ".opencode/skills/repomix/scripts/.coverage",
-      "type": "opencode-skill",
-      "sha256": "71b5da5bcfbc4f90b8cc493576c15aad70adf984b5ea7bbf5e6b294706e7ee35",
-      "size": 53248
-    },
-    {
       "source": "assets/opencode/skills/repomix/scripts/README.md",
       "target": ".opencode/skills/repomix/scripts/README.md",
       "type": "opencode-skill",
@@ -14331,13 +13715,6 @@
       "type": "opencode-skill",
       "sha256": "abb821f8ee3248ea5c82c2d4b3c103ff411f1f44b484398186844487cf4bd9a6",
       "size": 356
-    },
-    {
-      "source": "assets/opencode/skills/repomix/scripts/tests/test_repomix_batch.py",
-      "target": ".opencode/skills/repomix/scripts/tests/test_repomix_batch.py",
-      "type": "opencode-skill",
-      "sha256": "4f15a013b4f1a92cc73e9fc8d1029ebb05fb8c68ac6c6a9c82d56cefd462db18",
-      "size": 18939
     },
     {
       "source": "assets/opencode/skills/repomix/SKILL.md",
@@ -14508,20 +13885,6 @@
       "size": 3169
     },
     {
-      "source": "assets/opencode/skills/sequential-thinking/tests/format-thought.test.js",
-      "target": ".opencode/skills/sequential-thinking/tests/format-thought.test.js",
-      "type": "opencode-skill",
-      "sha256": "0250882b794bfac0777fa65845fa9ab8862bc39128c93d93ae3c9f2474f88f54",
-      "size": 3644
-    },
-    {
-      "source": "assets/opencode/skills/sequential-thinking/tests/process-thought.test.js",
-      "target": ".opencode/skills/sequential-thinking/tests/process-thought.test.js",
-      "type": "opencode-skill",
-      "sha256": "ae62b6f1ba2304c62432fe5f53deef7fb315805d1ae54e1cb5f8f322079897ce",
-      "size": 5698
-    },
-    {
       "source": "assets/opencode/skills/shader/references/glsl-cellular-voronoi-worley-noise-patterns.md",
       "target": ".opencode/skills/shader/references/glsl-cellular-voronoi-worley-noise-patterns.md",
       "type": "opencode-skill",
@@ -14669,13 +14032,6 @@
       "size": 10324
     },
     {
-      "source": "assets/opencode/skills/shopify/scripts/.coverage",
-      "target": ".opencode/skills/shopify/scripts/.coverage",
-      "type": "opencode-skill",
-      "sha256": "9b1a52fa7e42d18f69c31e808c40fb0fe51a4f60da6a9e4696bed1274cc530fb",
-      "size": 53248
-    },
-    {
       "source": "assets/opencode/skills/shopify/scripts/requirements.txt",
       "target": ".opencode/skills/shopify/scripts/requirements.txt",
       "type": "opencode-skill",
@@ -14688,20 +14044,6 @@
       "type": "opencode-skill",
       "sha256": "8f2c00b9af46393a6e69d0813d9da57637150d7fe2169aa3e16503eb65c605d0",
       "size": 12681
-    },
-    {
-      "source": "assets/opencode/skills/shopify/scripts/tests/.coverage",
-      "target": ".opencode/skills/shopify/scripts/tests/.coverage",
-      "type": "opencode-skill",
-      "sha256": "d2b0dfe017df2674b062e577e2b1b1b93651e18353d78e9aede6ed14db6fafd8",
-      "size": 53248
-    },
-    {
-      "source": "assets/opencode/skills/shopify/scripts/tests/test_shopify_init.py",
-      "target": ".opencode/skills/shopify/scripts/tests/test_shopify_init.py",
-      "type": "opencode-skill",
-      "sha256": "7bb517b08c58b2b1b9b10f89f1437dba378188adfe63e93aa1dccb3abbeabbd3",
-      "size": 13319
     },
     {
       "source": "assets/opencode/skills/shopify/SKILL.md",
@@ -15992,13 +15334,6 @@
       "size": 9980
     },
     {
-      "source": "assets/opencode/skills/ui-styling/scripts/.coverage",
-      "target": ".opencode/skills/ui-styling/scripts/.coverage",
-      "type": "opencode-skill",
-      "sha256": "a1f68d7a1d6322975c40c893004bc5e811d455d3ab124dab5154aad7060e66f5",
-      "size": 53248
-    },
-    {
       "source": "assets/opencode/skills/ui-styling/scripts/requirements.txt",
       "target": ".opencode/skills/ui-styling/scripts/requirements.txt",
       "type": "opencode-skill",
@@ -16018,34 +15353,6 @@
       "type": "opencode-skill",
       "sha256": "e2162f99247e598b50333fda0d55f467422aab0f14631f24d1a2bd93decbe850",
       "size": 13643
-    },
-    {
-      "source": "assets/opencode/skills/ui-styling/scripts/tests/coverage-ui.json",
-      "target": ".opencode/skills/ui-styling/scripts/tests/coverage-ui.json",
-      "type": "opencode-skill",
-      "sha256": "33bdc1f5998db9a38cac8e6128a82711f8f8b65fbb3dcb0c1680ae260441cbce",
-      "size": 35121
-    },
-    {
-      "source": "assets/opencode/skills/ui-styling/scripts/tests/requirements.txt",
-      "target": ".opencode/skills/ui-styling/scripts/tests/requirements.txt",
-      "type": "opencode-skill",
-      "sha256": "80846c98ee02a7e9651ec4eee6709f840b785646b469aad5284ab7ab9b344f17",
-      "size": 52
-    },
-    {
-      "source": "assets/opencode/skills/ui-styling/scripts/tests/test_shadcn_add.py",
-      "target": ".opencode/skills/ui-styling/scripts/tests/test_shadcn_add.py",
-      "type": "opencode-skill",
-      "sha256": "4012b1efe1e51a5dcf31078b0d9069f92cfe2045e9a35dd52fdd4631b1815150",
-      "size": 9920
-    },
-    {
-      "source": "assets/opencode/skills/ui-styling/scripts/tests/test_tailwind_config_gen.py",
-      "target": ".opencode/skills/ui-styling/scripts/tests/test_tailwind_config_gen.py",
-      "type": "opencode-skill",
-      "sha256": "2a8b7b3e8b9ff081532551f2168dd08a8471e71c17747ae8d6026e1273068dc8",
-      "size": 12158
     },
     {
       "source": "assets/opencode/skills/ui-styling/SKILL.md",
@@ -16363,13 +15670,6 @@
       "size": 0
     },
     {
-      "source": "assets/opencode/skills/web-frameworks/scripts/.coverage",
-      "target": ".opencode/skills/web-frameworks/scripts/.coverage",
-      "type": "opencode-skill",
-      "sha256": "b27f663f8575c76587c3073b7aab28e6e5d26af02d95abfd55417e142e7268bf",
-      "size": 53248
-    },
-    {
       "source": "assets/opencode/skills/web-frameworks/scripts/nextjs_init.py",
       "target": ".opencode/skills/web-frameworks/scripts/nextjs_init.py",
       "type": "opencode-skill",
@@ -16382,34 +15682,6 @@
       "type": "opencode-skill",
       "sha256": "89002a89d32b1f2e71cfb62fe48fe52580aedd6001a4fe761fd1edb8f727af28",
       "size": 430
-    },
-    {
-      "source": "assets/opencode/skills/web-frameworks/scripts/tests/coverage-web.json",
-      "target": ".opencode/skills/web-frameworks/scripts/tests/coverage-web.json",
-      "type": "opencode-skill",
-      "sha256": "737e65f4900cc685612f9831ebd622567efb3bd7de55dd9d97b5aa2e04cd89ec",
-      "size": 34849
-    },
-    {
-      "source": "assets/opencode/skills/web-frameworks/scripts/tests/requirements.txt",
-      "target": ".opencode/skills/web-frameworks/scripts/tests/requirements.txt",
-      "type": "opencode-skill",
-      "sha256": "0795bdcfb80afae0ff06e9cbe5bed67b39283e577984bed87d85da3fec798a37",
-      "size": 52
-    },
-    {
-      "source": "assets/opencode/skills/web-frameworks/scripts/tests/test_nextjs_init.py",
-      "target": ".opencode/skills/web-frameworks/scripts/tests/test_nextjs_init.py",
-      "type": "opencode-skill",
-      "sha256": "770ea000b05f56cf199aa93533a070afd2f6113dd1f7a975de0a5ef0168f64d9",
-      "size": 10735
-    },
-    {
-      "source": "assets/opencode/skills/web-frameworks/scripts/tests/test_turborepo_migrate.py",
-      "target": ".opencode/skills/web-frameworks/scripts/tests/test_turborepo_migrate.py",
-      "type": "opencode-skill",
-      "sha256": "2897b6b62df7a8b7d029520ac32a92634e6a19d3cac043ff4ffc3441c014c671",
-      "size": 12861
     },
     {
       "source": "assets/opencode/skills/web-frameworks/scripts/turborepo_migrate.py",
@@ -16620,13 +15892,6 @@
       "type": "opencode-skill",
       "sha256": "0d3337e074c18a56e3195d0a2802149adf8a1249d59be34956f59a3f3adbbf5b",
       "size": 32981
-    },
-    {
-      "source": "assets/opencode/skills/worktree/scripts/worktree.test.cjs",
-      "target": ".opencode/skills/worktree/scripts/worktree.test.cjs",
-      "type": "opencode-skill",
-      "sha256": "88cc9dedf639c8db9762837e1dad247182503d80f3517c9942f57efa46301231",
-      "size": 35587
     },
     {
       "source": "assets/opencode/skills/worktree/SKILL.md",

@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS skill_versions (
     is_prerelease BOOLEAN NOT NULL DEFAULT FALSE,
     is_latest BOOLEAN NOT NULL DEFAULT FALSE,
     is_yanked BOOLEAN NOT NULL DEFAULT FALSE,
-    requires JSONB NOT NULL DEFAULT '[]',
+    requires JSONB NOT NULL DEFAULT '[]'::jsonb,
     release_notes TEXT,
     yank_reason VARCHAR(512),
     published_at TIMESTAMP NOT NULL DEFAULT NOW(),

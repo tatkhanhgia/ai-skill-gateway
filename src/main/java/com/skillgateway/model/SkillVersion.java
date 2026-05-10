@@ -11,6 +11,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
+import org.hibernate.annotations.ColumnTransformer;
 
 @Entity
 @Table(name = "skill_versions")
@@ -37,6 +38,7 @@ public class SkillVersion extends PanacheEntityBase {
     public boolean yanked;
 
     @Column(name = "requires", columnDefinition = "jsonb")
+    @ColumnTransformer(write = "?::jsonb")
     public String requires = "[]";
 
     @Column(name = "release_notes", columnDefinition = "TEXT")

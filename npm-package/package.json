@@ -8,7 +8,7 @@
   },
   "files": [
     "bin",
-    "dist",
+    "dist/src",
     "assets",
     "assets-manifest.json",
     "README.md"

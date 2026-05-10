@@ -79,12 +79,8 @@ public class SkillService {
         version.yanked = false;
         version.releaseNotes = manifest.releaseNotes();
         version.requires = manifest.requires() == null ? "[]" : toJsonArray(manifest.requires());
-        try {
-            skillVersionRepository.persist(version);
-            skillVersionRepository.flush();
-        } catch (Exception e) {
-            throw new ConflictException("version already exists for skill: " + manifest.name() + "@" + manifest.version());
-        }
+        skillVersionRepository.persist(version);
+        skillVersionRepository.flush();
 
         return new PublishResponse(skill.id, version.id, skill.name, version.versionSemver);
     }

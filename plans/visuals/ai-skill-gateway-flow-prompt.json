@@ -1,0 +1,81 @@
+{
+  "type": "enterprise architecture flow infographic",
+  "topic": "AI Skill Gateway - Connection and Usage Flow",
+  "subtitle": "Local-first skill registry, semantic search, image-generation workflow, and API publishing",
+  "style": {
+    "look": "clean modern SaaS architecture diagram, production documentation infographic, flat vector presentation slide",
+    "background": "white with very light gray section bands",
+    "palette": {
+      "primary": "deep navy",
+      "secondary": "teal",
+      "accent": "amber",
+      "support": "cool gray",
+      "success": "green"
+    },
+    "typography": "crisp sans-serif, high legibility, concise English labels",
+    "icons": "minimal line icons inside rounded white modules",
+    "geometry": "symmetrical grid, thin connector arrows, stable spacing, sharp lines"
+  },
+  "layout": {
+    "orientation": "landscape 16:9",
+    "header": {
+      "title_centered": true,
+      "title_size": "large",
+      "subtitle_below": true
+    },
+    "sections": [
+      {
+        "title": "1 Client Layer",
+        "position": "top horizontal layer",
+        "labels": ["Browser", "CLI", "Agent", "API Client"],
+        "container": "wide white panel with navy border"
+      },
+      {
+        "title": "2 Gateway API",
+        "position": "second horizontal layer",
+        "labels": ["GET /skills", "GET /skills/search", "POST /skills/publish", "Version Resolve", "Dependency Tree"],
+        "container": "wide white panel with teal border"
+      },
+      {
+        "title": "3 AI Skill Workflow",
+        "position": "third horizontal layer",
+        "labels": ["gpt-image-2-pro-max: Prompt Search", "Prompt Refactor", "media-tools: Render Image", "read_image: Validate Output"],
+        "container": "wide pale teal panel"
+      },
+      {
+        "title": "4 Runtime Services",
+        "position": "fourth horizontal layer",
+        "labels": ["Quarkus Dev Server :8080", "PostgreSQL + pgvector :5433", "Ollama Embeddings :11434", "OpenAI Image Provider"],
+        "container": "wide white panel with amber accents"
+      },
+      {
+        "title": "5 Storage and Output",
+        "position": "bottom horizontal layer",
+        "labels": ["Skill Metadata", "Versions", "Tags", "Vector Index", "Generated PNG Assets"],
+        "container": "wide light gray panel"
+      }
+    ],
+    "sidebars": [
+      {
+        "title": "Security",
+        "position": "left vertical sidebar",
+        "labels": ["X-API-Key", "No OAuth token in payloads", "Rotate leaked secrets", "Local env files"]
+      },
+      {
+        "title": "Developer Loop",
+        "position": "right vertical sidebar",
+        "labels": ["Create prompt", "Render asset", "Publish skill", "Search and reuse"]
+      }
+    ],
+    "connectors": "blue arrows flow downward from client to gateway to workflow to runtime to storage; dashed arrows connect security and developer loop sidebars to every layer",
+    "footer": "Health: /q/health | API key: X-API-Key | Generated assets saved under plans/visuals"
+  },
+  "rendering": {
+    "flat_vector": true,
+    "high_resolution": true,
+    "sharp_lines": true,
+    "balanced_whitespace": true,
+    "professional_pitch_deck_quality": true,
+    "avoid_tiny_text": true
+  }
+}

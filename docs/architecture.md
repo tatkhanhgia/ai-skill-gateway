@@ -2,14 +2,14 @@
 
 ## Overview
 
-The current implementation is a Java 21 Quarkus application that replaces the earlier FastAPI prototype. The server exposes a RESTful MCP skill gateway, orchestrates search/embedding pipelines, and persists data in PostgreSQL with vector support. All configuration—search weights, embedding endpoint, API key, limits—lives in `application.properties` and is consumed through Quarkus `@ConfigProperty` and `@ConfigMapping` beans.
+The current implementation is a Java 17 Quarkus application that replaces the earlier FastAPI prototype. The server exposes a RESTful skill gateway, orchestrates search/embedding pipelines, and persists data in PostgreSQL with vector support. All configuration - search weights, embedding endpoint, API key, limits - lives in `application.properties` and is consumed through Quarkus `@ConfigProperty` and `@ConfigMapping` beans.
 
 ## Layered Composition
 
 ### API Layer
 
 - **SkillResource** (`/api/v1/skills`) implements publish, list, detail, search, version resolution, dependency, and yank workflows. Endpoints map cleanly to DTOs such as `SkillManifest`, `SkillSummary`, `SearchRequest`, and `VersionResolution`.
-- **ApiKeyFilter** enforces `X-Api-Key` before any resource method executes. Invalid or absent keys halt processing with a 401.
+- **ApiKeyFilter** enforces `X-Api-Key` for mutating endpoints. Public read endpoints remain available for catalog discovery.
 - **GlobalExceptionMapper** normalizes `NotFoundException`, `ConflictException`, `ValidationException`, and other domain errors into consistent JSON responses.
 
 ### Service Layer
@@ -38,7 +38,7 @@ The current implementation is a Java 21 Quarkus application that replaces the ea
 
 ### Security & Observability
 
-- API key policy and exception mapper ensure that unauthorized or invalid inputs never reach the service layer.
+- API key policy protects mutating endpoints before they reach the service layer; exception mapper normalizes invalid inputs.
 - Domain exceptions contain human-readable messages that flow through `GlobalExceptionMapper` into structured HTTP errors.
 - Logging and monitoring can hook into Quarkus health endpoints (`/q/health`) and standard logs emitted by services.
 
@@ -48,5 +48,6 @@ The current implementation is a Java 21 Quarkus application that replaces the ea
 - `AppConfig` maps `search.*` settings to typed beans, centralizing configuration for weights and limits.
 - Embedding and search services avoid blocking the API when external AI endpoints fail.
 - PostgreSQL `vector` support requires an extension; the SQL migrations prepare the columns and triggers needed for efficient search.
+- MCP HTTP tooling is deferred until Quarkus MCP dependency compatibility is restored. Current runtime scope is REST API plus npm package distribution.
 
 *See `docs/project-overview-pdr.md` for requirements coverage and `docs/codebase-summary.md` for module references.*

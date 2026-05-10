@@ -1,6 +1,6 @@
 # Code Standards & Engineering Guidelines
 
-**Scope:** Aligns implementation, configuration, and documentation practices for the Java 21 / Quarkus MCP skill gateway and the `gtk-skill` npm distribution package.
+**Scope:** Aligns implementation, configuration, and documentation practices for the Java 17 / Quarkus REST skill gateway and the `gtk-skill` npm distribution package.
 **Last Updated:** 2026-05-01
 
 ---
@@ -46,7 +46,7 @@
 - Scripts and hooks copied by `gtk-skill` are data files only; the CLI must not execute them during install or update.
 
 ## Security, Observability & Deployment
-- Every API request passes through `ApiKeyFilter`, which checks `X-Api-Key` before entering resources.
+- Mutating API requests pass through `ApiKeyFilter`, which checks `X-Api-Key` before entering resources. Public GET endpoints support catalog discovery.
 - Domain errors are normalized via `GlobalExceptionMapper` so monitoring can rely on consistent error fields.
 - Quarkus health endpoints (`/q/health`) expose liveness/readiness.
 - Standard server runtime commands remain `mvn quarkus:dev`, `mvn package`, and optional `mvn -Pnative package`.
@@ -58,7 +58,7 @@
 - `DependencyResolver.resolve(name, version)` must continue guarding against `CircularDependencyException`.
 
 ## Testing Standards
-- Server tests run under Java 21 / Quarkus / Maven Surefire and remain deterministic.
+- Server tests run under Java 17 / Quarkus / Maven Surefire and remain deterministic.
 - Current Java coverage includes `SemVerParserTest`, `SemVerConstraintTest`, and `ManifestValidatorTest`.
 - `npm test --prefix npm-package` builds the TypeScript CLI and runs Node test suites from `dist/tests/*.test.js`.
 - Package tests must cover non-project-directory guards, conflict planning, install-state generation, and manifest safety checks.

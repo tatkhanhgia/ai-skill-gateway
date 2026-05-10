@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Skill Gateway System Flow</title>
+  <style>
+    body {
+      margin: 0;
+      background: #f7f8fa;
+      color: #17212b;
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+    }
+    main {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+    h1 {
+      margin: 0 0 16px;
+      font-size: 24px;
+      font-weight: 700;
+    }
+    .canvas {
+      overflow: auto;
+      background: #ffffff;
+      border: 1px solid #d6dde3;
+      border-radius: 8px;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>AI Skill Gateway System Flow</h1>
+    <div class="canvas">
+      <pre class="mermaid">
+%%{init: {"flowchart": {"defaultRenderer": "elk"}, "theme": "base", "themeVariables": {"primaryColor": "#eef7f1", "primaryTextColor": "#173523", "primaryBorderColor": "#4d8f66", "lineColor": "#61707a", "secondaryColor": "#f4f7fb", "tertiaryColor": "#fff7e8", "clusterBkg": "#fbfcfd", "clusterBorder": "#c6d1d8", "fontFamily": "Inter, Segoe UI, Arial, sans-serif"}}}%%
+%% AI Skill Gateway system flow
+flowchart TD
+    client["Client / App / MCP consumer"]
+    api["REST API&lt;br/&gt;/api/v1/skills"]
+    auth["ApiKeyFilter&lt;br/&gt;X-API-Key"]
+    errors["GlobalExceptionMapper&lt;br/&gt;JSON errors"]
+
+    subgraph quarkus["Java Quarkus Gateway"]
+        resource["SkillResource"]
+        publish["Publish flow&lt;br/&gt;SkillService.publish"]
+        search["Search flow&lt;br/&gt;SearchService.search"]
+        versions["Version flow&lt;br/&gt;VersionService"]
+        deps["Dependency flow&lt;br/&gt;DependencyResolver"]
+        validator["ManifestValidator"]
+        embedding["EmbeddingService"]
+    end
+
+    subgraph postgres["PostgreSQL + pgvector"]
+        skills[("skills")]
+        skill_versions[("skill_versions")]
+        search_index["tsvector + indexes"]
+        vector_index["vector column&lt;br/&gt;semantic similarity"]
+    end
+
+    ollama["Ollama / embedding provider&lt;br/&gt;nomic-embed-text"]
+    health["Quarkus health&lt;br/&gt;/q/health"]
+
+    client --&gt;|"publish / list / get / search / resolve / yank"| api
+    api --&gt; auth
+    auth --&gt; resource
+    resource --&gt; publish
+    resource --&gt; search
+    resource --&gt; versions
+    resource --&gt; deps
+    resource -. domain errors .-&gt; errors
+
+    publish --&gt; validator
+    publish --&gt;|"name + description"| embedding
+    embedding --&gt;|"HTTP embeddings"| ollama
+    publish --&gt;|"persist skill metadata"| skills
+    publish --&gt;|"persist semver, latest, yanked, requires"| skill_versions
+    skills --&gt; search_index
+    skills --&gt; vector_index
+
+    search --&gt;|"keyword query"| search_index
+    search --&gt;|"query text"| embedding
+    search --&gt;|"vector similarity"| vector_index
+    search --&gt;|"merge keyword + semantic + popularity"| resource
+
+    versions --&gt; skill_versions
+    deps --&gt; skill_versions
+    deps --&gt;|"cycle guard"| deps
+
+    health --&gt; quarkus
+
+    subgraph package_flow["gtk-skill npm package"]
+        cli["gtk-skill CLI&lt;br/&gt;install / update / list / doctor"]
+        manifest["assets-manifest.json"]
+        planner["plan operations&lt;br/&gt;conflict / overwrite / backup"]
+        installer["execute install"]
+        state[".gtk-skill/install-manifest.json"]
+        assets["curated .claude / .opencode assets"]
+        consumer["consumer project"]
+    end
+
+    cli --&gt; manifest
+    manifest --&gt; assets
+    cli --&gt; planner
+    planner --&gt; installer
+    installer --&gt; consumer
+    installer --&gt; state
+    cli --&gt;|"doctor re-hashes files"| state
+
+    classDef external fill:#fff7e8,stroke:#c27c20,color:#3d2a0d;
+    classDef gateway fill:#eef7f1,stroke:#4d8f66,color:#173523;
+    classDef data fill:#f4f7fb,stroke:#5c7890,color:#162633;
+    classDef package fill:#f6f0ff,stroke:#8467b3,color:#2b2140;
+    class client,ollama external;
+    class api,auth,errors,resource,publish,search,versions,deps,validator,embedding,health gateway;
+    class skills,skill_versions,search_index,vector_index data;
+    class cli,manifest,planner,installer,state,assets,consumer package;
+      </pre>
+    </div>
+  </main>
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true, securityLevel: "strict" });
+  </script>
+</body>
+</html>

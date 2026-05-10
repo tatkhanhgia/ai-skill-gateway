@@ -4,8 +4,8 @@
 *Snapshot captured after the Java MCP server and `gtk-skill` npm package implementation.*
 
 ## Overview
-- **Tech stack:** Java 21, Quarkus, Jakarta REST annotations, PostgreSQL with vector support, plus a Node 20+ TypeScript CLI in `npm-package/`.
-- **Gateway services:** Core server features live in `com.skillgateway.*` packages covering API, business services, repositories, versioning helpers, and MCP tool handlers.
+- **Tech stack:** Java 17, Quarkus, Jakarta REST annotations, PostgreSQL with vector support, plus a Node 20+ TypeScript CLI in `npm-package/`.
+- **Gateway services:** Core server features live in `com.skillgateway.*` packages covering API, business services, repositories, and versioning helpers. MCP HTTP tooling is deferred.
 - **Package distribution:** `gtk-skill` packages curated `.claude/` and `.opencode/` assets, ships a manifest-driven installer, and persists install state for later integrity checks.
 - **AI integrations:** Embedding calls are delegated to `EmbeddingService`, which posts to `ai.embedding.url` / `model`; search weights and limits are externally configurable via `search.*` properties.
 
@@ -16,7 +16,7 @@
 | Services | Implements publishing, search fusion, version resolution, embedding, and dependency resolution. | `SkillService.java`, `SearchService.java`, `VersionService.java`, `EmbeddingService.java`, `DependencyResolver.java` |
 | Persistence | Panache repositories backed by PostgreSQL; embeddings stored as `vector`, search indexes managed by migrations. | `SkillRepository.java`, `SkillVersionRepository.java`, `resources/db/migration/*` |
 | DTOs & Models | Java records/classes representing manifests, search payloads, responses, and version graphs. | `model/dto/*.java`, `model/Skill.java`, `model/SkillVersion.java` |
-| MCP Tools | Helper handlers surface search, version, and skill metadata to MCP consumers. | `mcp/tools/SkillToolHandler.java`, `SearchToolHandler.java`, `VersionToolHandler.java` |
+| MCP Tools | Deferred handlers are retained outside active source until dependency compatibility is restored. | `mcp-tools-backup/*.java` |
 | npm CLI | Command registration, installer planning/execution, manifest generation, and package safety checks. | `npm-package/src/cli.ts`, `npm-package/src/commands/*.ts`, `npm-package/src/installer/*.ts`, `npm-package/src/manifest/*.ts` |
 
 ## Data & Persistence
@@ -53,7 +53,7 @@
 5. **Integrity checks:** `doctor` re-hashes installed files using manifest state to detect drift after installation.
 
 ## Testing Status
-- `mvn test` executes JUnit 5 suites in `src/test/java`, ensuring Java 21 compatibility and core semantic-version / manifest validation coverage.
+- `mvn test` executes JUnit 5 suites in `src/test/java`, ensuring Java 17 compatibility and core semantic-version / manifest validation coverage.
 - `npm test --prefix npm-package` builds the TypeScript CLI and runs deterministic Node test suites located in `dist/tests/*.test.js`.
 - Additional package smoke tests can expand around tarball installs when release automation is added.
 
