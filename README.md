@@ -1,6 +1,6 @@
 # 🚀 AI Skill Gateway
 
-![Java](https://img.shields.io/badge/Java_21-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![Java](https://img.shields.io/badge/Java_17-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
 ![Quarkus](https://img.shields.io/badge/Quarkus-4695EB?style=for-the-badge&logo=quarkus&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
@@ -36,7 +36,7 @@ Mô hình xử lý luồng dữ liệu của hệ thống:
 ### Yêu cầu hệ thống (Prerequisites)
 
 * Windows 10/11
-* Java 21+
+* Java 17+
 * Maven 3.9+
 * Docker Desktop
 * [Ollama](https://ollama.ai/) đã cài đặt và cấu hình sẵn các model cần thiết.
@@ -56,6 +56,9 @@ cd ai-skill-gateway
 docker compose up -d db ollama
 ```
 
+> **Ports mặc định qua Docker Compose:** Server `18080`, PostgreSQL `15432`, Ollama `11435`.
+> Có thể override bằng biến môi trường `SERVER_PORT`, `DB_PORT`, `OLLAMA_PORT`.
+
 **3. Chạy Server (JVM mode):**
 
 ```powershell
@@ -63,26 +66,27 @@ set AUTH_API_KEY=dev-api-key
 mvn quarkus:dev
 ```
 
-> **Health check:** Sau khi khởi động, kiểm tra trạng thái tại `http://localhost:8080/q/health`
+> **Health check:** Khi chạy bằng Maven: `http://localhost:8080/q/health`.
+> Khi chạy bằng Docker Compose: `http://localhost:18080/q/health`.
 
 ### Sử dụng API (Usage Examples)
 
 **1. Lấy danh sách skills:**
 
 ```powershell
-curl "http://localhost:8080/api/v1/skills?page=0&size=20"
+curl "http://localhost:18080/api/v1/skills?page=0&size=20"
 ```
 
 **2. Tìm kiếm skills (Semantic/Keyword):**
 
 ```powershell
-curl "http://localhost:8080/api/v1/skills/search?query=log%20analysis&limit=10"
+curl "http://localhost:18080/api/v1/skills/search?query=log%20analysis&limit=10"
 ```
 
 **3. Đăng tải skill mới (Yêu cầu API Key):**
 
 ```powershell
-curl -X POST "http://localhost:8080/api/v1/skills/publish" ^
+curl -X POST "http://localhost:18080/api/v1/skills/publish" ^
   -H "X-API-Key: dev-api-key" ^
   -H "Content-Type: application/json" ^
   -d "{\"name\":\"skill-analytics\",\"version\":\"1.0.0\",\"description\":\"Analytics helper\",\"category\":\"data\",\"tags\":[\"analytics\"]}"
@@ -90,13 +94,13 @@ curl -X POST "http://localhost:8080/api/v1/skills/publish" ^
 
 ## 📋 Tài Liệu (Documentation)
 
-* [Implementation Plan](./PLAN.md) - Kế hoạch triển khai chi tiết
+* [Project Requirements](./docs/project-overview-pdr.md) - Yêu cầu và phạm vi dự án
 * [Architecture](./docs/architecture.md) - Kiến trúc hệ thống chuyên sâu
-* [API Reference](./docs/api-reference.md) - Tài liệu đặc tả API
+* [Codebase Summary](./docs/codebase-summary.md) - Tổng quan module hiện tại
 
 ## 🛠️ Phát Triển (Development)
 
-Xem file [PLAN.md](./PLAN.md) để theo dõi roadmap và các tính năng sắp ra mắt. Mọi đóng góp (Pull Requests) đều được chào đón!
+Xem file [Project Requirements](./docs/project-overview-pdr.md) để theo dõi phạm vi và các tiêu chí chấp nhận. Mọi đóng góp (Pull Requests) đều được chào đón!
 
 ## 📄 Giấy Phép (License)
 

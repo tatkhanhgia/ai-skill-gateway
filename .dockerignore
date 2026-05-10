@@ -1,0 +1,32 @@
+.git
+.idea
+.vscode
+
+# Build outputs and dependency caches
+target
+**/target
+node_modules
+**/node_modules
+npm-package/dist
+npm-package/*.tgz
+
+# Local/runtime state
+.env
+*.log
+.claude/session-state
+.opencode/session-state
+.gtk-skill
+plans
+
+# Large generated artifacts not needed for the Quarkus image
+repomix-output.xml
+release-manifest.json
+npm-package/assets
+npm-package/assets-manifest.json
+
+# Agent/package assets are not required to compile the server image
+.claude
+.opencode
+npm-package
+mcp-tools-backup
+docs
