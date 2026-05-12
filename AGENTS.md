@@ -4,9 +4,9 @@ This file provides guidance to OpenCode when working with code in this repositor
 
 ## Project Overview
 
-**Name:** claudekit-engineer
-**Type:** Node.js/TypeScript
-**Description:** A comprehensive boilerplate template for building professional software projects with **CLI Coding Agents** (**Claude Code** and **Open Code**). This template provides a complete development environment with AI-powered agent orchestration, automated workflows, and intelligent project management.
+**Name:** AI Skill Gateway
+**Type:** Java/Quarkus REST gateway + React web console + Node/TypeScript npm package
+**Description:** A local-first skill gateway for publishing, searching, versioning, and distributing AI agent skills. The project combines a Quarkus REST API backed by PostgreSQL/pgvector, a Vite React console, and the `gtk-skill` package for installing curated Claude/OpenCode assets into consumer projects.
 
 ## Role & Responsibilities
 

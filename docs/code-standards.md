@@ -21,6 +21,7 @@
 
 ## Error Handling & Validation
 - Validation logic lives in `ManifestValidator` and service guards.
+- Bundle upload validation lives in `SkillBundleValidator`; it must reject traversal, absolute paths, forbidden local files, duplicate paths, and configured size/count limit violations before persistence.
 - Throw domain exceptions (`ValidationException`, `ConflictException`, `NotFoundException`) when invariants fail.
 - `GlobalExceptionMapper` centralizes exception-to-HTTP translation.
 - When logging is added around failures, include contextual identifiers such as skill name and version.
@@ -28,7 +29,10 @@
 ## Configuration & Runtime Properties
 - Server configuration is centralized via `AppConfig` and Quarkus `@ConfigProperty` beans.
 - Enforce default pagination and search limits before repository calls.
-- Embedding requests rely on `ai.embedding.url` and `ai.embedding.model`; failures must degrade gracefully.
+- Embedding requests rely on `ai.embedding.provider`, `ai.embedding.url`, `ai.embedding.model`, `ai.embedding.dimension`, and `ai.embedding.timeout-seconds`; failures must degrade gracefully.
+- Treat `ai.embedding.api-key` as secret config. Do not log it, include it in exception text, commit it, or use real values in tests/docs.
+- Treat bundle content as untrusted data. Store scripts and hooks but do not execute them during publish, validation, or download.
+- Embedding status responses and health data must not expose API keys, authorization headers, request bodies, response bodies, or URL query strings.
 - Package runtime is defined by `npm-package/package.json`, including Node `>=20`, explicit `bin`, and `prepack` build/asset-generation scripts.
 
 ## npm Package & CLI Conventions
@@ -54,12 +58,14 @@
 ## Search, Versioning & Dependency Conventions
 - `SearchService` fuses keyword, vector, and popularity signals with configurable weights.
 - `EmbeddingService.embed()` and `asPgVectorLiteral()` keep vector search integration consistent.
+- Provider implementations must keep request/response mapping network-free testable through a fake transport or parser helper.
 - Semantic version helpers (`SemVer`, `SemVerParser`, `SemVerConstraint`) drive `VersionService.resolve()`.
 - `DependencyResolver.resolve(name, version)` must continue guarding against `CircularDependencyException`.
 
 ## Testing Standards
 - Server tests run under Java 17 / Quarkus / Maven Surefire and remain deterministic.
 - Current Java coverage includes `SemVerParserTest`, `SemVerConstraintTest`, and `ManifestValidatorTest`.
+- Embedding provider tests must not call external services; assert request body/header mapping and parse canonical provider responses locally.
 - `npm test --prefix npm-package` builds the TypeScript CLI and runs Node test suites from `dist/tests/*.test.js`.
 - Package tests must cover non-project-directory guards, conflict planning, install-state generation, and manifest safety checks.
 - Keep tests network-free; use local temp directories and fixtures instead of external services or registries.

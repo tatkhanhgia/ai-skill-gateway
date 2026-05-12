@@ -20,3 +20,6 @@
 **/settings.local.json
 **/*.log
 **/*.tmp
+*.tgz
+npm-debug.log*
+.gtk-skill/

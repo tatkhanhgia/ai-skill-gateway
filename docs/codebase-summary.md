@@ -1,29 +1,30 @@
 # Codebase Summary
 
 *Generated from `repomix` compaction (see `repomix-output.xml`).*
-*Snapshot captured after the Java MCP server and `gtk-skill` npm package implementation.*
+*Snapshot captured after the Java REST gateway, web console, bundle API, and `gtk-skill` npm package implementation.*
 
 ## Overview
 - **Tech stack:** Java 17, Quarkus, Jakarta REST annotations, PostgreSQL with vector support, plus a Node 20+ TypeScript CLI in `npm-package/`.
 - **Gateway services:** Core server features live in `com.skillgateway.*` packages covering API, business services, repositories, and versioning helpers. MCP HTTP tooling is deferred.
 - **Package distribution:** `gtk-skill` packages curated `.claude/` and `.opencode/` assets, ships a manifest-driven installer, and persists install state for later integrity checks.
-- **AI integrations:** Embedding calls are delegated to `EmbeddingService`, which posts to `ai.embedding.url` / `model`; search weights and limits are externally configurable via `search.*` properties.
+- **AI integrations:** Embedding calls are delegated to `EmbeddingService`, which selects Ollama or OpenAI-compatible providers through `ai.embedding.*`; search weights and limits are externally configurable via `search.*` properties.
 
 ## Key Modules
 | Layer | Description | Representative Files |
 | --- | --- | --- |
-| API | Exposes REST endpoints for publish/search/versioning/dependencies. | `SkillResource.java`, `GlobalExceptionMapper.java`, `ApiKeyFilter.java` |
-| Services | Implements publishing, search fusion, version resolution, embedding, and dependency resolution. | `SkillService.java`, `SearchService.java`, `VersionService.java`, `EmbeddingService.java`, `DependencyResolver.java` |
-| Persistence | Panache repositories backed by PostgreSQL; embeddings stored as `vector`, search indexes managed by migrations. | `SkillRepository.java`, `SkillVersionRepository.java`, `resources/db/migration/*` |
+| API | Exposes REST endpoints for publish/search/versioning/dependencies, bundle publish/download, and embedding status. | `SkillResource.java`, `SkillBundleResource.java`, `EmbeddingStatusResource.java`, `GlobalExceptionMapper.java`, `ApiKeyFilter.java` |
+| Services | Implements publishing, bundle validation/storage, search fusion, version resolution, embedding, and dependency resolution. | `SkillService.java`, `SkillBundleService.java`, `SkillBundleValidator.java`, `SearchService.java`, `VersionService.java`, `EmbeddingService.java`, `DependencyResolver.java` |
+| Persistence | Panache repositories backed by PostgreSQL; embeddings stored as `vector`, search indexes and bundle manifests managed by migrations. | `SkillRepository.java`, `SkillVersionRepository.java`, `SkillVersionFileRepository.java`, `resources/db/migration/*` |
 | DTOs & Models | Java records/classes representing manifests, search payloads, responses, and version graphs. | `model/dto/*.java`, `model/Skill.java`, `model/SkillVersion.java` |
 | MCP Tools | Deferred handlers are retained outside active source until dependency compatibility is restored. | `mcp-tools-backup/*.java` |
 | npm CLI | Command registration, installer planning/execution, manifest generation, and package safety checks. | `npm-package/src/cli.ts`, `npm-package/src/commands/*.ts`, `npm-package/src/installer/*.ts`, `npm-package/src/manifest/*.ts` |
 
 ## Data & Persistence
-- PostgreSQL schema is created and updated through `V1__create_skills_schema.sql`, `V2__create_search_indexes.sql`, and `V3__create_search_vector_trigger.sql`.
+- PostgreSQL schema is created and updated through migrations `V1` to `V5`, covering base skill tables, search indexes/triggers, pgvector conversion, and bundle artifact/file metadata.
 - Embeddings are stored as Postgres `vector`; semantic search uses the `<=>` operator with `embedding IS NOT NULL` filtering.
 - Full-text search uses `search_vector` materialized fields with `ts_rank` and `plainto_tsquery`.
 - Version metadata persists per skill with `latest`, `yanked`, timestamps, and JSON-serialized dependency lists.
+- Bundle metadata persists artifact URI, SHA-256, package format, entrypoint path, file count, and per-file checksums for published zip bundles.
 - Consumer-project package install metadata is stored in `.gtk-skill/install-manifest.json` and backup replacements live under `.gtk-skill/backups/` when backup mode is used.
 
 ## npm Package Structure
@@ -43,6 +44,7 @@
 - Maven handles the Java build lifecycle via `pom.xml`.
 - `npm-package/` uses `tsc`, package scripts, and Node's built-in test runner.
 - Verified package checks for this change set, per task context: `npm test --prefix npm-package`, CLI dry-run, and `npm pack` forbidden-file audit.
+- Build outputs and dependency directories are ignored and should not be committed: `target/`, `node_modules/`, `npm-package/dist/`, and `web-ui/dist/`.
 - `repomix` packed the repository into `repomix-output.xml` for codebase-wide review.
 
 ## Developer Notes
@@ -57,4 +59,4 @@
 - `npm test --prefix npm-package` builds the TypeScript CLI and runs deterministic Node test suites located in `dist/tests/*.test.js`.
 - Additional package smoke tests can expand around tarball installs when release automation is added.
 
-*Last updated: 2026-05-01.*
+*Last updated: 2026-05-13.*

@@ -1,7 +1,7 @@
 # System Architecture - Java MCP Skill Gateway
 
 **Scope:** Documents the layered architecture implemented in the Java 17 + Quarkus REST skill gateway server and the `gtk-skill` npm packaging/distribution workflow.
-**Last Updated:** 2026-05-01
+**Last Updated:** 2026-05-13
 
 ---
 
@@ -10,11 +10,14 @@
 - **Package runtime:** `gtk-skill` is a Node 20+ TypeScript CLI built with `tsc` and published from `npm-package/`.
 - **Purpose:** Expose `/api/v1/skills` endpoints for gateway operations and ship curated `.claude/` / `.opencode/` assets that can be installed into external projects with explicit CLI commands.
 - **Data stores:** PostgreSQL with `vector` and `tsvector` columns for embeddings/search; local package install metadata stored under `.gtk-skill/install-manifest.json` in consumer projects.
-- **AI integration:** `EmbeddingService` posts to configurable `ai.embedding.url/model`, transforms responses into Postgres `vector` literals, and gracefully degrades when the provider is unreachable.
+- **Bundle artifacts:** Full skill folders are uploaded as zip bundles. PostgreSQL stores version artifact metadata and per-file manifests, while local filesystem storage keeps immutable zip bytes under `skill.bundle.storage-root`.
+- **AI integration:** `EmbeddingService` selects an embedding provider with `ai.embedding.provider`. `ollama` remains default; `openai-compatible` supports `/v1/embeddings` request/response shape. Responses become Postgres `vector` literals, and callers gracefully degrade when the provider is unreachable or returns the wrong dimension.
 - **Packaging integration:** `npm-package/assets-manifest.json` describes every shipped asset with source, target, type, checksum, and size.
 
 ## API Layer
 - **SkillResource** exposes REST endpoints (`publish`, `list`, `get`, `search`, `versions`, `resolve`, `yank`, `dependencies`).
+- **SkillBundleResource** exposes bundle publish, file manifest, and artifact download endpoints under `/api/v1/skills`.
+- **EmbeddingStatusResource** exposes `GET /api/v1/embedding/status` with sanitized embedding provider configuration status.
 - **DTOs:** The API layer uses typed request/response DTOs documented in the codebase docs where they are verified.
 - **Filters & Exception Mapping:** `ApiKeyFilter` enforces `X-Api-Key` for mutating endpoints; `GlobalExceptionMapper` maps domain errors to consistent JSON responses with proper status codes.
 
@@ -38,37 +41,48 @@
 - Target validation rejects absolute paths and traversal before assets can be installed.
 - Runtime logs and similar local artifacts are excluded from package payload generation.
 - The CLI copies scripts and hooks as files only; it does not execute packaged hooks or scripts during install/update.
-- Release validation relies on `npm pack --dry-run --json` plus forbidden-file audit before publication.
+- Release validation relies on `npm pack --dry-run --json` plus forbidden-file audit before publication. Generated dependency/build directories such as `target/`, `node_modules/`, and package `dist/` outputs must stay untracked.
 
 ## Service Layer
 - **SkillService** handles validation (`ManifestValidator`), persistence of `Skill` + `SkillVersion`, embedding refresh, and yank operations within transactional boundaries.
+- **SkillBundleService** validates zip archives through `SkillBundleValidator`, stores canonical artifacts through `SkillArtifactStorage`, then links artifact metadata to `SkillVersion`.
 - **SearchService** merges keyword (`SkillRepository.keywordSearch`), semantic (`EmbeddingService` + `SkillRepository.vectorSearch`), and popularity signals. Scores are normalized and combined via weights configured in `search.weight.*` before sorting and trimming to configured limits.
 - **VersionService** relies on semantic-version helpers to list and resolve versions; toggles `latest`/`yanked` flags as needed.
 - **DependencyResolver** builds dependency graphs and guards against `CircularDependencyException` to prevent infinite traversal.
 
 ## Persistence Layer
 - **Repositories:** `SkillRepository` and `SkillVersionRepository` extend Panache and expose helpers for keyword search, vector search, tag retrieval, and latest-version bookkeeping.
-- **Embeddings & Search Vectors:** PostgreSQL `vector` columns store embeddings, while `tsvector` and triggers keep full-text search data synchronized; `SkillVersion` persists metadata such as `releaseNotes`, `latest`, `yanked`, and dependency payloads.
+- **Repositories:** `SkillVersionFileRepository` lists per-file bundle manifests for installer/download integrity checks.
+- **Embeddings & Search Vectors:** PostgreSQL `vector` columns store embeddings, while `tsvector` and triggers keep full-text search data synchronized; `SkillVersion` persists metadata such as `releaseNotes`, `latest`, `yanked`, dependency payloads, and optional bundle artifact fields.
 
 ## Data & AI Flow
 1. **Publish:** `SkillService.publish()` validates the manifest, persists versions, refreshes embeddings via `EmbeddingService`, and persists vectors/metadata atomically.
-2. **Search:** `SearchService` executes keyword and vector queries, normalizes scores, merges per-skill tags, respects filters, and returns ranked results.
-3. **Version resolution:** Queries route through `VersionService.resolve()` which parses constraints and returns matching non-yanked versions.
-4. **Dependency inspection:** `/dependencies/{version}` uses `DependencyResolver` to expand requirements while preventing cycles.
+2. **Bundle publish:** `SkillBundleValidator` reads the zip without executing content, rejects unsafe paths and forbidden files, parses root `SKILL.md`, builds a deterministic artifact, and records per-file checksums.
+3. **Search:** `SearchService` executes keyword and vector queries, normalizes scores, merges per-skill tags, respects filters, and returns ranked results.
+4. **Version resolution:** Queries route through `VersionService.resolve()` which parses constraints and returns matching non-yanked versions.
+5. **Dependency inspection:** `/dependencies/{version}` uses `DependencyResolver` to expand requirements while preventing cycles.
+
+## Embedding Provider Strategy
+- **Provider contract:** `EmbeddingProvider` returns `float[]` and hides provider-specific JSON shape from `SkillService` and `SearchService`.
+- **Ollama provider:** Sends `model` and `prompt`, parses root `embedding`, and keeps the local default URL `http://localhost:11434/api/embeddings`.
+- **OpenAI-compatible provider:** Sends `model` and `input`, adds `Authorization: Bearer ...` only when `ai.embedding.api-key` is non-blank, and parses `data[0].embedding`.
+- **Validation:** Empty embeddings, HTTP errors, invalid JSON, and dimension mismatches throw provider errors. Public publish/search flows catch runtime failures and continue without semantic vectors.
 
 ## Configuration & Runtime
-- **Properties:** Quarkus config fields centralize settings such as `search.weight.*`, `search.default-limit`, `search.max-limit`, `ai.embedding.url/model`, and pagination defaults.
+- **Properties:** Quarkus config fields centralize settings such as `search.weight.*`, `search.default-limit`, `search.max-limit`, `ai.embedding.provider`, `ai.embedding.url`, `ai.embedding.model`, `ai.embedding.api-key`, `ai.embedding.dimension`, `ai.embedding.timeout-seconds`, and pagination defaults.
+- **Bundle properties:** `skill.bundle.storage-root`, `skill.bundle.max-bytes`, `skill.bundle.max-file-bytes`, and `skill.bundle.max-files` constrain local artifact storage and upload validation.
 - **Resiliency:** Embedding failures are caught in `SearchService` and `SkillService`, allowing API responses even when external AI endpoints miss.
 - **Security:** `ApiKeyFilter` rejects unauthorized mutating calls with HTTP 401 before they reach services; public GET endpoints support catalog discovery.
 
 ## Observability & Operations
 - **Logging:** Domain exceptions should include contextual identifiers such as skill name and version when logging is added.
-- **Health:** Quarkus health endpoints (`/q/health`) surface readiness; `quarkus.flyway.migrate-at-start=true` keeps the database schema up to date during startup.
+- **Health:** Quarkus health endpoints (`/q/health`) surface readiness, including embedding provider configuration validity. Provider runtime details are available at `/api/v1/embedding/status`; API keys and URL query strings are not exposed.
 - **Deployment:** Standard JVM invocation (`mvn quarkus:dev`) for local development; `mvn package` or `mvn -Pnative package` for production/native builds defined in `pom.xml`.
 
 ## Testing & Verification
-- **Java 17 compliance:** Project compiles and runs under Java 17. Maven Surefire 3.5.2 executes JUnit 5 suites that include `SemVerParserTest`, `SemVerConstraintTest`, and `ManifestValidatorTest`.
-- **npm package verification:** `npm test --prefix npm-package` builds the TypeScript CLI and runs package tests; per task context, CLI dry-run and forbidden-file pack audit also passed.
+- **Java 17 compliance:** Project compiles and runs under Java 17. Maven Surefire 3.5.2 executes JUnit 5 suites across semantic versioning, manifest validation, embedding providers, bundle validation, and artifact storage.
+- **Web console verification:** `npm run build --prefix web-ui` type-checks and builds the Vite React console.
+- **npm package verification:** `npm test --prefix npm-package` builds the TypeScript CLI and runs package tests; `npm pack --dry-run --json` verifies the release payload shape before publication.
 
 ## Maintenance Notes
 - **Documentation sync:** `repomix` compaction regenerates `repomix-output.xml`; `docs/codebase-summary.md` reflects module changes after each run.

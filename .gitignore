@@ -10,7 +10,7 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
+/lib/
 !.claude/skills/media-tools/scripts/lib/
 !.claude/skills/media-tools/scripts/lib/**
 !npm-package/assets/claude/skills/media-tools/scripts/lib/
@@ -19,7 +19,7 @@ lib/
 !.opencode/skills/media-tools/scripts/lib/**
 !npm-package/assets/opencode/skills/media-tools/scripts/lib/
 !npm-package/assets/opencode/skills/media-tools/scripts/lib/**
-lib64/
+/lib64/
 parts/
 sdist/
 var/
@@ -72,6 +72,13 @@ config/*.pem
 *.msi
 build/
 dist/
+target/
+node_modules/
+npm-package/node_modules/
+npm-package/dist/
+npm-package/*.tgz
+web-ui/node_modules/
+web-ui/dist/
 *.spec
 
 # Temporary

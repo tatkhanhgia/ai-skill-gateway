@@ -9,6 +9,7 @@ The current implementation is a Java 17 Quarkus application that replaces the ea
 ### API Layer
 
 - **SkillResource** (`/api/v1/skills`) implements publish, list, detail, search, version resolution, dependency, and yank workflows. Endpoints map cleanly to DTOs such as `SkillManifest`, `SkillSummary`, `SearchRequest`, and `VersionResolution`.
+- **EmbeddingStatusResource** (`/api/v1/embedding/status`) reports sanitized embedding provider configuration and validity.
 - **ApiKeyFilter** enforces `X-Api-Key` for mutating endpoints. Public read endpoints remain available for catalog discovery.
 - **GlobalExceptionMapper** normalizes `NotFoundException`, `ConflictException`, `ValidationException`, and other domain errors into consistent JSON responses.
 
@@ -27,7 +28,7 @@ The current implementation is a Java 17 Quarkus application that replaces the ea
 
 ### Data & AI Integration
 
-- **EmbeddingService** posts JSON prompts to `ai.embedding.url`/`model`, converts the response to `float[]`, and renders Postgres-compatible literals with `asPgVectorLiteral`. All network failures degrade gracefully (publish/search continue if embedding endpoint is unreachable).
+- **EmbeddingService** selects `ollama` or `openai-compatible` with `ai.embedding.provider`, converts provider responses to `float[]`, validates the configured dimension, and renders Postgres-compatible literals with `asPgVectorLiteral`. All provider failures degrade gracefully (publish/search continue if embedding endpoint is unreachable).
 - **Search pipeline**: keyword rows return `ScoredSkill` entries with `ts_rank`. Semantic search clones the query embedding and requests the vector similarity operator `<=>`. SearchService normalizes scores, merges per-id data via `SearchScore`, then applies weights for ranking.
 
 ### Version & Dependency Flow
@@ -40,7 +41,7 @@ The current implementation is a Java 17 Quarkus application that replaces the ea
 
 - API key policy protects mutating endpoints before they reach the service layer; exception mapper normalizes invalid inputs.
 - Domain exceptions contain human-readable messages that flow through `GlobalExceptionMapper` into structured HTTP errors.
-- Logging and monitoring can hook into Quarkus health endpoints (`/q/health`) and standard logs emitted by services.
+- Logging and monitoring can hook into Quarkus health endpoints (`/q/health`), embedding status (`/api/v1/embedding/status`), and standard logs emitted by services.
 
 ### Deployment & Operations
 
