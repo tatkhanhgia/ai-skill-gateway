@@ -1,7 +1,7 @@
 {
   "packageName": "gtk-skill",
   "packageVersion": "0.1.0",
-  "generatedAt": "2026-05-10T07:59:06.017Z",
+  "generatedAt": "2026-05-12T18:43:56.968Z",
   "files": [
     {
       "source": "assets/claude/agents/brainstormer.md",
@@ -602,8 +602,8 @@
       "source": "assets/claude/scripts/validate-docs.cjs",
       "target": ".claude/scripts/validate-docs.cjs",
       "type": "claude-script",
-      "sha256": "5142928acafee07877c0c1196a1cb3fd668eddbf3e27f8791281afa3ec11d66a",
-      "size": 10155
+      "sha256": "25874f55880e3806b204e63726c553f1f3b5caeefe2c84d6c877fa6c66754722",
+      "size": 11447
     },
     {
       "source": "assets/claude/scripts/win_compat.py",

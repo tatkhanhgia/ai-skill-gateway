@@ -26,6 +26,7 @@ function isAssetContainer(source: string): boolean {
 async function main(): Promise<void> {
   const root = packageRoot();
   const packageJson = JSON.parse(await readFile(path.join(root, 'package.json'), 'utf8')) as { name: string; version: string };
+  const manifestPath = path.join(root, 'assets-manifest.json');
   const assetsRoot = path.join(root, 'assets');
   const files = await walkFiles(assetsRoot, (directory) => {
     const source = path.relative(root, directory).split(path.sep).join('/');
@@ -54,11 +55,23 @@ async function main(): Promise<void> {
   const manifest: AssetManifest = {
     packageName: packageJson.name,
     packageVersion: packageJson.version,
-    generatedAt: new Date().toISOString(),
+    generatedAt: await existingGeneratedAt(manifestPath),
     files: manifestFiles.sort((a, b) => a.target.localeCompare(b.target))
   };
 
-  await writeFile(path.join(root, 'assets-manifest.json'), `${JSON.stringify(manifest, null, 2)}\n`);
+  await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
+}
+
+async function existingGeneratedAt(manifestPath: string): Promise<string> {
+  try {
+    const existing = JSON.parse(await readFile(manifestPath, 'utf8')) as Partial<AssetManifest>;
+    if (existing.generatedAt) {
+      return existing.generatedAt;
+    }
+  } catch {
+    // First manifest generation has no existing timestamp to preserve.
+  }
+  return new Date().toISOString();
 }
 
 await main();

@@ -49,9 +49,21 @@ const IGNORE_ENV_VARS = new Set(['ARGUMENTS']);
  */
 function findMarkdownFiles(dir) {
   if (!fs.existsSync(dir)) return [];
-  return fs.readdirSync(dir)
-    .filter(f => f.endsWith('.md'))
-    .map(f => path.join(dir, f));
+  const ignoredDirs = new Set(['node_modules', 'target', 'dist', 'build', '.git']);
+  const files = [];
+  const pending = [dir];
+  while (pending.length) {
+    const current = pending.pop();
+    for (const entry of fs.readdirSync(current, { withFileTypes: true })) {
+      const entryPath = path.join(current, entry.name);
+      if (entry.isDirectory()) {
+        if (!ignoredDirs.has(entry.name)) pending.push(entryPath);
+      } else if (entry.name.endsWith('.md')) {
+        files.push(entryPath);
+      }
+    }
+  }
+  return files.sort();
 }
 
 /**
@@ -129,26 +141,48 @@ function extractEnvVars(content, filepath) {
  */
 function checkCodeRefExists(ref, srcDirs) {
   const name = ref.replace('()', '');
+  const escapedName = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const patterns = [
-    `function ${name}`,
-    `const ${name}`,
-    `class ${name}`,
-    `def ${name}`,
-    `export.*${name}`,
-    `${name}:`  // object methods
-  ];
+    `\\b(class|interface|record|enum)\\s+${escapedName}\\b`,
+    `\\b(public|private|protected)?\\s*(static\\s+)?[A-Za-z0-9_<>, ?\\[\\]]+\\s+${escapedName}\\s*\\(`,
+    `\\bfunction\\s+${escapedName}\\b`,
+    `\\bconst\\s+${escapedName}\\b`,
+    `\\bdef\\s+${escapedName}\\b`,
+    `\\bexport\\b.*\\b${escapedName}\\b`,
+    `\\b${escapedName}\\s*:`  // object methods
+  ].map(pattern => new RegExp(pattern));
 
   for (const srcDir of srcDirs) {
     if (!fs.existsSync(srcDir)) continue;
-    for (const pattern of patterns) {
-      // Use spawnSync with args array to prevent command injection
-      const result = spawnSync('grep', ['-rl', pattern, srcDir], {
-        encoding: 'utf8',
-        stdio: ['pipe', 'pipe', 'pipe'],
-        timeout: 5000
-      });
-      if (result.status === 0 && result.stdout.trim()) {
-        return true;
+    const pending = [srcDir];
+    while (pending.length) {
+      const current = pending.pop();
+      let entries;
+      try {
+        entries = fs.readdirSync(current, { withFileTypes: true });
+      } catch {
+        continue;
+      }
+
+      for (const entry of entries) {
+        const entryPath = path.join(current, entry.name);
+        if (entry.isDirectory()) {
+          if (!['node_modules', 'target', 'dist', 'build', '.git'].includes(entry.name)) {
+            pending.push(entryPath);
+          }
+          continue;
+        }
+        if (!/\.(java|ts|tsx|js|jsx|cjs|mjs|py)$/.test(entry.name)) continue;
+
+        let content;
+        try {
+          content = fs.readFileSync(entryPath, 'utf8');
+        } catch {
+          continue;
+        }
+        if (patterns.some(pattern => pattern.test(content))) {
+          return true;
+        }
       }
     }
   }
@@ -315,7 +349,7 @@ function validate(docsDir, srcDirs, projectRoot) {
 function parseArgs(args) {
   const result = {
     docsDir: 'docs',
-    srcDirs: ['src', 'lib', 'app', 'scripts', '.claude']
+    srcDirs: ['src', 'lib', 'app', 'scripts', '.claude', 'npm-package/src']
   };
 
   for (let i = 0; i < args.length; i++) {
