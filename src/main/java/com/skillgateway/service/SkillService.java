@@ -16,9 +16,12 @@ import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
+import org.jboss.logging.Logger;
 
 @ApplicationScoped
 public class SkillService {
+
+    private static final Logger LOG = Logger.getLogger(SkillService.class);
 
     @Inject
     SkillRepository skillRepository;
@@ -53,11 +56,15 @@ public class SkillService {
             skill.tags.addAll(manifest.tags());
         }
 
+        if (isNew) {
+            skill.embedding = null;
+        }
         try {
             float[] emb = embeddingService.embed(manifest.name() + " " + manifest.description());
             skill.embedding = embeddingService.asPgVectorLiteral(emb);
-        } catch (RuntimeException ignore) {
-            skill.embedding = null;
+        } catch (RuntimeException e) {
+            LOG.warnf("Skill embedding update skipped for '%s': %s", manifest.name(), EmbeddingErrorSanitizer.summarize(e));
+            // Keep existing vectors on republish when the provider is temporarily unavailable.
         }
 
         if (isNew) {
@@ -139,4 +146,5 @@ public class SkillService {
             throw new IllegalArgumentException("invalid requires payload", e);
         }
     }
+
 }

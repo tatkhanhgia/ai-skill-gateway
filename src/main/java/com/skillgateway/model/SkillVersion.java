@@ -44,6 +44,24 @@ public class SkillVersion extends PanacheEntityBase {
     @Column(name = "release_notes", columnDefinition = "TEXT")
     public String releaseNotes;
 
+    @Column(name = "package_format")
+    public String packageFormat;
+
+    @Column(name = "entrypoint_path")
+    public String entrypointPath;
+
+    @Column(name = "bundle_sha256")
+    public String bundleSha256;
+
+    @Column(name = "bundle_size")
+    public Long bundleSize;
+
+    @Column(name = "file_count")
+    public Integer fileCount;
+
+    @Column(name = "artifact_uri")
+    public String artifactUri;
+
     @Column(name = "yank_reason")
     public String yankReason;
 

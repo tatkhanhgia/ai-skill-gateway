@@ -14,7 +14,12 @@ services:
       DB_USERNAME: admin
       DB_PASSWORD: changeme
       AUTH_API_KEY: ${AUTH_API_KEY:-dev-api-key}
-      AI_EMBEDDING_URL: http://ollama:11434/api/embeddings
+      AI_EMBEDDING_PROVIDER: ${AI_EMBEDDING_PROVIDER:-ollama}
+      AI_EMBEDDING_URL: ${AI_EMBEDDING_URL:-http://ollama:11434/api/embeddings}
+      AI_EMBEDDING_MODEL: ${AI_EMBEDDING_MODEL:-nomic-embed-text}
+      AI_EMBEDDING_API_KEY: ${AI_EMBEDDING_API_KEY:-}
+      AI_EMBEDDING_DIMENSION: ${AI_EMBEDDING_DIMENSION:-768}
+      AI_EMBEDDING_TIMEOUT_SECONDS: ${AI_EMBEDDING_TIMEOUT_SECONDS:-3}
 
   db:
     image: pgvector/pgvector:pg16

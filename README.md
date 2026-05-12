@@ -68,6 +68,36 @@ mvn quarkus:dev
 
 > **Health check:** Khi chạy bằng Maven: `http://localhost:8080/q/health`.
 > Khi chạy bằng Docker Compose: `http://localhost:18080/q/health`.
+> **Embedding status:** `http://localhost:8080/api/v1/embedding/status` trả về cấu hình provider đã lọc secret.
+
+### Embedding Provider Configuration
+
+Ollama remains the default local-first provider:
+
+```powershell
+set AI_EMBEDDING_PROVIDER=ollama
+set AI_EMBEDDING_URL=http://localhost:11434/api/embeddings
+set AI_EMBEDDING_MODEL=nomic-embed-text
+set AI_EMBEDDING_DIMENSION=768
+```
+
+OpenAI-compatible `/v1/embeddings` providers are also supported:
+
+```powershell
+set AI_EMBEDDING_PROVIDER=openai-compatible
+set AI_EMBEDDING_URL=http://localhost:11435/v1/embeddings
+set AI_EMBEDDING_MODEL=text-embedding-model
+set AI_EMBEDDING_API_KEY=
+set AI_EMBEDDING_DIMENSION=768
+```
+
+For remote providers, pass the API key through `AI_EMBEDDING_API_KEY`; do not commit it to config files. The returned embedding dimension must match `AI_EMBEDDING_DIMENSION` and the PostgreSQL vector schema.
+
+Check active embedding configuration:
+
+```powershell
+curl "http://localhost:8080/api/v1/embedding/status"
+```
 
 ### Sử dụng API (Usage Examples)
 
@@ -82,6 +112,18 @@ curl "http://localhost:18080/api/v1/skills?page=0&size=20"
 ```powershell
 curl "http://localhost:18080/api/v1/skills/search?query=log%20analysis&limit=10"
 ```
+
+### Local Web Console
+
+Run the standalone React console from `web-ui/`:
+
+```powershell
+npm install --prefix web-ui
+npm run dev --prefix web-ui
+```
+
+Open `http://localhost:5173`. The console can target Docker `http://localhost:18080` or Maven dev `http://localhost:8080`. API key input is memory-only for protected publish/yank actions.
+The Vite dev server uses strict port `5173`; free that port before starting the console.
 
 **3. Đăng tải skill mới (Yêu cầu API Key):**
 
@@ -105,3 +147,29 @@ Xem file [Project Requirements](./docs/project-overview-pdr.md) để theo dõi 
 ## 📄 Giấy Phép (License)
 
 Dự án này được phân phối dưới giấy phép **MIT License**. Xem file [LICENSE](./LICENSE) để biết chi tiết.
+
+## Skill Bundle API
+
+Bundle zip files must contain `SKILL.md` at archive root. The server stores metadata in PostgreSQL and zip artifacts in local storage.
+
+```powershell
+Invoke-RestMethod `
+  -Method Post `
+  -Uri "http://localhost:18080/api/v1/skills/publish-bundle" `
+  -Headers @{ "X-API-Key" = "dev-api-key" } `
+  -Form @{ bundle = Get-Item ".\skill-analytics.zip" }
+```
+
+List bundle files:
+
+```powershell
+Invoke-RestMethod "http://localhost:18080/api/v1/skills/skill-analytics/versions/1.0.0/files"
+```
+
+Download bundle:
+
+```powershell
+Invoke-WebRequest `
+  -Uri "http://localhost:18080/api/v1/skills/skill-analytics/versions/1.0.0/bundle" `
+  -OutFile ".\skill-analytics-1.0.0.zip"
+```

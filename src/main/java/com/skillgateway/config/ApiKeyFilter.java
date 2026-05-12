@@ -50,6 +50,9 @@ public class ApiKeyFilter implements ContainerRequestFilter {
         if ("api/v1/skills/publish".equalsIgnoreCase(normalizedPath)) {
             return true;
         }
+        if ("api/v1/skills/publish-bundle".equalsIgnoreCase(normalizedPath)) {
+            return true;
+        }
         return normalizedPath != null && normalizedPath.contains("/versions/") && normalizedPath.endsWith("/yank");
     }
 }

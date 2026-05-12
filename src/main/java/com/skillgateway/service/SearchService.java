@@ -11,10 +11,13 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.jboss.logging.Logger;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 @ApplicationScoped
 public class SearchService {
+
+    private static final Logger LOG = Logger.getLogger(SearchService.class);
 
     @Inject
     SkillRepository skillRepository;
@@ -49,7 +52,8 @@ public class SearchService {
         try {
             float[] emb = embeddingService.embed(request.query());
             semantic = skillRepository.vectorSearch(embeddingService.asPgVectorLiteral(emb), 100);
-        } catch (RuntimeException ignored) {
+        } catch (RuntimeException e) {
+            LOG.warnf("Semantic search degraded because embedding failed: %s", EmbeddingErrorSanitizer.summarize(e));
         }
 
         double keywordMin = keyword.stream().mapToDouble(ScoredSkill::score).min().orElse(0);
