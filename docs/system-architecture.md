@@ -1,18 +1,19 @@
 # System Architecture - Java MCP Skill Gateway
 
 **Scope:** Documents the layered architecture implemented in the Java 17 + Quarkus REST skill gateway server and the `gtk-skill` npm packaging/distribution workflow.
-**Last Updated:** 2026-05-13
+**Last Updated:** 2026-05-17
 
 ---
 
 ## High-Level Overview
 - **Server runtime:** Java 17, Quarkus 3.20.2, Maven-managed build. MCP HTTP extension remains deferred due version compatibility.
 - **Package runtime:** `gtk-skill` is a Node 20+ TypeScript CLI built with `tsc` and published from `npm-package/`.
-- **Purpose:** Expose `/api/v1/skills` endpoints for gateway operations and ship curated `.claude/` / `.opencode/` assets that can be installed into external projects with explicit CLI commands.
+- **Purpose:** Expose `/api/v1/skills` endpoints for gateway operations and ship curated `.claude/`, `.codex/`, and `.opencode/` assets that can be installed into external projects with explicit CLI commands.
 - **Data stores:** PostgreSQL with `vector` and `tsvector` columns for embeddings/search; local package install metadata stored under `.gtk-skill/install-manifest.json` in consumer projects.
 - **Bundle artifacts:** Full skill folders are uploaded as zip bundles. PostgreSQL stores version artifact metadata and per-file manifests, while local filesystem storage keeps immutable zip bytes under `skill.bundle.storage-root`.
 - **AI integration:** `EmbeddingService` selects an embedding provider with `ai.embedding.provider`. `ollama` remains default; `openai-compatible` supports `/v1/embeddings` request/response shape. Responses become Postgres `vector` literals, and callers gracefully degrade when the provider is unreachable or returns the wrong dimension.
 - **Packaging integration:** `npm-package/assets-manifest.json` describes every shipped asset with source, target, type, checksum, and size.
+- **Catalog seed:** `BundledSkillCatalogSeeder` reads the package asset manifest at startup and publishes missing skill versions so REST clients can list packaged skills without a manual import step.
 
 ## API Layer
 - **SkillResource** exposes REST endpoints (`publish`, `list`, `get`, `search`, `versions`, `resolve`, `yank`, `dependencies`).
@@ -46,6 +47,7 @@
 ## Service Layer
 - **SkillService** handles validation (`ManifestValidator`), persistence of `Skill` + `SkillVersion`, embedding refresh, and yank operations within transactional boundaries.
 - **SkillBundleService** validates zip archives through `SkillBundleValidator`, stores canonical artifacts through `SkillArtifactStorage`, then links artifact metadata to `SkillVersion`.
+- **BundledSkillCatalogSeeder** imports metadata only. It creates searchable catalog/version rows from bundled `SKILL.md` files but does not create bundle artifacts for download endpoints.
 - **SearchService** merges keyword (`SkillRepository.keywordSearch`), semantic (`EmbeddingService` + `SkillRepository.vectorSearch`), and popularity signals. Scores are normalized and combined via weights configured in `search.weight.*` before sorting and trimming to configured limits.
 - **VersionService** relies on semantic-version helpers to list and resolve versions; toggles `latest`/`yanked` flags as needed.
 - **DependencyResolver** builds dependency graphs and guards against `CircularDependencyException` to prevent infinite traversal.

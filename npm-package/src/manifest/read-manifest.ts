@@ -8,7 +8,7 @@ function isSafeRelativeTarget(target: string): boolean {
   const normalized = target.split('\\').join('/');
   if (normalized.includes('\0')) return false;
   if (normalized.split('/').includes('..')) return false;
-  return normalized.startsWith('.claude/') || normalized.startsWith('.opencode/');
+  return normalized.startsWith('.claude/') || normalized.startsWith('.codex/') || normalized.startsWith('.opencode/');
 }
 
 function validateFile(file: AssetManifestFile): void {

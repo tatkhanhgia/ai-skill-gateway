@@ -6,14 +6,15 @@
 ## Overview
 - **Tech stack:** Java 17, Quarkus, Jakarta REST annotations, PostgreSQL with vector support, plus a Node 20+ TypeScript CLI in `npm-package/`.
 - **Gateway services:** Core server features live in `com.skillgateway.*` packages covering API, business services, repositories, and versioning helpers. MCP HTTP tooling is deferred.
-- **Package distribution:** `gtk-skill` packages curated `.claude/` and `.opencode/` assets, ships a manifest-driven installer, and persists install state for later integrity checks.
+- **Package distribution:** `gtk-skill` packages curated `.claude/`, `.codex/`, and `.opencode/` assets, ships a manifest-driven installer, and persists install state for later integrity checks.
+- **Startup catalog seed:** The server imports bundled `SKILL.md` metadata from `npm-package/assets-manifest.json` into PostgreSQL at startup, making packaged skills visible through `/api/v1/skills`.
 - **AI integrations:** Embedding calls are delegated to `EmbeddingService`, which selects Ollama or OpenAI-compatible providers through `ai.embedding.*`; search weights and limits are externally configurable via `search.*` properties.
 
 ## Key Modules
 | Layer | Description | Representative Files |
 | --- | --- | --- |
 | API | Exposes REST endpoints for publish/search/versioning/dependencies, bundle publish/download, and embedding status. | `SkillResource.java`, `SkillBundleResource.java`, `EmbeddingStatusResource.java`, `GlobalExceptionMapper.java`, `ApiKeyFilter.java` |
-| Services | Implements publishing, bundle validation/storage, search fusion, version resolution, embedding, and dependency resolution. | `SkillService.java`, `SkillBundleService.java`, `SkillBundleValidator.java`, `SearchService.java`, `VersionService.java`, `EmbeddingService.java`, `DependencyResolver.java` |
+| Services | Implements publishing, startup bundled catalog seed, bundle validation/storage, search fusion, version resolution, embedding, and dependency resolution. | `SkillService.java`, `BundledSkillCatalogSeeder.java`, `SkillBundleService.java`, `SkillBundleValidator.java`, `SearchService.java`, `VersionService.java`, `EmbeddingService.java`, `DependencyResolver.java` |
 | Persistence | Panache repositories backed by PostgreSQL; embeddings stored as `vector`, search indexes and bundle manifests managed by migrations. | `SkillRepository.java`, `SkillVersionRepository.java`, `SkillVersionFileRepository.java`, `resources/db/migration/*` |
 | DTOs & Models | Java records/classes representing manifests, search payloads, responses, and version graphs. | `model/dto/*.java`, `model/Skill.java`, `model/SkillVersion.java` |
 | MCP Tools | Deferred handlers are retained outside active source until dependency compatibility is restored. | `mcp-tools-backup/*.java` |

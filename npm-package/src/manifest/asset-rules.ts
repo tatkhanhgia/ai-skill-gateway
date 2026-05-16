@@ -13,6 +13,7 @@ export const assetRoots: AssetRoot[] = [
   { source: '.claude/hooks', target: 'assets/claude/hooks', type: 'claude-hook' },
   { source: '.claude/rules', target: 'assets/claude/rules', type: 'claude-rule' },
   { source: '.claude/scripts', target: 'assets/claude/scripts', type: 'claude-script' },
+  { source: '.codex/skills', target: 'assets/codex/skills', type: 'codex-skill' },
   { source: '.opencode/skills', target: 'assets/opencode/skills', type: 'opencode-skill' },
   { source: '.opencode/agents', target: 'assets/opencode/agents', type: 'opencode-agent' }
 ];
@@ -45,6 +46,7 @@ export function isExcludedAsset(relativePath: string): boolean {
   if (
     basename === '.env.example' &&
     (normalized === '.claude/skills/media-tools/.env.example' ||
+      normalized === '.codex/skills/media-tools/.env.example' ||
       normalized === '.opencode/skills/media-tools/.env.example')
   ) return false;
   if (basename === '.env' || basename.startsWith('.env.')) return true;
@@ -55,6 +57,7 @@ export function isExcludedAsset(relativePath: string): boolean {
 export function targetPathForAsset(source: string): string {
   const normalized = source.split(path.sep).join('/');
   if (normalized.startsWith('assets/claude/')) return `.claude/${normalized.slice('assets/claude/'.length)}`;
+  if (normalized.startsWith('assets/codex/')) return `.codex/${normalized.slice('assets/codex/'.length)}`;
   if (normalized.startsWith('assets/opencode/')) return `.opencode/${normalized.slice('assets/opencode/'.length)}`;
   throw new Error(`Unsupported asset source: ${source}`);
 }

@@ -30,3 +30,9 @@ npm-package/assets-manifest.json
 npm-package
 mcp-tools-backup
 docs
+
+# Runtime catalog seed needs packaged skill metadata in the final JVM image.
+!npm-package/
+!npm-package/assets/
+!npm-package/assets/**
+!npm-package/assets-manifest.json

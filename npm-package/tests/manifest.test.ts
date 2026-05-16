@@ -21,6 +21,10 @@ test('validateManifest accepts safe Claude targets', () => {
   assert.equal(validateManifest(manifestWithTarget('.claude/skills/demo/SKILL.md')).files.length, 1);
 });
 
+test('validateManifest accepts safe Codex targets', () => {
+  assert.equal(validateManifest(manifestWithTarget('.codex/skills/demo/SKILL.md')).files.length, 1);
+});
+
 test('validateManifest rejects traversal targets', () => {
   assert.throws(() => validateManifest(manifestWithTarget('../outside')));
 });
@@ -42,6 +46,7 @@ test('isExcludedAsset rejects test and coverage artifacts', () => {
 
 test('isExcludedAsset allows media-tools env example but rejects real env files', () => {
   assert.equal(isExcludedAsset('.claude/skills/media-tools/.env.example'), false);
+  assert.equal(isExcludedAsset('.codex/skills/media-tools/.env.example'), false);
   assert.equal(isExcludedAsset('.opencode/skills/media-tools/.env.example'), false);
   assert.equal(isExcludedAsset('.claude/skills/other/.env.example'), true);
   assert.equal(isExcludedAsset('.claude/skills/media-tools/.env'), true);

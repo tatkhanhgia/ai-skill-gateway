@@ -9,5 +9,7 @@ COPY --from=build /workspace/target/quarkus-app/lib/ /app/lib/
 COPY --from=build /workspace/target/quarkus-app/*.jar /app/
 COPY --from=build /workspace/target/quarkus-app/app/ /app/app/
 COPY --from=build /workspace/target/quarkus-app/quarkus/ /app/quarkus/
+COPY --from=build /workspace/npm-package/assets-manifest.json /app/npm-package/assets-manifest.json
+COPY --from=build /workspace/npm-package/assets/ /app/npm-package/assets/
 EXPOSE 8080
 CMD ["java", "-jar", "/app/quarkus-run.jar"]

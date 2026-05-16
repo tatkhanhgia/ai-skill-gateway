@@ -1,6 +1,6 @@
 # gtk-skill
 
-Install curated Claude and OpenCode skills into a project.
+Install curated Claude, Codex, and OpenCode skills into a project.
 
 ## Quick start
 
@@ -15,7 +15,7 @@ npx gtk-skill@latest doctor
 ## Commands
 
 ```bash
-gtk-skill install [--dry-run] [--cwd <path>] [--claude] [--opencode] [--skills] [--agents] [--hooks] [--rules] [--scripts] [--overwrite] [--backup] [--json]
+gtk-skill install [--dry-run] [--cwd <path>] [--claude] [--codex] [--opencode] [--skills] [--agents] [--hooks] [--rules] [--scripts] [--overwrite] [--backup] [--json]
 gtk-skill update [options]
 gtk-skill list [--json]
 gtk-skill doctor [--cwd <path>] [--json]

@@ -2,8 +2,9 @@ import type { AssetManifestFile } from '../types.js';
 
 const groupByType = new Map<string, Set<AssetManifestFile['type']>>([
   ['claude', new Set(['claude-skill', 'claude-agent', 'claude-hook', 'claude-rule', 'claude-script'])],
+  ['codex', new Set(['codex-skill'])],
   ['opencode', new Set(['opencode-skill', 'opencode-agent'])],
-  ['skills', new Set(['claude-skill', 'opencode-skill'])],
+  ['skills', new Set(['claude-skill', 'codex-skill', 'opencode-skill'])],
   ['agents', new Set(['claude-agent', 'opencode-agent'])],
   ['hooks', new Set(['claude-hook'])],
   ['rules', new Set(['claude-rule'])],

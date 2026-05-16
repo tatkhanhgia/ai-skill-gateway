@@ -3,10 +3,10 @@
 **Project:** AI Skill Gateway
 **Version:** 1.1
 **Status:** Active
-**Last Updated:** 2026-05-13
+**Last Updated:** 2026-05-17
 
 ## Purpose & Scope
-Deliver a self-hosted REST skill gateway plus a distributable `gtk-skill` npm package. The Java server exposes skill catalog management, search, version resolution, and dependency graph services for agents and external clients. The npm package ships curated `.claude/` and `.opencode/` assets that can be installed into external projects with explicit, safety-first CLI commands. MCP HTTP server integration is deferred until dependency compatibility is restored.
+Deliver a self-hosted REST skill gateway plus a distributable `gtk-skill` npm package. The Java server exposes skill catalog management, search, version resolution, and dependency graph services for agents and external clients. The npm package ships curated `.claude/`, `.codex/`, and `.opencode/` assets that can be installed into external projects with explicit, safety-first CLI commands. MCP HTTP server integration is deferred until dependency compatibility is restored.
 
 ### Scope
 - Skill publish/list/search endpoints + version metadata management
@@ -15,6 +15,7 @@ Deliver a self-hosted REST skill gateway plus a distributable `gtk-skill` npm pa
 - API key gating plus centralized exception handling
 - Embedding service integration and PostgreSQL vector support
 - `gtk-skill` packaging, manifest generation, installation, update, inventory, and integrity checks for curated assets
+- Startup import of bundled skill metadata into the REST catalog, controlled by `skill.seed.*` configuration
 
 ## Functional Requirements
 1. **Publish Skill** – Accept manifests (`SkillManifest`) via `POST /api/v1/skills/publish`, validate payloads (`ManifestValidator`), persist `Skill` + `SkillVersion`, refresh embeddings, and return `PublishResponse`. Acceptance: saves new versions atomically, rejects duplicate version names, and regenerates PostgreSQL vectors when the embedding endpoint is reachable.
@@ -29,6 +30,7 @@ Deliver a self-hosted REST skill gateway plus a distributable `gtk-skill` npm pa
 10. **Security** – Mutating API requests pass `ApiKeyFilter`. Acceptance: protected POST requests without valid `X-Api-Key` return 401 before service layer or mapper responses; public GET requests support catalog discovery.
 11. **Embedding Provider Status** – `GET /api/v1/embedding/status` reports configured provider, sanitized URL, model, dimension, timeout, and config validity. Acceptance: no API keys or URL query strings are exposed.
 12. **Skill Bundle API** – `POST /api/v1/skills/publish-bundle`, `GET /api/v1/skills/{name}/versions/{version}/files`, and `GET /api/v1/skills/{name}/versions/{version}/bundle` support full skill-folder zip distribution. Acceptance: root `SKILL.md` is required, unsafe paths and forbidden files are rejected, file checksums are persisted, and stored artifacts are deleted if DB metadata persistence fails.
+13. **Bundled Catalog Seed** – On startup, read `npm-package/assets-manifest.json`, parse packaged top-level `SKILL.md` files, and publish missing skill versions into PostgreSQL. Acceptance: idempotent on repeated starts, configurable with `skill.seed.enabled`, and non-fatal if the manifest is unavailable.
 
 ## Verified npm Package Snapshot
 - `npm-package/package.json` defines package name `gtk-skill`, Node engine `>=20`, explicit `bin` mapping, and a `prepack` workflow that builds TypeScript then regenerates copied assets and `assets-manifest.json`.

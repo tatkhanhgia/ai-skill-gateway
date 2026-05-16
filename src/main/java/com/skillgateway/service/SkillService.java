@@ -92,6 +92,16 @@ public class SkillService {
         return new PublishResponse(skill.id, version.id, skill.name, version.versionSemver);
     }
 
+    @Transactional
+    public Optional<PublishResponse> publishIfVersionMissing(SkillManifest manifest) {
+        manifestValidator.validateOrThrow(manifest);
+        Optional<Skill> skill = skillRepository.findByName(manifest.name());
+        if (skill.isPresent() && skillVersionRepository.findBySkillAndVersion(skill.get().id, manifest.version()).isPresent()) {
+            return Optional.empty();
+        }
+        return Optional.of(publish(manifest));
+    }
+
     public Optional<SkillDetail> findByName(String name) {
         Optional<Skill> found = skillRepository.findByName(name);
         if (found.isEmpty()) {

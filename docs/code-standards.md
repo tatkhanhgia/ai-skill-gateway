@@ -1,7 +1,7 @@
 # Code Standards & Engineering Guidelines
 
 **Scope:** Aligns implementation, configuration, and documentation practices for the Java 17 / Quarkus REST skill gateway and the `gtk-skill` npm distribution package.
-**Last Updated:** 2026-05-01
+**Last Updated:** 2026-05-17
 
 ---
 
@@ -11,7 +11,7 @@
 - **Persistence:** Panache repositories (`SkillRepository`, `SkillVersionRepository`) live under `repository/` and are backed by PostgreSQL migrations in `resources/db/migration/`.
 - **DTOs & Models:** `model/` and `model/dto/` define manifest, summary, version, and dependency payloads.
 - **npm package:** `npm-package/` contains the distributable `gtk-skill` CLI. `src/commands/` owns CLI registration, `src/installer/` owns planning/execution/install-state, `src/manifest/` owns inventory and validation, and `tests/` verifies installer and manifest safety.
-- **Published assets:** `npm-package/assets/` and `npm-package/assets-manifest.json` are generated artifacts representing the curated `.claude/` and `.opencode/` payload shipped in the npm tarball.
+- **Published assets:** `npm-package/assets/` and `npm-package/assets-manifest.json` are generated artifacts representing the curated `.claude/`, `.codex/`, and `.opencode/` payload shipped in the npm tarball.
 
 ## API Design & DTO Conventions
 - Prefer explicit HTTP methods and resource-oriented paths.

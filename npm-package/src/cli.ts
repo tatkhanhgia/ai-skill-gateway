@@ -12,7 +12,7 @@ const program = new Command();
 
 program
   .name('gtk-skill')
-  .description('Install curated Claude and OpenCode skills into projects')
+  .description('Install curated Claude, Codex, and OpenCode skills into projects')
   .version(packageJson.version)
   .addHelpText('after', `
 Examples:

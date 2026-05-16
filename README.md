@@ -99,6 +99,17 @@ Check active embedding configuration:
 curl "http://localhost:8080/api/v1/embedding/status"
 ```
 
+### Bundled Skill Catalog Seed
+
+At startup, the server imports bundled skill metadata from `npm-package/assets-manifest.json` into PostgreSQL so `/api/v1/skills` has initial catalog data. This seed is idempotent and skips versions already present.
+
+```powershell
+set SKILL_SEED_ENABLED=true
+set SKILL_SEED_ASSETS_MANIFEST=npm-package/assets-manifest.json
+```
+
+The seed populates searchable catalog metadata. Bundle artifact download endpoints are populated by publishing zip bundles through the Skill Bundle API.
+
 ### Sử dụng API (Usage Examples)
 
 **1. Lấy danh sách skills:**

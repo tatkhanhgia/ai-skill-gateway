@@ -7,6 +7,7 @@ interface InstallCommandOptions {
   cwd?: string;
   dryRun?: boolean;
   claude?: boolean;
+  codex?: boolean;
   opencode?: boolean;
   skills?: boolean;
   agents?: boolean;
@@ -20,7 +21,7 @@ interface InstallCommandOptions {
 }
 
 function groupsFromOptions(options: InstallCommandOptions): string[] {
-  return ['claude', 'opencode', 'skills', 'agents', 'hooks', 'rules', 'scripts'].filter((group) => Boolean(options[group as keyof InstallCommandOptions]));
+  return ['claude', 'codex', 'opencode', 'skills', 'agents', 'hooks', 'rules', 'scripts'].filter((group) => Boolean(options[group as keyof InstallCommandOptions]));
 }
 
 function policyFromOptions(options: InstallCommandOptions): ConflictPolicy {
@@ -35,6 +36,7 @@ export function addInstallCommand(program: Command): void {
     .option('--cwd <path>', 'target project directory')
     .option('--dry-run', 'show planned writes without changing files')
     .option('--claude', 'install Claude assets')
+    .option('--codex', 'install Codex assets')
     .option('--opencode', 'install OpenCode assets')
     .option('--skills', 'install skill assets')
     .option('--agents', 'install agent assets')

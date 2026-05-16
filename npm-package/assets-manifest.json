@@ -8614,6 +8614,636 @@
       "size": 3491
     },
     {
+      "source": "assets/codex/skills/gpt-image-2-pro-max/scripts/search.py",
+      "target": ".codex/skills/gpt-image-2-pro-max/scripts/search.py",
+      "type": "codex-skill",
+      "sha256": "4d63e2ea8f6d2ebce2b5cad0584409dfc1f586148054a7378a5def9f99c103bf",
+      "size": 8414
+    },
+    {
+      "source": "assets/codex/skills/gpt-image-2-pro-max/SKILL.md",
+      "target": ".codex/skills/gpt-image-2-pro-max/SKILL.md",
+      "type": "codex-skill",
+      "sha256": "a33ca4756e6c5a8aa368eaca3fd5da4a6348a73e79bedc6c0bdf1569103ef4df",
+      "size": 5912
+    },
+    {
+      "source": "assets/codex/skills/impeccable/agents/impeccable-asset-producer.md",
+      "target": ".codex/skills/impeccable/agents/impeccable-asset-producer.md",
+      "type": "codex-skill",
+      "sha256": "2468a9a33c3e170a9701980fbb8786f40a1acd783feecec158f3563fb38c8e39",
+      "size": 8438
+    },
+    {
+      "source": "assets/codex/skills/impeccable/reference/adapt.md",
+      "target": ".codex/skills/impeccable/reference/adapt.md",
+      "type": "codex-skill",
+      "sha256": "44fa7abceacf97ed2809c9cd96bf4b943dbf678fdb0a38c61dfa86822ee45559",
+      "size": 6676
+    },
+    {
+      "source": "assets/codex/skills/impeccable/reference/animate.md",
+      "target": ".codex/skills/impeccable/reference/animate.md",
+      "type": "codex-skill",
+      "sha256": "1e5ffefdc2a7cd6501071c81d70e86c37d6bbecb8168a78d108240e80577a090",
+      "size": 7943
+    },
+    {
+      "source": "assets/codex/skills/impeccable/reference/audit.md",
+      "target": ".codex/skills/impeccable/reference/audit.md",
+      "type": "codex-skill",
+      "sha256": "3925d63b1cc0d277577abcdfb00603c90c84d2e64e6ea0766cad2197ab9248a0",
+      "size": 6735
+    },
+    {
+      "source": "assets/codex/skills/impeccable/reference/bolder.md",
+      "target": ".codex/skills/impeccable/reference/bolder.md",
+      "type": "codex-skill",
+      "sha256": "dd4db98a2e1441291bdfd5921c30d0bc21ac7409d8823456565427b870fab226",
+      "size": 6496
+    },
+    {
+      "source": "assets/codex/skills/impeccable/reference/brand.md",
+      "target": ".codex/skills/impeccable/reference/brand.md",
+      "type": "codex-skill",
+      "sha256": "2d54e3778f98b1558ed768484d9de5076dabddb768b557e836cb53b69827562b",
+      "size": 11553
+    },
+    {
+      "source": "assets/codex/skills/impeccable/reference/clarify.md",
+      "target": ".codex/skills/impeccable/reference/clarify.md",
+      "type": "codex-skill",
+      "sha256": "f067cd689c2c2913ddd755e1a15c8f81b7b264b10eee069d7eb28be84cce8430",
+      "size": 6310
+    },
+    {
+      "source": "assets/codex/skills/impeccable/reference/codex.md",
+      "target": ".codex/skills/impeccable/reference/codex.md",
+      "type": "codex-skill",
+      "sha256": "763db584be87d1c9e85712abaa29838578a196517b6061bbfd672d90bcec5e7d",
+      "size": 7031
+    },
+    {
+      "source": "assets/codex/skills/impeccable/reference/cognitive-load.md",
+      "target": ".codex/skills/impeccable/reference/cognitive-load.md",
+      "type": "codex-skill",
+      "sha256": "643db7027f10b7c5a101a6ab23cc744ce2a1b4e0c948e6ee2f8501887b7601f8",
+      "size": 4902
+    },
+    {
+      "source": "assets/codex/skills/impeccable/reference/color-and-contrast.md",
+      "target": ".codex/skills/impeccable/reference/color-and-contrast.md",
+      "type": "codex-skill",
+      "sha256": "d68513f134119cffb0ac0fcc206d8ace8da30b846a373bd51a0b679e874eebc4",
+      "size": 5874
+    },
+    {
+      "source": "assets/codex/skills/impeccable/reference/colorize.md",
+      "target": ".codex/skills/impeccable/reference/colorize.md",
+      "type": "codex-skill",
+      "sha256": "588c3d8af0e57c5303c9bf4187cb897e3806c55b7071c31f6570ae634c6c9b37",
+      "size": 8173
+    },
+    {
+      "source": "assets/codex/skills/impeccable/reference/craft.md",
+      "target": ".codex/skills/impeccable/reference/craft.md",
+      "type": "codex-skill",
+      "sha256": "bd50386222e35addab664dada1328850d139f60e768b4fe814ce70f1225fcfcc",
+      "size": 11714
+    },
+    {
+      "source": "assets/codex/skills/impeccable/reference/critique.md",
+      "target": ".codex/skills/impeccable/reference/critique.md",
+      "type": "codex-skill",
+      "sha256": "08c70de88ade9ed7c64122b9b0b7ab4fa95e3806d8c0e157ec80e7c2e6d911d1",
+      "size": 16415
+    },
+    {
+      "source": "assets/codex/skills/impeccable/reference/delight.md",
+      "target": ".codex/skills/impeccable/reference/delight.md",
+      "type": "codex-skill",
+      "sha256": "e6766310775cd8bd28d6dbe870fc5535369bc455c892aa247fce0b6906ea7077",
+      "size": 10022
+    },
+    {
+      "source": "assets/codex/skills/impeccable/reference/distill.md",
+      "target": ".codex/skills/impeccable/reference/distill.md",
+      "type": "codex-skill",
+      "sha256": "c534aee9712a30328d9e0428440775140ac9afa2b02aa6df65226eafaaadf553",
+      "size": 5744
+    },
+    {
+      "source": "assets/codex/skills/impeccable/reference/document.md",
+      "target": ".codex/skills/impeccable/reference/document.md",
+      "type": "codex-skill",
+      "sha256": "f03cf232c2bf643b1410c2d7b09d77bd84034608b6b43ba1a3682627c2ed0a7d",
+      "size": 28522
+    },
+    {
+      "source": "assets/codex/skills/impeccable/reference/extract.md",
+      "target": ".codex/skills/impeccable/reference/extract.md",
+      "type": "codex-skill",
+      "sha256": "a37fc40064e0172c154da46830afead1ae3acf9a635e56b8eca1e015143f82e5",
+      "size": 3376
+    },
+    {
+      "source": "assets/codex/skills/impeccable/reference/harden.md",
+      "target": ".codex/skills/impeccable/reference/harden.md",
+      "type": "codex-skill",
+      "sha256": "36cae5c6213b705fa6cde4a30b548567bad6d3dc6152c2cd2586d30d4ab8e2ab",
+      "size": 8958
+    },
+    {
+      "source": "assets/codex/skills/impeccable/reference/heuristics-scoring.md",
+      "target": ".codex/skills/impeccable/reference/heuristics-scoring.md",
+      "type": "codex-skill",
+      "sha256": "dd3113b682bce95895dd0e56b51c4a897b757dd44e86b1cbda12c1e5613da93a",
+      "size": 9009
+    },
+    {
+      "source": "assets/codex/skills/impeccable/reference/interaction-design.md",
+      "target": ".codex/skills/impeccable/reference/interaction-design.md",
+      "type": "codex-skill",
+      "sha256": "242389ca681c1bb3c2b339b63a2cb568ee79eea9055be414fb9b25cf6106b45a",
+      "size": 7277
+    },
+    {
+      "source": "assets/codex/skills/impeccable/reference/layout.md",
+      "target": ".codex/skills/impeccable/reference/layout.md",
+      "type": "codex-skill",
+      "sha256": "c72630a2b0a4ab66016100d13fe924c9b564f992576e5252f30bd77f18da9495",
+      "size": 8122
+    },
+    {
+      "source": "assets/codex/skills/impeccable/reference/live.md",
+      "target": ".codex/skills/impeccable/reference/live.md",
+      "type": "codex-skill",
+      "sha256": "6e3cf40ad0ea8576d5a4e9353511ae49656ab7b3cb8723f7c722501475505dc6",
+      "size": 51442
+    },
+    {
+      "source": "assets/codex/skills/impeccable/reference/motion-design.md",
+      "target": ".codex/skills/impeccable/reference/motion-design.md",
+      "type": "codex-skill",
+      "sha256": "1d96f07932261e78d20bbe418f1326fc28f0e859580b60b8081abfa3b556dab9",
+      "size": 5893
+    },
+    {
+      "source": "assets/codex/skills/impeccable/reference/onboard.md",
+      "target": ".codex/skills/impeccable/reference/onboard.md",
+      "type": "codex-skill",
+      "sha256": "3281dfcf569540471f63dd972155eecb0df43fd7631493a43f817b9ab04ef737",
+      "size": 7991
+    },
+    {
+      "source": "assets/codex/skills/impeccable/reference/optimize.md",
+      "target": ".codex/skills/impeccable/reference/optimize.md",
+      "type": "codex-skill",
+      "sha256": "0ef076babdc37e1b3b1fbbee7dad20fe6fd2a464bc273680ae10d910962cd9d2",
+      "size": 7874
+    },
+    {
+      "source": "assets/codex/skills/impeccable/reference/overdrive.md",
+      "target": ".codex/skills/impeccable/reference/overdrive.md",
+      "type": "codex-skill",
+      "sha256": "fdea35242cad49c371e8828cb7ee310e39e6072860eff38f0c976d0f69e980fd",
+      "size": 9145
+    },
+    {
+      "source": "assets/codex/skills/impeccable/reference/personas.md",
+      "target": ".codex/skills/impeccable/reference/personas.md",
+      "type": "codex-skill",
+      "sha256": "e8b2315956c9eb517e054027190213da9112fbc3d3c56d83e92c2328cb1e2315",
+      "size": 7283
+    },
+    {
+      "source": "assets/codex/skills/impeccable/reference/polish.md",
+      "target": ".codex/skills/impeccable/reference/polish.md",
+      "type": "codex-skill",
+      "sha256": "ef040e41d12e7a6a9bbdb0866e216e5f969465452c8cbc236acd81c6acf665ad",
+      "size": 13267
+    },
+    {
+      "source": "assets/codex/skills/impeccable/reference/product.md",
+      "target": ".codex/skills/impeccable/reference/product.md",
+      "type": "codex-skill",
+      "sha256": "55a701943baac17b552ddb8b35083d1cc77a27b986ed84ec9f7e92732cb5368f",
+      "size": 4199
+    },
+    {
+      "source": "assets/codex/skills/impeccable/reference/quieter.md",
+      "target": ".codex/skills/impeccable/reference/quieter.md",
+      "type": "codex-skill",
+      "sha256": "35bd206af1777deec6ca3c1740b4565d59b4b031541222cb27ee5396905c65d0",
+      "size": 4903
+    },
+    {
+      "source": "assets/codex/skills/impeccable/reference/responsive-design.md",
+      "target": ".codex/skills/impeccable/reference/responsive-design.md",
+      "type": "codex-skill",
+      "sha256": "791cb0ec0fa9586a6bfa9d533a16fba3d755d1e1ba0ff593c9f8a9130b165e9b",
+      "size": 3575
+    },
+    {
+      "source": "assets/codex/skills/impeccable/reference/shape.md",
+      "target": ".codex/skills/impeccable/reference/shape.md",
+      "type": "codex-skill",
+      "sha256": "8dd38aa62e5eea6fd7c7ea336a94b694d3bf3e6b00082318e92bfb9aa0b5b430",
+      "size": 11448
+    },
+    {
+      "source": "assets/codex/skills/impeccable/reference/spatial-design.md",
+      "target": ".codex/skills/impeccable/reference/spatial-design.md",
+      "type": "codex-skill",
+      "sha256": "be1233e26fca24e47c4322ded8ce98c2d95037d0de5427bffefa57751219cc76",
+      "size": 3638
+    },
+    {
+      "source": "assets/codex/skills/impeccable/reference/teach.md",
+      "target": ".codex/skills/impeccable/reference/teach.md",
+      "type": "codex-skill",
+      "sha256": "743e3f64d32a0c46b5b3df7763d6d9bbd317daf5b9ad5369f7b27bc74ad8f517",
+      "size": 9334
+    },
+    {
+      "source": "assets/codex/skills/impeccable/reference/typeset.md",
+      "target": ".codex/skills/impeccable/reference/typeset.md",
+      "type": "codex-skill",
+      "sha256": "7880c7ce79c940780c5b93b12febb0c74a7c91b45805c2a19a6c8744985f1dc9",
+      "size": 6441
+    },
+    {
+      "source": "assets/codex/skills/impeccable/reference/typography.md",
+      "target": ".codex/skills/impeccable/reference/typography.md",
+      "type": "codex-skill",
+      "sha256": "b8c512128ba4744c27fa8bac834b6530796323da2a821dc0c79dc5e699e33df4",
+      "size": 8428
+    },
+    {
+      "source": "assets/codex/skills/impeccable/reference/ux-writing.md",
+      "target": ".codex/skills/impeccable/reference/ux-writing.md",
+      "type": "codex-skill",
+      "sha256": "7e8a894492b89a9a374da61d7c96be2af19b92c3fc9e9483326a64b79efca8cb",
+      "size": 4433
+    },
+    {
+      "source": "assets/codex/skills/impeccable/scripts/cleanup-deprecated.mjs",
+      "target": ".codex/skills/impeccable/scripts/cleanup-deprecated.mjs",
+      "type": "codex-skill",
+      "sha256": "760239ecdf087884e65909d2970585a5de151481e2975df99e1cef0165bbcea4",
+      "size": 9414
+    },
+    {
+      "source": "assets/codex/skills/impeccable/scripts/command-metadata.json",
+      "target": ".codex/skills/impeccable/scripts/command-metadata.json",
+      "type": "codex-skill",
+      "sha256": "009362e2ff7efd9b411ece2d8441fe67bdd7874d37d538f602f300783c1ccd7d",
+      "size": 8038
+    },
+    {
+      "source": "assets/codex/skills/impeccable/scripts/critique-storage.mjs",
+      "target": ".codex/skills/impeccable/scripts/critique-storage.mjs",
+      "type": "codex-skill",
+      "sha256": "ee2b5b265a8d989857a9cef12cf3845a15e6eb1005d7648394be37eb29d30853",
+      "size": 8873
+    },
+    {
+      "source": "assets/codex/skills/impeccable/scripts/design-parser.mjs",
+      "target": ".codex/skills/impeccable/scripts/design-parser.mjs",
+      "type": "codex-skill",
+      "sha256": "68fc4377416f40c82b1f48431f2733f0c942a4d434a9997a7f35519f2acc9b3c",
+      "size": 26037
+    },
+    {
+      "source": "assets/codex/skills/impeccable/scripts/detect-csp.mjs",
+      "target": ".codex/skills/impeccable/scripts/detect-csp.mjs",
+      "type": "codex-skill",
+      "sha256": "459f264db8c7012a036a09f15b968183e12f6355531b2f89c05e8a8252fb69f6",
+      "size": 6959
+    },
+    {
+      "source": "assets/codex/skills/impeccable/scripts/impeccable-paths.mjs",
+      "target": ".codex/skills/impeccable/scripts/impeccable-paths.mjs",
+      "type": "codex-skill",
+      "sha256": "20d7f09ae81f053439cd0f44db8c46e43ef8dd12ffc40972d58019533c02169b",
+      "size": 3541
+    },
+    {
+      "source": "assets/codex/skills/impeccable/scripts/is-generated.mjs",
+      "target": ".codex/skills/impeccable/scripts/is-generated.mjs",
+      "type": "codex-skill",
+      "sha256": "9bfc362760af813feb8f04b24f8a3173ae21d892ff88246592a6071975c60afc",
+      "size": 2338
+    },
+    {
+      "source": "assets/codex/skills/impeccable/scripts/live-accept.mjs",
+      "target": ".codex/skills/impeccable/scripts/live-accept.mjs",
+      "type": "codex-skill",
+      "sha256": "6b3b290dfaf7f643024a36cb949e870ae354395da57e521bcfb60bdc490f5d41",
+      "size": 23501
+    },
+    {
+      "source": "assets/codex/skills/impeccable/scripts/live-browser-session.js",
+      "target": ".codex/skills/impeccable/scripts/live-browser-session.js",
+      "type": "codex-skill",
+      "sha256": "f2edd9672e25e661043835bbe70c123f1c0ca5c62d1839f5e27d0dcdcc134f66",
+      "size": 3420
+    },
+    {
+      "source": "assets/codex/skills/impeccable/scripts/live-browser.js",
+      "target": ".codex/skills/impeccable/scripts/live-browser.js",
+      "type": "codex-skill",
+      "sha256": "3f409787b8d2cb762f2332602b8104ad96d0d702da0824685fc8c526af2627fd",
+      "size": 203238
+    },
+    {
+      "source": "assets/codex/skills/impeccable/scripts/live-complete.mjs",
+      "target": ".codex/skills/impeccable/scripts/live-complete.mjs",
+      "type": "codex-skill",
+      "sha256": "0a718f7f1d48f934f72c871ef060e98d63c371dbb4b46e7cdd526163afbb7847",
+      "size": 3013
+    },
+    {
+      "source": "assets/codex/skills/impeccable/scripts/live-completion.mjs",
+      "target": ".codex/skills/impeccable/scripts/live-completion.mjs",
+      "type": "codex-skill",
+      "sha256": "ed49272e70bf5c06a7457737a1a5d8a93c3d3bfa01b491d173ebcec4c811f2ad",
+      "size": 889
+    },
+    {
+      "source": "assets/codex/skills/impeccable/scripts/live-inject.mjs",
+      "target": ".codex/skills/impeccable/scripts/live-inject.mjs",
+      "type": "codex-skill",
+      "sha256": "fa047d73ebe2466fb6d1326215c7a3daf2b08f3dfed80bc58bb1c60c3156d692",
+      "size": 17848
+    },
+    {
+      "source": "assets/codex/skills/impeccable/scripts/live-poll.mjs",
+      "target": ".codex/skills/impeccable/scripts/live-poll.mjs",
+      "type": "codex-skill",
+      "sha256": "7233f4bf9d8ed1abe815c5bd3d002b228c069a6c4e6883448c6172235e81caf1",
+      "size": 7910
+    },
+    {
+      "source": "assets/codex/skills/impeccable/scripts/live-resume.mjs",
+      "target": ".codex/skills/impeccable/scripts/live-resume.mjs",
+      "type": "codex-skill",
+      "sha256": "d6f6dba05117e5e766656eb07e58284e1317a05af34295dfbe8e37febaa6338f",
+      "size": 2022
+    },
+    {
+      "source": "assets/codex/skills/impeccable/scripts/live-server.mjs",
+      "target": ".codex/skills/impeccable/scripts/live-server.mjs",
+      "type": "codex-skill",
+      "sha256": "3bdf39ca3495e88b76dd2014ab89f909f61b3cc8b057104953d3bc77a0aa68ea",
+      "size": 33288
+    },
+    {
+      "source": "assets/codex/skills/impeccable/scripts/live-session-store.mjs",
+      "target": ".codex/skills/impeccable/scripts/live-session-store.mjs",
+      "type": "codex-skill",
+      "sha256": "12221904efa9e7c222a114459ebed356f901a702bff9b300f39596e77a98c526",
+      "size": 9251
+    },
+    {
+      "source": "assets/codex/skills/impeccable/scripts/live-status.mjs",
+      "target": ".codex/skills/impeccable/scripts/live-status.mjs",
+      "type": "codex-skill",
+      "sha256": "a3e3330c25c0c206b85e0a1d3b7d2e700fd544f9b84c948dd3721a9245b2d156",
+      "size": 1543
+    },
+    {
+      "source": "assets/codex/skills/impeccable/scripts/live-wrap.mjs",
+      "target": ".codex/skills/impeccable/scripts/live-wrap.mjs",
+      "type": "codex-skill",
+      "sha256": "d6dd828aedbea6140bdd4ff3b6b43e005611000262904ec66f4e5b9951180f93",
+      "size": 26599
+    },
+    {
+      "source": "assets/codex/skills/impeccable/scripts/live.mjs",
+      "target": ".codex/skills/impeccable/scripts/live.mjs",
+      "type": "codex-skill",
+      "sha256": "8f5b7bfba104daee64203a4545fba9256fd854e2a154a8a659a5ef68b9ca859f",
+      "size": 8859
+    },
+    {
+      "source": "assets/codex/skills/impeccable/scripts/load-context.mjs",
+      "target": ".codex/skills/impeccable/scripts/load-context.mjs",
+      "type": "codex-skill",
+      "sha256": "e1287acb2ac852b39ffd17067b5ab97e58cc39e78de3790ea0b560caa448c3e8",
+      "size": 5253
+    },
+    {
+      "source": "assets/codex/skills/impeccable/scripts/modern-screenshot.umd.js",
+      "target": ".codex/skills/impeccable/scripts/modern-screenshot.umd.js",
+      "type": "codex-skill",
+      "sha256": "9b0dc34415466edac6e6802574006608b5e5c0da9fdcb7b2651dbd1ea06713a6",
+      "size": 29304
+    },
+    {
+      "source": "assets/codex/skills/impeccable/scripts/pin.mjs",
+      "target": ".codex/skills/impeccable/scripts/pin.mjs",
+      "type": "codex-skill",
+      "sha256": "1b584f598546e30d88c5250c00a8dd5eaec9a5579878676f9711491101281d0b",
+      "size": 6339
+    },
+    {
+      "source": "assets/codex/skills/impeccable/SKILL.md",
+      "target": ".codex/skills/impeccable/SKILL.md",
+      "type": "codex-skill",
+      "sha256": "fa5e5fff1b39500aec16bc82b26db3edc24326816ca77131f5ed542006fc5f46",
+      "size": 13024
+    },
+    {
+      "source": "assets/codex/skills/media-tools/.env.example",
+      "target": ".codex/skills/media-tools/.env.example",
+      "type": "codex-skill",
+      "sha256": "206be376e9548ebcfcf283a8d0c46611297305195ecffacaaa5795ea8026d8ad",
+      "size": 1317
+    },
+    {
+      "source": "assets/codex/skills/media-tools/.gitignore",
+      "target": ".codex/skills/media-tools/.gitignore",
+      "type": "codex-skill",
+      "sha256": "acf9843dd09c8062568bdbfd2061e9e826ad807bd49055fb8c2339c8bf4baf71",
+      "size": 266
+    },
+    {
+      "source": "assets/codex/skills/media-tools/README.md",
+      "target": ".codex/skills/media-tools/README.md",
+      "type": "codex-skill",
+      "sha256": "42e2f641ece1ccaec3e49e2ae0b4dda95f4e39b9bc85e34ca69a640d0498c018",
+      "size": 10970
+    },
+    {
+      "source": "assets/codex/skills/media-tools/requirements.txt",
+      "target": ".codex/skills/media-tools/requirements.txt",
+      "type": "codex-skill",
+      "sha256": "209e1da5d2db63b9cfab55375c11fa874941bcf6ab06fb035f9d72d89f14be4f",
+      "size": 15
+    },
+    {
+      "source": "assets/codex/skills/media-tools/scripts/chatgpt_oauth_login.py",
+      "target": ".codex/skills/media-tools/scripts/chatgpt_oauth_login.py",
+      "type": "codex-skill",
+      "sha256": "331c0973eab0bd33e4d041741df1deb988a338d417ceb051cf3387e7c9fc6a2e",
+      "size": 8133
+    },
+    {
+      "source": "assets/codex/skills/media-tools/scripts/create_image.py",
+      "target": ".codex/skills/media-tools/scripts/create_image.py",
+      "type": "codex-skill",
+      "sha256": "6aef224d81d8cd63a82cb5b1afd0c30db8ffdf2087efe776919266d52ea466d8",
+      "size": 10260
+    },
+    {
+      "source": "assets/codex/skills/media-tools/scripts/lib/__init__.py",
+      "target": ".codex/skills/media-tools/scripts/lib/__init__.py",
+      "type": "codex-skill",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "source": "assets/codex/skills/media-tools/scripts/lib/chain.py",
+      "target": ".codex/skills/media-tools/scripts/lib/chain.py",
+      "type": "codex-skill",
+      "sha256": "b20af6709fdf838596ae5907baf3d4c13b29a22f83de4c2592429724f1a2f1bc",
+      "size": 4098
+    },
+    {
+      "source": "assets/codex/skills/media-tools/scripts/lib/chatgpt_oauth_token.py",
+      "target": ".codex/skills/media-tools/scripts/lib/chatgpt_oauth_token.py",
+      "type": "codex-skill",
+      "sha256": "a0ce6d40c9a4a6152d22f72f02dd31d5dca18846dc2e1fb175fb9a98d3caebb5",
+      "size": 11739
+    },
+    {
+      "source": "assets/codex/skills/media-tools/scripts/lib/dotenv_loader.py",
+      "target": ".codex/skills/media-tools/scripts/lib/dotenv_loader.py",
+      "type": "codex-skill",
+      "sha256": "f7337bd2a2c097d42ac085867381f798c8b468ad4d7c0f39a1fe2ea0c3f4120a",
+      "size": 2443
+    },
+    {
+      "source": "assets/codex/skills/media-tools/scripts/lib/env_keys.py",
+      "target": ".codex/skills/media-tools/scripts/lib/env_keys.py",
+      "type": "codex-skill",
+      "sha256": "6c0f4faedd2c8d571b687f97395cf434086213392b56dc795bd77684a6894ce6",
+      "size": 4307
+    },
+    {
+      "source": "assets/codex/skills/media-tools/scripts/lib/filename.py",
+      "target": ".codex/skills/media-tools/scripts/lib/filename.py",
+      "type": "codex-skill",
+      "sha256": "397cf08de78e5af22d268dbfe1041dea29157ec804586036e137726286cb88ea",
+      "size": 1454
+    },
+    {
+      "source": "assets/codex/skills/media-tools/scripts/lib/png_metadata.py",
+      "target": ".codex/skills/media-tools/scripts/lib/png_metadata.py",
+      "type": "codex-skill",
+      "sha256": "75e9edceb7d5c6a16b56036c21fe872516c3b7e280a3810654aa3fb5a7361b0a",
+      "size": 1841
+    },
+    {
+      "source": "assets/codex/skills/media-tools/scripts/lib/providers/__init__.py",
+      "target": ".codex/skills/media-tools/scripts/lib/providers/__init__.py",
+      "type": "codex-skill",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "source": "assets/codex/skills/media-tools/scripts/lib/providers/anthropic_vision.py",
+      "target": ".codex/skills/media-tools/scripts/lib/providers/anthropic_vision.py",
+      "type": "codex-skill",
+      "sha256": "74b6781b3b519b5ff1fae00b9d29325a2551c695ea35b773ca199a2608e7cda2",
+      "size": 1854
+    },
+    {
+      "source": "assets/codex/skills/media-tools/scripts/lib/providers/byteplus_image.py",
+      "target": ".codex/skills/media-tools/scripts/lib/providers/byteplus_image.py",
+      "type": "codex-skill",
+      "sha256": "cf1bde9a2cfe19a5b49419c1bc7624b629a2a674602a3f2a94bb12a2a9e26aef",
+      "size": 2457
+    },
+    {
+      "source": "assets/codex/skills/media-tools/scripts/lib/providers/chatgpt_oauth_image.py",
+      "target": ".codex/skills/media-tools/scripts/lib/providers/chatgpt_oauth_image.py",
+      "type": "codex-skill",
+      "sha256": "0686a40cd3c03735a88c5abb94818d4399f24d92bcdc5c71bb86ff0d43cf4199",
+      "size": 6633
+    },
+    {
+      "source": "assets/codex/skills/media-tools/scripts/lib/providers/dashscope_image.py",
+      "target": ".codex/skills/media-tools/scripts/lib/providers/dashscope_image.py",
+      "type": "codex-skill",
+      "sha256": "1082a4cb233b98e62d8d03da5494930173f1d101c401d376c3fb8c11ebf4fb1a",
+      "size": 4262
+    },
+    {
+      "source": "assets/codex/skills/media-tools/scripts/lib/providers/dashscope_vision.py",
+      "target": ".codex/skills/media-tools/scripts/lib/providers/dashscope_vision.py",
+      "type": "codex-skill",
+      "sha256": "4d4f1a0cb1442c043fe6b2c346607fc639483d3d8c7338e2e31df1c62be6cf78",
+      "size": 1718
+    },
+    {
+      "source": "assets/codex/skills/media-tools/scripts/lib/providers/gemini_image.py",
+      "target": ".codex/skills/media-tools/scripts/lib/providers/gemini_image.py",
+      "type": "codex-skill",
+      "sha256": "e870137e2bb2912a423e5a8e6ff4ba44d23c1e8e1a9186bc56f54fd5e2554b14",
+      "size": 2140
+    },
+    {
+      "source": "assets/codex/skills/media-tools/scripts/lib/providers/gemini_vision.py",
+      "target": ".codex/skills/media-tools/scripts/lib/providers/gemini_vision.py",
+      "type": "codex-skill",
+      "sha256": "6e7ff3aa283455d83eb47a02b3cea3b1a18cdc368c04d24b78784e29e4412749",
+      "size": 1797
+    },
+    {
+      "source": "assets/codex/skills/media-tools/scripts/lib/providers/minimax_image.py",
+      "target": ".codex/skills/media-tools/scripts/lib/providers/minimax_image.py",
+      "type": "codex-skill",
+      "sha256": "1903eb987a1de63397cc1cc5ef4115d298d3c4f20d0ec617c0fef3c7caa2e49c",
+      "size": 2193
+    },
+    {
+      "source": "assets/codex/skills/media-tools/scripts/lib/providers/openai_image.py",
+      "target": ".codex/skills/media-tools/scripts/lib/providers/openai_image.py",
+      "type": "codex-skill",
+      "sha256": "e6266e3b565bb4429563f84348e4ba9c132ebca0736e6a416e5659173f595924",
+      "size": 2739
+    },
+    {
+      "source": "assets/codex/skills/media-tools/scripts/lib/providers/openrouter_image.py",
+      "target": ".codex/skills/media-tools/scripts/lib/providers/openrouter_image.py",
+      "type": "codex-skill",
+      "sha256": "dabb6c8a04dcc5671cb775aa3f091384c6ad5ab61b09b65b0b8039b5ff1ff584",
+      "size": 2475
+    },
+    {
+      "source": "assets/codex/skills/media-tools/scripts/lib/providers/openrouter_vision.py",
+      "target": ".codex/skills/media-tools/scripts/lib/providers/openrouter_vision.py",
+      "type": "codex-skill",
+      "sha256": "9fdfd74b824f302bec7fcc80532697bccd1fe142c2e758ff475d9d425bba62df",
+      "size": 1700
+    },
+    {
+      "source": "assets/codex/skills/media-tools/scripts/read_image.py",
+      "target": ".codex/skills/media-tools/scripts/read_image.py",
+      "type": "codex-skill",
+      "sha256": "42b5c059c422c74a31ea4a4660d82ce09fe48af52db46e361f2bf8ebfbf0d027",
+      "size": 6017
+    },
+    {
+      "source": "assets/codex/skills/media-tools/SKILL.md",
+      "target": ".codex/skills/media-tools/SKILL.md",
+      "type": "codex-skill",
+      "sha256": "2c0fddf5b975230e97b8dbac49ba19c9beec6b0c707a38947dcf38eb2e6bd2d1",
+      "size": 6250
+    },
+    {
       "source": "assets/opencode/agents/brainstormer.md",
       "target": ".opencode/agents/brainstormer.md",
       "type": "opencode-agent",

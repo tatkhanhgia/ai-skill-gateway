@@ -4,6 +4,7 @@ export type AssetType =
   | 'claude-hook'
   | 'claude-rule'
   | 'claude-script'
+  | 'codex-skill'
   | 'opencode-skill'
   | 'opencode-agent';
 

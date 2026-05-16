@@ -12,6 +12,7 @@ function assetType(source: string): AssetManifestFile['type'] {
   if (source.startsWith('assets/claude/hooks/')) return 'claude-hook';
   if (source.startsWith('assets/claude/rules/')) return 'claude-rule';
   if (source.startsWith('assets/claude/scripts/')) return 'claude-script';
+  if (source.startsWith('assets/codex/skills/')) return 'codex-skill';
   if (source.startsWith('assets/opencode/skills/')) return 'opencode-skill';
   if (source.startsWith('assets/opencode/agents/')) return 'opencode-agent';
   throw new Error(`Unsupported asset source: ${source}`);
@@ -20,6 +21,7 @@ function assetType(source: string): AssetManifestFile['type'] {
 function isAssetContainer(source: string): boolean {
   return source === 'assets'
     || source === 'assets/claude'
+    || source === 'assets/codex'
     || source === 'assets/opencode';
 }
 
@@ -31,7 +33,7 @@ async function main(): Promise<void> {
   const files = await walkFiles(assetsRoot, (directory) => {
     const source = path.relative(root, directory).split(path.sep).join('/');
     if (!source || isAssetContainer(source)) return false;
-    if (!source.startsWith('assets/claude/') && !source.startsWith('assets/opencode/')) return true;
+    if (!source.startsWith('assets/claude/') && !source.startsWith('assets/codex/') && !source.startsWith('assets/opencode/')) return true;
     return isExcludedAsset(targetPathForAsset(source));
   });
 
