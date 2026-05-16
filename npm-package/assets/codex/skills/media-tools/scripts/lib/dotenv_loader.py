@@ -1,4 +1,4 @@
-﻿r"""Tiny .env loader â€” no third-party deps.
+r"""Tiny .env loader â€” no third-party deps.
 
 Looks for a `.env` file in (priority order):
   1. $MEDIA_TOOLS_ENV (explicit override path)
@@ -75,4 +75,3 @@ def load() -> Path | None:
                 os.environ.setdefault(k, v)
             return p
     return None
-

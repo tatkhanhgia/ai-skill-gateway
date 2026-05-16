@@ -101,7 +101,7 @@ curl "http://localhost:8080/api/v1/embedding/status"
 
 ### Bundled Skill Catalog Seed
 
-At startup, the server imports bundled skill metadata from `npm-package/assets-manifest.json` into PostgreSQL so `/api/v1/skills` has initial catalog data. This seed is idempotent and skips versions already present.
+At startup, the server imports bundled skill metadata from `npm-package/assets-manifest.json` into PostgreSQL so `/api/v1/skills` has initial catalog data. Bundled assets include the project-local Claude, Codex, and OpenCode skill catalogs, including copied Codex session skills under `.codex/skills`. This seed is idempotent and skips versions already present.
 
 ```powershell
 set SKILL_SEED_ENABLED=true

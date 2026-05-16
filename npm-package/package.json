@@ -1,7 +1,7 @@
 {
   "name": "gtk-skill",
   "version": "0.1.0",
-  "description": "Install curated Claude and OpenCode skills into projects.",
+  "description": "Install curated Claude, Codex, and OpenCode skills into projects.",
   "type": "module",
   "bin": {
     "gtk-skill": "bin/gtk-skill.js"
@@ -33,6 +33,7 @@
   },
   "keywords": [
     "claude",
+    "codex",
     "opencode",
     "skills",
     "cli"

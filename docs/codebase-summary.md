@@ -7,7 +7,7 @@
 - **Tech stack:** Java 17, Quarkus, Jakarta REST annotations, PostgreSQL with vector support, plus a Node 20+ TypeScript CLI in `npm-package/`.
 - **Gateway services:** Core server features live in `com.skillgateway.*` packages covering API, business services, repositories, and versioning helpers. MCP HTTP tooling is deferred.
 - **Package distribution:** `gtk-skill` packages curated `.claude/`, `.codex/`, and `.opencode/` assets, ships a manifest-driven installer, and persists install state for later integrity checks.
-- **Startup catalog seed:** The server imports bundled `SKILL.md` metadata from `npm-package/assets-manifest.json` into PostgreSQL at startup, making packaged skills visible through `/api/v1/skills`.
+- **Startup catalog seed:** The server imports bundled `SKILL.md` metadata from `npm-package/assets-manifest.json` into PostgreSQL at startup, making packaged Claude, Codex, and OpenCode skills visible through `/api/v1/skills`.
 - **AI integrations:** Embedding calls are delegated to `EmbeddingService`, which selects Ollama or OpenAI-compatible providers through `ai.embedding.*`; search weights and limits are externally configurable via `search.*` properties.
 
 ## Key Modules

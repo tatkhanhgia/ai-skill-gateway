@@ -13,7 +13,7 @@
 - **Bundle artifacts:** Full skill folders are uploaded as zip bundles. PostgreSQL stores version artifact metadata and per-file manifests, while local filesystem storage keeps immutable zip bytes under `skill.bundle.storage-root`.
 - **AI integration:** `EmbeddingService` selects an embedding provider with `ai.embedding.provider`. `ollama` remains default; `openai-compatible` supports `/v1/embeddings` request/response shape. Responses become Postgres `vector` literals, and callers gracefully degrade when the provider is unreachable or returns the wrong dimension.
 - **Packaging integration:** `npm-package/assets-manifest.json` describes every shipped asset with source, target, type, checksum, and size.
-- **Catalog seed:** `BundledSkillCatalogSeeder` reads the package asset manifest at startup and publishes missing skill versions so REST clients can list packaged skills without a manual import step.
+- **Catalog seed:** `BundledSkillCatalogSeeder` reads the package asset manifest at startup and publishes missing skill versions so REST clients can list packaged Claude, Codex, and OpenCode skills without a manual import step.
 
 ## API Layer
 - **SkillResource** exposes REST endpoints (`publish`, `list`, `get`, `search`, `versions`, `resolve`, `yank`, `dependencies`).

@@ -109,4 +109,3 @@ Each provider has its own size convention; the skill maps `--aspect-ratio` to ea
 | 9:16  | 720*1280  | 720x1280  | 9:16 |
 | 4:3   | 1024*768  | 1024x768  | 4:3 |
 | 3:4   | 768*1024  | 768x1024  | 3:4 |
-

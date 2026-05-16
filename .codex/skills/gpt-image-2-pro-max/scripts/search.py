@@ -1,4 +1,4 @@
-﻿"""Search the gpt-image-2 prompt corpus.
+"""Search the gpt-image-2 prompt corpus.
 
 Plain-text query, BM25-ranked, with a small tag-aware boost. Drives the
 media-designer agent (see ~/.codex/agents/media_designer.toml).
@@ -221,4 +221,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

@@ -1,4 +1,4 @@
-﻿# media-tools
+# media-tools
 
 Two CLI tools for AI image generation and vision analysis. Python ports of [goclaw](https://github.com/) `create_image` / `read_image` with the same provider-chain pattern: priority order â†’ skip if no API key â†’ first success wins â†’ cascade on failure.
 
@@ -220,4 +220,3 @@ When no `--provider` is forced, the chain runs in this order: `chatgpt_oauth â�
 - OAuth tokens live **outside the repo**: `~/.codex/auth.json` and `%APPDATA%\media-tools\` (or `~/.config/media-tools/`).
 - Generated images save to your OS temp dir, not the repo.
 - No telemetry, no third-party services beyond the providers you explicitly configure.
-

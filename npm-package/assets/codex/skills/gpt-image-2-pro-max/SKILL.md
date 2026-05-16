@@ -106,4 +106,3 @@ Filter knobs:
 | Step 4 â€” Refactor | Replace product-specifics with `{argument name="X" default="Y"}` slots; keep mood/lighting/style words literal |
 | Step 5 â€” Resolve | Fill slots from user intent; default-fallback when ambiguous; never invent |
 | Step 6 â€” Output | 4 blocks: Base (cite author + tweet) Â· Parameterised Â· Resolved Â· Rationale (â‰¤80 words) |
-
