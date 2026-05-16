@@ -1267,7 +1267,7 @@
       "source": "assets/claude/skills/chrome-devtools/scripts/package-lock.json",
       "target": ".claude/skills/chrome-devtools/scripts/package-lock.json",
       "type": "claude-skill",
-      "sha256": "6bcf93b1592e95d51d6f8fd547257181de2f9ba83db5f82c47023619b11911a2",
+      "sha256": "23fd3e37b555980e04694258a3d34b9fcb4e5ef08e65c38c4c3ae94bf7695296",
       "size": 57134
     },
     {
